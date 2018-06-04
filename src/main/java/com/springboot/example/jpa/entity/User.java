@@ -1,4 +1,4 @@
-package com.springboot.example.mybatis.entity;
+package com.springboot.example.jpa.entity;
 
 import java.io.Serializable;
 
