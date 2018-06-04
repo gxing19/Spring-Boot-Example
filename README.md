@@ -9,6 +9,7 @@ Spring-Boot 组件系列整合与使用
 
 ## 3. spring-boot-cache-simple
 不使用第三方缓存技术，ConcurrentMapCacheManager，默认使用 ConcurrentHashMap作为存储缓存
+
 文章：http://112.74.59.39/2018/05/31/springboot-app-10-cache/
 
 ## 4. spring-boot-cache-ehcache2
