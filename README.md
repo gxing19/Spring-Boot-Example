@@ -17,3 +17,6 @@ Spring-Boot 组件系列整合与使用
 
 ## 5. spring-boot-profile
 参数注入，前缀匹配注入，加载 properties文件，加载XML文件，从加载的文件中读取参数并注入到属性
+
+## 6. spring-boot-hello-autoconfig
+spring boot 自动配置简单示例
