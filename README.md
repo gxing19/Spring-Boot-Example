@@ -1,2 +1,5 @@
-# Spring-Boot-Example
-spring boot 组件系列整合与使用(jpa, rest, cache, redis, ehcache, log4j2, mybatis ... ）
+﻿# Spring-Boot-Example
+Spring-Boot 组件系列整合与使用
+
+## 1. AutoConfigDemo
+Spring Boot 自定义自动配置Demo。
