@@ -20,7 +20,12 @@ public class ActorController {
     public Actor queryById(Long actorId){
         Actor acotr = actorService.queryById(actorId);
         return acotr;
+    }
 
+    @RequestMapping("/queryByActorId")
+    public Actor queryByActorId(Long actorId){
+        Actor acotr = actorService.queryByActorId(actorId);
+        return acotr;
     }
 
 

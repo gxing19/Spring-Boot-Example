@@ -22,4 +22,4 @@ Spring-Boot 组件系列整合与使用
 spring boot 自动配置简单示例
 
 ## 7. spring-boot-cache-redis
-导redis包，设置参数，修改序列化方式
+导redis包，设置参数，修改序列化方式; 手动写入缓存,通过注解写入缓存。

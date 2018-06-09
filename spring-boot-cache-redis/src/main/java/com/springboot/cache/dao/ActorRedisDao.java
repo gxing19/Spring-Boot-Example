@@ -1,6 +1,5 @@
 package com.springboot.cache.dao;
 
-import com.springboot.cache.entity.Actor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -30,16 +29,16 @@ public class ActorRedisDao{
     @Resource(name = "stringRedisTemplate")
     ValueOperations<String, String> stringValueOperations;
 
-    public void stringRedisTemplateDmoe(){
-        stringValueOperations.set("name","kitty");
+    public void stringRedisTemplateDmoe(String key, String value){
+        stringValueOperations.set(key, value);
     }
 
     public void save(String key, Object obj){
-        objValueOperations.set(key,obj);
+        objValueOperations.set(key, obj);
     }
 
-    public String getStr(){
-        return stringValueOperations.get("name");
+    public String getStr(String key){
+        return stringValueOperations.get(key);
     }
 
     public Object getActor(String key){
