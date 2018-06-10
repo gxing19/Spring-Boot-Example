@@ -45,5 +45,4 @@ public class ActorServiceImpl implements ActorService {
         Actor actor = actorRepository.findById(actorId).get();;
         return actor;
     }
-
 }
