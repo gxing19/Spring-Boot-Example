@@ -25,3 +25,6 @@ spring boot 自动配置简单示例
 导redis包，设置参数，修改序列化方式;
 1. 手动写入缓存,会启用json数据格式序列化
 2. 通过注解写入缓存,二进制序列化,配置的json序列化不起效。
+
+## 8. spring-boot-nosql-mongodb
+集成 mongodb,分别使用 MongoTemplate 和 MongoRepository来执行CRUD的操作
