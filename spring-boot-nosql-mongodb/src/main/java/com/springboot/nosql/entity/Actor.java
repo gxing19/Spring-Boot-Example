@@ -3,6 +3,7 @@ package com.springboot.nosql.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Actor implements Serializable {
     private String firstName;
     private String lastName;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Field(value = "updateTime")
     private Date lastUpdate;
 
     public Long getActorId() {

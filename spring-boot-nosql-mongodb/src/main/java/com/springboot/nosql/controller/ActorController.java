@@ -77,7 +77,9 @@ public class ActorController {
         return actorService.deleteByActorId(actorId);
     }
 
-    //-------ActorRepository extends MongoRepository-------
+
+    //------ActorRepository extends MongoRepository-------
+    //------以下示例代码,省略了Service层----------------------
     @RequestMapping("/addActor")
     public Actor addActor(Actor actor ){
         actor.setLastUpdate(new Date());
@@ -100,8 +102,4 @@ public class ActorController {
     }
 
     //MongoRepository没有update方法
-
-
-
-
 }
