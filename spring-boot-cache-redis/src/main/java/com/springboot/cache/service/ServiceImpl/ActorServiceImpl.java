@@ -28,8 +28,11 @@ public class ActorServiceImpl implements ActorService {
         Actor actor = (Actor) actorRedisDao.getActor(String.valueOf(actorId));
 //        return actor != null ? actor : actorRepository.findById(actorId).get();
         if(actor == null){
+            System.out.println("------redis 缓存不存在 actorId = " + actorId + " 的数据--------");
             actor = actorRepository.findById(actorId).get();
             actorRedisDao.save(String.valueOf(actor.getActorId()), actor);
+        }else {
+            System.out.println("--------actorId = " + actorId + " 的数据来自于redis缓存---------");
         }
         return actor;
     }
@@ -44,7 +47,8 @@ public class ActorServiceImpl implements ActorService {
     @Override
     @Cacheable(key = "#actorId",value = "actor")
     public Actor queryByActorId(Long actorId) {
-        Actor actor = actorRepository.findById(actorId).get();;
+        Actor actor = actorRepository.findById(actorId).get();
+        System.out.println("--------数据来自于数据库---------");
         return actor;
     }
 }
