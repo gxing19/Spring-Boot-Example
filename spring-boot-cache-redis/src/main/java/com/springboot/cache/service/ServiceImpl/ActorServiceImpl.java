@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ActorServiceImpl implements ActorService {
 
+    //调用的是CrudRepository的方法
     @Autowired
     private ActorRepository actorRepository;
 
+    //调用的是RedisTemplate
     @Autowired
     private ActorRedisDao actorRedisDao;
 
