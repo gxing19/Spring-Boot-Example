@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.springboot</groupId>
-    <artifactId>jpa</artifactId>
+    <artifactId>actuator-admin</artifactId>
     <version>v1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-jpa</name>
-    <description>JPA Demo project for Spring Boot</description>
+    <name>spring-boot-actuator-admin</name>
+    <description>Actuator Admin project for Spring Boot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -37,11 +37,41 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+		<!-- starter web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+		<!-- security -->
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>-->
+
+		<!-- 监控客户端:admin-client -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!-- 监控服务端:admin-server -->
+		<dependency>  
+			<groupId>de.codecentric</groupId>  
+			<artifactId>spring-boot-admin-server</artifactId>
+            <version>2.0.0</version>
+		</dependency>  
+		<dependency>  
+			<groupId>de.codecentric</groupId>  
+			<artifactId>spring-boot-admin-server-ui</artifactId>
+            <version>2.0.0</version>
+		</dependency>  
+		<!--<dependency>
+			<groupId>de.codecentric</groupId>  
+			<artifactId>spring-boot-admin-server-ui-login</artifactId>
+            <version>1.5.7</version>
+		</dependency>-->
+        <!--end-->
 
         <!--log4j2 -->
         <dependency>
@@ -65,19 +95,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!-- rest -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
         <!-- actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- 监控客户端:admin-client -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-
-
         <!-- processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -118,6 +145,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- 编译插件 -->
             <plugin>
