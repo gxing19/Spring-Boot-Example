@@ -1,6 +1,6 @@
-package com.springboot.actuator.admin.repository;
+package com.springboot.admin.repository;
 
-import com.springboot.actuator.admin.entity.Actor;
+import com.springboot.admin.entity.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

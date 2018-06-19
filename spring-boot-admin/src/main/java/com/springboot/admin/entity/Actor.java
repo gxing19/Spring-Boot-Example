@@ -1,4 +1,4 @@
-package com.springboot.actuator.admin.entity;
+package com.springboot.admin.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

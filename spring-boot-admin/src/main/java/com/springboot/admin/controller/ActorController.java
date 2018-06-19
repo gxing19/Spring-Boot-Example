@@ -1,7 +1,7 @@
-package com.springboot.actuator.admin.controller;
+package com.springboot.admin.controller;
 
-import com.springboot.actuator.admin.entity.Actor;
-import com.springboot.actuator.admin.repository.ActorRepository;
+import com.springboot.admin.entity.Actor;
+import com.springboot.admin.repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

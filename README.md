@@ -28,3 +28,6 @@ spring boot 自动配置简单示例
 
 ## 8. spring-boot-nosql-mongodb
 集成 mongodb,分别使用 MongoTemplate 和 MongoRepository来执行CRUD的操作
+
+## 9. spring-boot-admin
+集成 spring-boot-admin 服务器和客户端，监控管理应用
