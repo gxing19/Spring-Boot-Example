@@ -31,3 +31,6 @@ spring boot 自动配置简单示例
 
 ## 9. spring-boot-admin
 集成 spring-boot-admin 服务器和客户端，监控管理应用
+
+## 10. spring-boot-test
+演示Spring Boot 提供的测试组件：testRestTemplate，webTestClient，MockMvc
