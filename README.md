@@ -34,3 +34,6 @@ spring boot 自动配置简单示例
 
 ## 10. spring-boot-test
 演示Spring Boot 提供的测试组件：testRestTemplate，webTestClient，MockMvc
+
+## 11. spring-boot-JdbcTemplate
+JdbcTemplate 操作数据库简单示例

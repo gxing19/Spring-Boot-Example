@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="log.path.root">logs</Property>
+        <Property name="log.file">spring-boot-jdbc-template</Property>
+        <Property name="log.pattern">%d %p [%C{1.}->%M:%L] [%t] %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <charset>UTF-8</charset>
+                <pattern>${log.pattern}</pattern>
+            </PatternLayout>
+        </Console>
+
+        <!-- INFO 日志 -->
+        <RollingFile name="INFO-LOG" fileName="${log.path.root}/info/${log.file}.log"
+                     filePattern="${log.path.root}/info/${log.file}-%d{yyyy-MM-dd}_%i.log.gz">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${log.pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- INFO 日志 -->
+        <RollingFile name="ERROR-LOG" fileName="${log.path.root}/error/${log.file}.log"
+                     filePattern="${log.path.root}/info/${log.file}-%d{yyyy-MM-dd}_%i.log.gz">
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${log.pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <logger name="jdbc.sqlonly" level="INFO" />
+        <logger name="jdbc.sqltiming" level="OFF"/>
+        <logger name="jdbc.resultsettable" level="INFO"/>
+        <logger name="jdbc.resultset" level="OFF"/>
+        <logger name="jdbc.connection" level="OFF"/>
+        <logger name="jdbc.audit" level="OFF"/>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="INFO-LOG" />
+            <AppenderRef ref="ERROR-LOG" />
+        </Root>
+    </Loggers>
+
+</Configuration>
