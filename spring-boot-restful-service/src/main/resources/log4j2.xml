@@ -2,7 +2,7 @@
 <Configuration status="INFO">
     <Properties>
         <Property name="log.path.root">logs</Property>
-        <Property name="log.file">spring-boot-restTemplate</Property>
+        <Property name="log.file">spring-boot-restful-service</Property>
         <Property name="log.pattern">%d %p [%C{1.}->%M:%L] [%t] %m%n</Property>
     </Properties>
 
