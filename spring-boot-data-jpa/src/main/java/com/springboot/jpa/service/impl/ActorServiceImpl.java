@@ -4,7 +4,7 @@ import com.springboot.jpa.entity.Actor;
 import com.springboot.jpa.repository.ActorRepository;
 import com.springboot.jpa.service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -87,6 +87,64 @@ public class ActorServiceImpl implements ActorService {
     }
 
     /**
+     * 查: 定制查询条件和匹配规则
+     * @param firstName
+     * @param lastName
+     * @return
+     */
+    @Override
+    public List<Actor> queryByFirstNameAndLastName(String firstName, String lastName) {
+
+        Actor actor = new Actor().setFirstName(firstName).setLastName(lastName);
+
+        Example<Actor> example = new Example<Actor>() {
+            //构造参与查询的参数
+            @Override
+            public Actor getProbe() {
+                return actor;
+            }
+            //设置查询匹配规则
+            @Override
+            public ExampleMatcher getMatcher() {
+                return ExampleMatcher.matchingAny();
+            }
+        };
+//        return actorRepository.findAll(example);
+
+        return actorRepository.findAll(Example.of(actor, ExampleMatcher.matchingAll()));
+    }
+
+    /**
+     * 排序查询
+     * @param sort
+     * @return
+     */
+    @Override
+    public List<Actor> queryByFirstNameWithSortDesc(Sort sort) {
+        return actorRepository.findAll(sort);
+    }
+
+    /**
+     * 分页查询
+     * @param pageRequest
+     * @return
+     */
+    @Override
+    public Page<Actor> queryByPage(PageRequest pageRequest) {
+        return actorRepository.findAll(pageRequest);
+    }
+
+    /**
+     * 使用HQL查询语句
+     * @param lastName
+     * @return
+     */
+    @Override
+    public List<Actor> queryByLastName(String lastName) {
+        return actorRepository.queryByLastName(lastName);
+    }
+
+    /**
      * 统计: 所有, count()
      *
      * @return
@@ -108,6 +166,4 @@ public class ActorServiceImpl implements ActorService {
 //        Example<Actor> example = Example.of(actor);
         return actorRepository.count(Example.of(actor));
     }
-
-
 }

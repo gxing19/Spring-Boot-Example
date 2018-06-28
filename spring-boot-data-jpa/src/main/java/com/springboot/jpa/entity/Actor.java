@@ -2,14 +2,15 @@ package com.springboot.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Actor {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long actorId;
+//    @Column(name = "realName")        //字段名映射
     private String firstName;
     private String lastName;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
