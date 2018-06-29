@@ -4,7 +4,7 @@ Spring-Boot 组件系列整合与使用
 ## 1. spring-boot-data-rest
 文章：http://112.74.59.39/2018/05/25/springboot-app-5-data-rest/
 
-## 2. spring-boot-jpa
+## 2. spring-boot-data-jpa
 文章：http://112.74.59.39/2018/05/25/springboot-app-4-data-jpa/
 
 ## 3. spring-boot-cache-simple
@@ -37,3 +37,9 @@ spring boot 自动配置简单示例
 
 ## 11. spring-boot-JdbcTemplate
 JdbcTemplate 操作数据库简单示例
+
+## 12. spring-boot-restful-service
+Restful 风格的接口演示项目
+
+## 13. spring-boot-restTemplate
+使用 RestTemplate 调用远程的 Rest 接口, 使用 RestTemplate 需要对 Restful 设计风格有个了解，此示例做为客户端; 结合**12**号项目 spring-boot-restful-service 使用，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
