@@ -42,4 +42,5 @@ JdbcTemplate 操作数据库简单示例
 Restful 风格的接口演示项目
 
 ## 13. spring-boot-restTemplate
-使用 RestTemplate 调用远程的 Rest 接口, 使用 RestTemplate 需要对 Restful 设计风格有个了解，此示例做为客户端; 结合**12**号项目 spring-boot-restful-service 使用，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
+使用 RestTemplate 调用远程的 Rest 服务接口, 使用 RestTemplate 需要对 Restful 设计风格有个了解。
+spring-boot-restTemplate 此示例做为客户端, 结合 **12** 号 spring-boot-restful-service 项目 ，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
