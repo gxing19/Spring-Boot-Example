@@ -39,7 +39,7 @@ spring boot 自动配置简单示例
 JdbcTemplate 操作数据库简单示例
 
 ## 12. spring-boot-restful-service
-Restful 风格的接口演示项目
+Restful 风格的接口演示项目(严格来说这仍不是一个标准的Rest服务,Dao层使用的是JPA,一个标准的Rest服务在新增资源成功后应返回该资源的URI)
 
 ## 13. spring-boot-restTemplate
 使用 RestTemplate 调用远程的 Rest 服务接口, 使用 RestTemplate 需要对 Restful 设计风格有个了解。
