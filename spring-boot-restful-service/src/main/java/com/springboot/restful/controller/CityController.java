@@ -40,19 +40,24 @@ public class CityController {
     }
 
     /**
-     * 新增
+     * 新增,如果数据存在,则会变为更新
+     * 备注：提供的POST方法Rest接口供RestTemplate调用时,接收参数只能是字符串,的必须是对象字符串
      */
     @RequestMapping(method = RequestMethod.POST)
-    public City addCity(@RequestBody  City city){
+    public City addCity(@RequestBody City city){
         city.setLastUpdate(new Date());
-       return cityService.addCity(city);
+        return cityService.addCity(city);
     }
 
     /**
      * 修改
+     * 问题:哪果url路径中是中文参数,则会报错:
+     * Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986
+     * 需要对url路径中的中文进编码
+     * http://localhost:8080/city/800/深圳   编码后: http://localhost:8080/city/800/%e6%b7%b1%e5%9c%b3
      */
-    @RequestMapping(value = "/{cityId}/{city}", method = RequestMethod.PUT)
-    public City updateCity(@PathVariable Long cityId, @PathVariable String city){
-        return cityService.updateCity(cityId,city);
+    @RequestMapping(value = "/{cityId}/{cityName}", method = RequestMethod.PUT)
+    public int updateCity(@PathVariable Long cityId, @PathVariable String cityName){
+        return cityService.updateCity(cityId,cityName);
     }
 }

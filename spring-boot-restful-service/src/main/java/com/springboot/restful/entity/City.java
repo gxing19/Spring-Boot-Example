@@ -2,6 +2,7 @@ package com.springboot.restful.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,9 +13,10 @@ import java.util.Date;
 public class City {
     @Id
     private Long cityId;
-    private String city;
+    @Column(name = "city")
+    private String cityName;
     private Long countryId;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdate;
 
     public Long getCityId() {
@@ -26,12 +28,12 @@ public class City {
         return this;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityName() {
+        return cityName;
     }
 
-    public City setCity(String city) {
-        this.city = city;
+    public City setCityName(String cityName) {
+        this.cityName = cityName;
         return this;
     }
 
