@@ -1,5 +1,8 @@
 # Spring-Boot-Example
-Spring-Boot 组件系列整合与使用
+Spring Boot 功能特性和组件系列的整合，详解与使用
+
+# 数据库
+本示例及所有子项目使用的数据库系统是MySQL, 连接的数据库是 MySQL 官方提供的测试库**sakila**,该测试库可以自行从 GitHub上下载：https://github.com/datacharmer/test_db
 
 ## 1. spring-boot-data-rest
 文章：http://112.74.59.39/2018/05/25/springboot-app-5-data-rest/
@@ -44,3 +47,6 @@ Restful 风格的接口演示项目(严格来说这仍不是一个标准的Rest�
 ## 13. spring-boot-restTemplate
 使用 RestTemplate 调用远程的 Rest 服务接口, 使用 RestTemplate 需要对 Restful 设计风格有个了解。
 spring-boot-restTemplate 此示例做为客户端, 结合 **12** 号 spring-boot-restful-service 项目 ，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
+
+## 14. spring-boot-web
+Spring Boot Web相关配置，主要涉及Spring MVC相关的内容。
