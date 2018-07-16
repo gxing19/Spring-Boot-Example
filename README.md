@@ -46,7 +46,7 @@ Restful 风格的接口演示项目(严格来说这仍不是一个标准的Rest�
 
 ## 13. spring-boot-restTemplate
 使用 RestTemplate 调用远程的 Rest 服务接口, 使用 RestTemplate 需要对 Restful 设计风格有个了解。
-spring-boot-restTemplate 此示例做为客户端, 结合 **12** 号 spring-boot-restful-service 项目 ，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
+此项目需要结合 **12** 号 spring-boot-restful-service 项目一起启动，spring-boot-restTemplate 此项目做为客户端, ，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
 
 ## 14. spring-boot-web
 Spring Boot Web相关配置，主要涉及Spring MVC相关的内容。

@@ -23,7 +23,8 @@ public class ActorServiceImpl implements ActorService {
      */
     @Override
     public Actor addActor(Actor actor) {
-        return actorRepository.save(actor);
+//        return actorRepository.save(actor);
+        return actorRepository.saveAndFlush(actor);
     }
 
     /**
