@@ -11,6 +11,6 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate customRestTemplate(){
         //设置超时时间,毫秒
-       return new RestTemplateBuilder().setConnectTimeout(1000).setReadTimeout(1000).build();
+       return new RestTemplateBuilder().setConnectTimeout(5000).setReadTimeout(5000).build();
     }
 }
