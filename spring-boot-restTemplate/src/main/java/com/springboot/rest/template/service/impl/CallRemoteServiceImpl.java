@@ -1,7 +1,6 @@
 package com.springboot.rest.template.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.springboot.rest.template.config.RestServerProperties;
 import com.springboot.rest.template.entity.City;
 import com.springboot.rest.template.service.CallRemoteService;
@@ -17,7 +16,6 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.util.List;
 
 @Service
 public class CallRemoteServiceImpl implements CallRemoteService {
@@ -136,7 +134,7 @@ public class CallRemoteServiceImpl implements CallRemoteService {
 
     /**
      * put()
-     * 添加数据
+     * 更新数据
      */
     public void putForCity(Long cityId, String cityName) {
         String url = restServerProperties.getUrl() + "/city" + "/" + cityId + "/" + cityName;
@@ -146,66 +144,17 @@ public class CallRemoteServiceImpl implements CallRemoteService {
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
         HttpEntity<String> formEntity = new HttpEntity<String>(JSON.toJSONString(
                 new City().setCityId(cityId).setCityName(cityName)), headers);
-        restTemplate.put(url, formEntity);
+        restTemplate.put(url,null);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*    @Override
-    public String getUserById(Long id) {
-        String object = restTemplate.getForObject("http://localhost:8080/user/queryByActorId", String.class, 1L);
-        return object;
-    }*/
-
-    /*@Override
-    public int addActor(Actor actor) throws URISyntaxException {
-        String uri = "http://localhost:8080/actor/add";
-
-        RequestCallback requestCallback = new RequestCallback() {
-            @Override
-            public void doWithRequest(ClientHttpRequest clientHttpRequest) throws IOException {
-                clientHttpRequest.execute();
-            }
-        };
-
-        ResponseExtractor actorResponseEntity = new ResponseExtractor() {
-            @Override
-            public Object extractData(ClientHttpResponse clientHttpResponse) throws IOException {
-                return clientHttpResponse;
-            }
-        };*/
-
-//        Object execute = restTemplate.execute(uri, HttpMethod.GET, requestCallback, actorResponseEntity);
-
-/*        String str = "http://localhost:8080/actor/add";
-//        ?actorId=3001&firstName=Robin&lastName=Zhang
-        URI uri = new URI(str);
-        HttpEntity<Actor> actorHttpEntity = new RequestEntity<Actor>(HttpMethod.GET,uri);
-        ResponseEntity<Actor> actorResponseEntity = restTemplate.exchange(uri, HttpMethod.GET, actorHttpEntity, Actor.class);*/
-
-    /*System.out.println(JSON.toJSONString(execute));*/
-
-//        return 1;
-//    }
-
-    //    @Override
-    public int queryCount() {
-        return restTemplate.getForObject("http://localhost:8080/user/queryCount", Integer.class);
+    /**
+     * delete删除
+     * @param cityId
+     */
+    @Override
+    public void deleteById(Long cityId) {
+        String url = restServerProperties.getUrl() + "/city" + "/" + cityId;
+        restTemplate.delete(url);
     }
-
 
 }

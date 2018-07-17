@@ -12,4 +12,6 @@ public interface CityService {
     City addCity(City city);
 
     int updateCity(Long cityId, String cityName);
+
+    void deleteCityById(Long cityId);
 }

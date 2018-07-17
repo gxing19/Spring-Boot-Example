@@ -21,10 +21,11 @@ public class CityController {
 
     /**
      * 查所有
+     *
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public List<City> queryAll(){
+    public List<City> queryAll() {
         List<City> cityList = cityService.queryAll();
         logger.info("cityList:{}", JSON.toJSONString(cityList));
         return cityList;
@@ -32,10 +33,11 @@ public class CityController {
 
     /**
      * 条件查询
+     *
      * @return
      */
     @RequestMapping(value = "/{cityId}", method = RequestMethod.GET)
-    public City queryByCityId(@PathVariable Long cityId){
+    public City queryByCityId(@PathVariable Long cityId) {
         return cityService.queryByCityId(cityId);
     }
 
@@ -44,7 +46,7 @@ public class CityController {
      * 备注：提供的POST方法Rest接口供RestTemplate调用时,接收参数只能是字符串,的必须是对象字符串
      */
     @RequestMapping(method = RequestMethod.POST)
-    public City addCity(@RequestBody City city){
+    public City addCity(@RequestBody City city) {
         city.setLastUpdate(new Date());
         return cityService.addCity(city);
     }
@@ -57,7 +59,13 @@ public class CityController {
      * http://localhost:8080/city/800/深圳   编码后: http://localhost:8080/city/800/%e6%b7%b1%e5%9c%b3
      */
     @RequestMapping(value = "/{cityId}/{cityName}", method = RequestMethod.PUT)
-    public int updateCity(@PathVariable Long cityId, @PathVariable String cityName){
-        return cityService.updateCity(cityId,cityName);
+    public int updateCity(@PathVariable Long cityId, @PathVariable String cityName) {
+        return cityService.updateCity(cityId, cityName);
     }
+
+    @RequestMapping(value = "/{cityId}", method = RequestMethod.DELETE)
+    public void deleteCityById(@PathVariable Long cityId) {
+        cityService.deleteCityById(cityId);
+    }
+
 }

@@ -20,4 +20,6 @@ public interface CallRemoteService {
     String postForObjectForCity(City city);
 
     void putForCity(Long cityId, String cityName);
+
+    void deleteById(Long cityId);
 }

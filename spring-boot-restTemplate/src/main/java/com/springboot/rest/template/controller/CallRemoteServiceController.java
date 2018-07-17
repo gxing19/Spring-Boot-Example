@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URL;
@@ -22,6 +23,9 @@ public class CallRemoteServiceController {
 
     @Autowired
     private CallRemoteService callRemoteService;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @RequestMapping("/hello")
     public String returnHello(){
@@ -66,9 +70,25 @@ public class CallRemoteServiceController {
 
     }
 
+    /**
+     * put更新
+     * @param cityId
+     * @param cityName
+     */
     @RequestMapping(value = "/{cityId}/{cityName}", method = RequestMethod.PUT)
     public void putForCity(@PathVariable Long cityId, @PathVariable String cityName){
         callRemoteService.putForCity(cityId, cityName);
     }
+
+
+    /**
+     * delete删除
+     * @param cityId
+     */
+    @RequestMapping(value = "/{cityId}", method = RequestMethod.DELETE)
+    public void deleteById(@PathVariable Long cityId){
+        callRemoteService.deleteById(cityId);
+    }
+
 
 }
