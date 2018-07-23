@@ -49,4 +49,4 @@ Restful 风格的接口演示项目(严格来说这仍不是一个标准的Rest�
 此项目需要结合 **12** 号 spring-boot-restful-service 项目一起启动，spring-boot-restTemplate 此项目做为客户端, ，spring-boot-restful-service 做为远程服务端，供 RestTemplate调用。
 
 ## 14. spring-boot-web
-Spring Boot Web相关配置，主要涉及Spring MVC相关的内容。
+Spring Boot Web相关配置，静态资源，SSL等，主要涉及Spring MVC相关的内容。
