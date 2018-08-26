@@ -50,3 +50,9 @@ Restful 风格的接口演示项目(严格来说这仍不是一个标准的Rest�
 
 ## 14. spring-boot-web
 Spring Boot Web相关配置，静态资源，SSL等，主要涉及Spring MVC相关的内容。
+
+## 15. spring-boot-websocket-topic
+Spring Boot WebSocket Topic, 广播式通信(订阅式)。
+
+## 16. spring-boot-websocket-queue
+Spring Boot WebSocket Queue, 点对点通信。
