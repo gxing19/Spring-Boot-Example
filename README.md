@@ -56,3 +56,4 @@ Spring Boot WebSocket Topic, 广播式通信(订阅式)。
 
 ## 16. spring-boot-websocket-queue
 Spring Boot WebSocket Queue, 点对点通信。
+此项目集成了 Spring Security, Web使用的是Thymeleaf模板, 想改造成jsp却不行，登录成功后重新回到登录界面页面(/login),不会跳转到/chat路径，待严究清楚Spring Security再细究。
