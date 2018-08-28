@@ -3,6 +3,7 @@ package com.springboot.websocket.common;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
@@ -15,6 +16,7 @@ import java.util.Map;
  * @User: gxing
  * @Date: 2018-08-21 16:40
  **/
+@Component
 public class WebSocketInterceptor extends HttpSessionHandshakeInterceptor {
 
     @Override
@@ -24,11 +26,7 @@ public class WebSocketInterceptor extends HttpSessionHandshakeInterceptor {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession(false);
             if (session != null) {
-                String userName = (String) session.getAttribute("userName");
-                if(userName == null){
-                    userName = "WEBSOCKET_USERNAME_IS_NULL";
-                }
-                attributes.put("userName",userName);
+                String userName = (String) session.getAttribute("username");
             }
         }
 
@@ -40,3 +38,4 @@ public class WebSocketInterceptor extends HttpSessionHandshakeInterceptor {
         super.afterHandshake(request, response, wsHandler, exception);
     }
 }
+
