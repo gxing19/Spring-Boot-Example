@@ -1,5 +1,5 @@
 # Spring-Boot-Example
-Spring Boot 功能特性和组件系列的整合，详解与使用
+Spring Boot 功能特性和组件系列的整合, 详解与使用。下面所有Demo都是基于 Spring Boot 2.0.x版本。
 
 # 数据库
 本示例及所有子项目使用的数据库系统是MySQL, 连接的数据库是 MySQL 官方提供的测试库**sakila**,该测试库可以自行从 GitHub上下载：https://github.com/datacharmer/test_db
