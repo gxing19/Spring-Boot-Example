@@ -1,5 +1,6 @@
 package com.springboot.jpa.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.springboot.jpa.entity.Actor;
 import com.springboot.jpa.service.ActorService;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +18,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/actor")
 public class ActorController {
-    private static final Logger logger = LogManager.getLogger(ActorController.class);
+//    private static final Logger logger = LogManager.getLogger(ActorController.class);
+    private static final Logger logger = LogManager.getRootLogger();
 
     @Autowired
     private ActorService actorService;
@@ -70,7 +72,9 @@ public class ActorController {
      */
     @RequestMapping("/queryByActorId")
     public Actor queryByActorId(Long actorId){
-        return actorService.queryByActorId(actorId);
+        Actor actor = actorService.queryByActorId(actorId);
+        logger.info("actor:{}", JSON.toJSONString(actor));
+        return actor;
     }
 
     /**

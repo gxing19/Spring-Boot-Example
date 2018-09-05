@@ -58,3 +58,8 @@ Spring Boot WebSocket Topic, 广播式通信(订阅式)。
 Spring Boot WebSocket Queue, 点对点通信。
 此项目集成了 Spring Security 用作登录验证来区分用户, Web使用的是Thymeleaf模板。
 想改造成 JSP 和静态 HTML 都不行, 改造后出现点击登录重新回到登录界面页面(/login),不会跳转到/chat路径，待严究清楚Spring Security再细究。
+
+## 17. spring-boot-spring-security
+集成 Spring Security, 实现认证和授权操作, 项目中数据访问使用JPA, 用到用户表(user), user.sql 文件在项目 document 目录里。
+
+

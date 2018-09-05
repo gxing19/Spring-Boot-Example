@@ -27,7 +27,5 @@ public class WebSocketController {
         System.out.println("--------------" + clientMsg.getMsg());
         return new RespResult("收到消息：" + clientMsg.getMsg() + "! " + System.currentTimeMillis());
     }
-
-
 }
 
