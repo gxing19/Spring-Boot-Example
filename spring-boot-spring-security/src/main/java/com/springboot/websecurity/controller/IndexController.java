@@ -2,6 +2,9 @@ package com.springboot.websecurity.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.springboot.websecurity.common.utils.ObjectToMapUtil;
+import com.springboot.websecurity.entity.SysUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,13 +22,17 @@ import java.util.Map;
 @Controller
 public class IndexController {
 
+    private final Logger logger = LogManager.getRootLogger();
+
     @RequestMapping("/index")
     public String indexPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("authentication:{}" + JSON.toJSONString(authentication));
-        Object principal = authentication.getPrincipal();
-        Map<String, String> stringMap = ObjectToMapUtil.obj2Map(principal);
-        model.addAttribute("username", stringMap.get("username"));
+        logger.info("authentication:{}", JSON.toJSONString(authentication));
+        //返回的是个用户实体
+        SysUser sysUser = (SysUser) authentication.getPrincipal();
+//        Object principal = authentication.getPrincipal();
+//        Map<String, String> stringMap = ObjectToMapUtil.obj2Map(principal);
+        model.addAttribute("username", sysUser.getUsername());
         return "index";
     }
 }

@@ -16,8 +16,11 @@
 
 <div>
     <h1>欢迎来到首页:
-        <sec:authentication property="principal.username" />  //获取用户名
-        ---- ${username}                                      //从model中取值
+        <%--从authentication中取值--%>
+        <sec:authentication property="principal.username" />
+
+        <%--从model中取值--%>
+        ${username}
     </h1>
 
     <a href="/admin">管理页面</a><br>

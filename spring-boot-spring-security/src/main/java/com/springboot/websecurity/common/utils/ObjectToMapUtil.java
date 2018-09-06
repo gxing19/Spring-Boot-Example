@@ -14,10 +14,25 @@ public class ObjectToMapUtil {
 
     public static Map<String, String> obj2Map(Object obj) {
 
-        Map<String, String> map = new HashMap<String, String>();
-        // System.out.println(obj.getClass());
-        // 获取f对象对应类中的所有属性域
+        if(obj == null){
+            return null;
+        }
+
+        Map<String, String> map = new HashMap<>();
+
         Field[] fields = obj.getClass().getDeclaredFields();
+        /*
+        //扁历对象属性
+        for (Field field : fields) {
+            //私有属性设置可访问
+            field.setAccessible(true);
+            try {
+                map.put(field.getName(), field.get(obj).toString());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }*/
+        
         for (int i = 0, len = fields.length; i < len; i++) {
             String varName = fields[i].getName();
             varName = varName.toLowerCase();//将key置为小写，默认为对象的属性
