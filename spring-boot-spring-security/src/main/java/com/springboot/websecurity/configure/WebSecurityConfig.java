@@ -4,11 +4,15 @@ import com.springboot.websecurity.service.CustomUserDetailsService;
 import com.springboot.websecurity.service.impl.CustomUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.sql.DataSource;
 
@@ -27,6 +31,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     /*@Autowired
     private CustomUserDetailsService customUserService;*/
 
+
+    /**
+     * 注入跨域配置
+     * @return
+     */
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfig(){
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        // 设置你要允许的网站域名，如果全允许则设为 *
+        config.addAllowedOrigin("*");
+        // 如果要限制 HEADER 或 METHOD 请自行更改
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
+
     /**
      * 自定义请求授权
      *
@@ -36,12 +59,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()                                   //关闭CSRF防护
+                .cors().configurationSource(corsConfig())               //添加跨域配置
+                .and()
                 .authorizeRequests()                                    //开启请求权限配置
 //                    .antMatchers("/admin/**").hasRole("ADMIN")
 //                    .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
-                    .antMatchers("/admin/**").hasAuthority("ADMIN")             //是否授权
+                    .antMatchers(HttpMethod.OPTIONS).permitAll()
+                    .antMatchers("/admin/**","/userInfo").hasAuthority("ADMIN") //是否授权
                     .antMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
                     .antMatchers("/", "/login").permitAll()                     //匹配路径,允许任何人访问(不拦截,放行)
+                    .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                     .anyRequest().authenticated()                               //其它请求,要求登录验证后可访问
                 .and()
                     .formLogin()
