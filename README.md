@@ -12,10 +12,12 @@ Spring Boot 功能特性和组件系列的整合, 详解与使用。下面所有
 
 ## 3. spring-boot-cache-simple
 不使用第三方缓存技术，ConcurrentMapCacheManager，默认使用 ConcurrentHashMap作为存储缓存
+
 [Spring Boot实践系列(十)：数据缓存Cache](http://112.74.59.39/2018/05/31/springboot-app-10-cache/)
 
 ## 4. spring-boot-cache-ehcache2
 添加 ehcache2 依赖和 ehcache.xml配置文件
+
 [Spring Boot实践系列(十一)：Ehcache集成和使用](http://112.74.59.39/2018/06/05/springboot-app-11-cache-ehcache/)
 
 ## 5. spring-boot-profile
@@ -28,10 +30,12 @@ spring boot 自动配置简单示例
 导redis包，设置参数，修改序列化方式;
 1. 手动写入缓存,会启用json数据格式序列化
 2. 通过注解写入缓存,二进制序列化,配置的json序列化不起效。
+
 [Spring Boot实践系列(十二)：Redis集成和使用 ](http://112.74.59.39/2018/06/05/springboot-app-12-redis/)
 
 ## 8. spring-boot-nosql-mongodb
 集成 mongodb,分别使用 MongoTemplate 和 MongoRepository来执行CRUD的操作
+
 [Spring Boot实践系列(十三)：MongoDB集成与使用 ](http://112.74.59.39/2018/06/07/springboot-app-13-mongodb/)
 
 ## 9. spring-boot-admin
@@ -63,10 +67,12 @@ Spring Boot WebSocket Queue, 点对点通信。
 
 ## 17. spring-boot-spring-security
 集成 Spring Security, 实现认证和授权操作, 项目中数据访问使用JPA, 用到用户表(user), user.sql 文件在项目 document 目录里。
+
 [Spring Boot实践系列(三十)：Spring Security 详解和集成使用 ](http://112.74.59.39/2018/08/31/springboot-app-30-spring-security/)
 
 ## 18. spring-boot-spring-batch
 集成 Spring Batch 示例，使用批处理操作将CSV中的数据处理后导入到数据库中。
+
 [Spring Boot实践系列(三十一)：Spring Batch 批处理框架详解和集成使用 ](http://112.74.59.39/2018/09/06/springboot-app-31-spring-batch/)
 
 
