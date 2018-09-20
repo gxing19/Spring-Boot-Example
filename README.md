@@ -76,9 +76,7 @@ Spring Boot WebSocket Queue, 点对点通信。
 [Spring Boot实践系列(三十一)：Spring Batch 批处理框架详解和集成使用 ](http://112.74.59.39/2018/09/06/springboot-app-31-spring-batch/)
 
 ## 19. spring-boot-password-encrypt
-Spring Boot 对配置文件中的密码进行加密,使用两种方案：jasypt 和 druid 自带的非对称加密
-** jasypt： **可以对环境文件中的任意属性值进行加密解密。
-** druid： **只对数据源的连接密码进行解密。
+Spring Boot 对配置文件中的密码进行加密,使用两种方案：jasypt 和 druid 自带的非对称加密。jasypt：可以对环境文件中的任意属性值进行加密解密, druid只对数据源的连接密码进行解密。
 
 [Spring Boot 2实践系列(三十二)：Spring Boot 配置文件密码加密两种方案](http://112.74.59.39/2018/09/19/springboot-app-32-password-encryptor/)
 
