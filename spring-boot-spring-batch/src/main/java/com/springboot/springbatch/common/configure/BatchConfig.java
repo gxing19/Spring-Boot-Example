@@ -16,6 +16,7 @@ import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.database.support.MySqlPagingQueryProvider;
 import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,14 +57,18 @@ public class BatchConfig {
         FlatFileItemReader<Person> itemReader = new FlatFileItemReader<>();
         // 设置文件路径
         itemReader.setResource(new ClassPathResource("person-data.csv"));
+
         // 数据和领域模型类做对应映射
         DefaultLineMapper<Person> lineMapper = new DefaultLineMapper<>();
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
+        BeanWrapperFieldSetMapper<Person> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
+        fieldSetMapper.setTargetType(Person.class);
         lineTokenizer.setNames(new String[]{"firstName", "lastName"});
         lineMapper.setLineTokenizer(lineTokenizer);
+        lineMapper.setFieldSetMapper(fieldSetMapper);
         itemReader.setLineMapper(lineMapper);
 
-/*        itemReader.setLineMapper(new DefaultLineMapper<Person>(){{
+        /*itemReader.setLineMapper(new DefaultLineMapper<Person>(){{
             setLineTokenizer(new DelimitedLineTokenizer(){{
                 setNames(new String[]{"firstName","lastName"});
             }});
@@ -92,7 +97,7 @@ public class BatchConfig {
                 }}).build();*/
     }
 
-    @Bean
+/*    @Bean
     public JdbcPagingItemReader<Person> jdbcBatchItemWriter(DataSource dataSource) {
         JdbcPagingItemReader<Person> itemReader = new JdbcPagingItemReader<>();
         itemReader.setDataSource(dataSource);
@@ -110,7 +115,7 @@ public class BatchConfig {
         }});
         itemReader.setRowMapper(new BeanPropertyRowMapper<>(Person.class));
         return itemReader;
-    }
+    }*/
 
     /**
      * @desc: 处理器-处理数据
@@ -172,7 +177,7 @@ public class BatchConfig {
         //定义一次写入数据量,此处是10条
         //chunk()前辍<Person, Person>表示输入和输出类型,并与ItemReader <Person>和ItemWriter <Person>对齐
         //在使用之前注入 ItemReader、ItemProcessor 和 ItemWriter
-        return stepBuilderFactory.get("step1").<Person, Person>chunk(10000)
+        return stepBuilderFactory.get("step1").<Person, Person>chunk(100)
                 .reader(reader())
                 .processor(processor())
                 .writer(itemWriter)
