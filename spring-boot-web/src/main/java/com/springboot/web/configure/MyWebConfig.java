@@ -25,6 +25,7 @@ public class MyWebConfig implements WebMvcConfigurer {
     public HttpMessageConverters fastJsonConfigure(){
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        //序列化配置
         fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
         //日期格式化
         fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
