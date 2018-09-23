@@ -1,6 +1,10 @@
 package com.springboot.web.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +18,7 @@ public class City {
     private Long cityId;
     private String city;
     private Long countryId;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JSONField(serialize = false)
     private Date lastUpdate;
 
     public Long getCityId() {
