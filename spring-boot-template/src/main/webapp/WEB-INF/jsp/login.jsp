@@ -15,8 +15,8 @@
 
 <div>
     <form action="/doLogin" method="post">
-        <label>用户名: <input type="text" name="username"></label>
-        <label>密 码: <input type="password" name="password"></label>
+        <label>用户名: <input type="text" name="username" placeholder="user1"></label>
+        <label>密 码: <input type="password" name="password" placeholder="123456"></label>
         <input type="submit" value="登录">
     </form>
 </div>

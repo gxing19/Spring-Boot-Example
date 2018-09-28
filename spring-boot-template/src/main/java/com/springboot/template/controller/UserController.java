@@ -68,7 +68,6 @@ public class UserController {
         return user;
     }
 
-
     /**
      * @desc: 分页查
      * @author: gxing
@@ -78,6 +77,8 @@ public class UserController {
      **/
     @RequestMapping("/queryByPage")
     public ResultBean queryByPage(User user) {
+        //实体类继承基类默认的分页参数,可不用设置
+//        PageHelper.startPage(user.getPageNum(), user.getPageSize());
         List<User> userList = userService.queryByPage(user);
         PageInfo<User> userPageInfo = new PageInfo<>(userList);
         return new ResultBean(userPageInfo).setSuccessCodeAndState();

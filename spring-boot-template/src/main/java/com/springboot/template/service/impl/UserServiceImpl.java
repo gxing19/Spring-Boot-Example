@@ -38,9 +38,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> queryByPage(User user) {
-        //实体类继承默认的分页参数,可不用设置
-//        PageHelper.startPage(user.getPage(), user.getRows());
-//        PageHelper.startPage(5, 8);
         return userMapper.queryByPage(user);
     }
 

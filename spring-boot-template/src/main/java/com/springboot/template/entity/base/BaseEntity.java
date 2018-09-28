@@ -8,7 +8,9 @@ import java.io.Serializable;
 
 /**
  * @name: BaseEntity
- * @desc: 实体类的基类,设置默认分页参数,可省略:PageHelper.startPage(5, 8) 设置
+ * @desc: 实体类的基类,设置默认分页参数,
+ *        分页插件配置了自动从方法参数中获取分页参数,
+ *        可省略:PageHelper.startPage(pageNum, pageSize)设置
  * @author: gxing
  * @date: 2018-09-25 11:48
  **/

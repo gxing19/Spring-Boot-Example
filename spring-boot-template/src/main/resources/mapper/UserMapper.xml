@@ -9,7 +9,7 @@
     </select>
 
     <!--查所有(分页)-->
-    <select id="queryByPage" resultType="user">
+    <select id="queryByPage" parameterType="user" resultType="user">
         select * from user
     </select>
 </mapper>
