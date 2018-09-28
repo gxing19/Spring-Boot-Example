@@ -2,7 +2,7 @@ package com.springboot.template.mapper;
 
 import com.springboot.template.entity.User;
 import com.springboot.template.mapper.base.BaseMapper;
-import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.CacheNamespaceRef;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * @date: 2018-09-25 15:56
  **/
 @Repository
-@CacheNamespace(flushInterval = 30 * 1000)      //使用mapper缓存
+@CacheNamespaceRef(UserMapper.class)
 public interface UserMapper extends BaseMapper<User> {
 
     /**

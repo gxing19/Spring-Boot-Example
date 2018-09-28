@@ -3,13 +3,19 @@
 
 <mapper namespace="com.springboot.template.mapper.UserMapper">
 
+    <!--SQL片段:字段-->
+    <sql id="base_columns">id, username, password, home_address, state</sql>
+
+    <!--缓存-->
+    <cache flushInterval="10000" /><cache flushInterval="10000" />
+
     <!--根据用户名查-->
     <select id="queryByUsername" parameterType="String" resultType="user">
         select * from user where username = #{username}
     </select>
 
-    <!--查所有(分页)-->
+    <!--查所有(自动分页)-->
     <select id="queryByPage" parameterType="user" resultType="user">
-        select * from user
+        select <include refid="base_columns"/> from user
     </select>
 </mapper>
