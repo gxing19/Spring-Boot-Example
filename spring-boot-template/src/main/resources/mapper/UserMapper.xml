@@ -7,7 +7,7 @@
     <sql id="base_columns">id, username, password, home_address, state</sql>
 
     <!--缓存-->
-    <cache flushInterval="10000" /><cache flushInterval="10000" />
+    <cache flushInterval="10000" />
 
     <!--根据用户名查-->
     <select id="queryByUsername" parameterType="String" resultType="user">

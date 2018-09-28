@@ -187,6 +187,53 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 镜像名称 -->
+                    <imageName>${project.name}:latest</imageName>
+                    <!-- Dockerfile文件地址 -->
+                    <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <!-- <targetPath>/</targetPath> -->
+                            <!-- 项目构建输出目录，默认为target/ -->
+                            <directory>${project.build.directory}</directory>
+                            <!-- 打包出来的war名称，默认为${project.artifactId}-${project.version} -->
+                            <include>${project.build.finalName}.war</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
+            <!-- Docker maven plugin -->
+            <!--<plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.${project.packaging}</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>-->
         </plugins>
     </build>
 

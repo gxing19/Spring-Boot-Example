@@ -1,7 +1,7 @@
 # spring-boot-template 说明
 这是一个基于`Spring Boot 2.0.4 Release` 版本的快速开发模板, 尽量采用 `boot-starter` 依赖, 使用最精简的配置。
 
-此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro,` 支持打 war 包, 支持打 Docker 镜像。
+此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro,` 支持打 `war` 包, 支持打 `Docker` 镜像。
 
 ## 使用描述
 1. 如果是接口数据,建议统一返回 `ResultBean` 对象。若是分页查询,将查询数据装到 `PageInfo` 里, `pageInfo` 对象封装到 `ResultBean` 的 `data` 属性中。
@@ -22,7 +22,7 @@
         在 `mapper.xml` 文件中添加缓存配置 `<cache />`, 有多个属性支持详细配置,例如 `flushInterval` 设置缓存刷新间隔,单位是毫秒。
 5. Mapper
     - 在 mapper 包下的 base 目录里, 有个 `BaseMapper<T>` 基础接口, 此接口继承了通用 mapper 中的 `Mapper<T>, MySqlMapper<T>` 两个接口, 
-        此基础接口不能被 Spring 扫描到,否则会报错, 此项目配置扫描 mapper 包时设置了 `markerInterface` 参数, 即只扫描该参数值的父级包下的 mapper 接口文件。
-
+        此基础接口不能被 Spring 扫描到,否则会报错, 此项目配置扫描 `mapper` 包时设置了 `markerInterface` 参数, 即只扫描该参数值的父级包下的 mapper 接口文件。
+    - 若不需要使用 `MySqlMapper<T>` 中的独有方法, 则业务方法可直接继承通过 `mapper` 的 `Mapper<T>`接口。
 
 ## 项目改造

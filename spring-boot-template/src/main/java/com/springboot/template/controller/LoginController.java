@@ -5,8 +5,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @name: LoginController
@@ -24,7 +23,7 @@ public class LoginController {
      * @param: [user]
      * @return: java.lang.String
      **/
-    @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+    @PostMapping("/doLogin")
     public String doLogin(User user) {
         //添加用户认证信息
         Subject subject = SecurityUtils.getSubject();
