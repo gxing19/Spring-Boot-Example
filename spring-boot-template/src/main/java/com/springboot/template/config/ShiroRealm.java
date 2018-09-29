@@ -5,6 +5,7 @@ import com.springboot.template.entity.User;
 import com.springboot.template.mapper.UserMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -53,6 +54,7 @@ public class ShiroRealm extends AuthorizingRealm {
 			logger.error("密码错误:{}",password);
 			throw new AccountException("帐号或密码错误");
 		}
+		SecurityUtils.getSubject().getSession().setAttribute("user",user);
 		logger.info("用户身份认证成功:{}",usernamePasswordToken.getUsername());
 		return new SimpleAuthenticationInfo(user, password, getName());
 	}

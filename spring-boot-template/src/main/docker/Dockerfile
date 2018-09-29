@@ -1,6 +1,6 @@
-FROM hzb-base-img:1.0
+FROM base-img:1.0
 
-MAINTAINER guangxing zhengguangxing@huadata.com
+MAINTAINER your_name your_email
 
 RUN mkdir /usr/local/template-files
 
