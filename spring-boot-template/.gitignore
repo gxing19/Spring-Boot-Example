@@ -24,3 +24,7 @@
 /nbdist/
 /.nb-gradle/
 /logs/
+/.mvn/
+
+/mvnw
+/mvnw.cmd

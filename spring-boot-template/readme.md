@@ -1,7 +1,8 @@
 # spring-boot-template 说明
 这是一个基于`Spring Boot 2.0.4 Release` 版本的快速开发模板, 尽量采用 `boot-starter` 依赖, 使用最精简的配置。
 
-此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro,` 支持打 `war` 包, 支持打 `Docker` 镜像。
+此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro, JSTL`, 
+Web页面支持 JSP, 支持打 `war` 包, 支持打 `Docker` 镜像。
 
 ## 使用描述
 1. 如果是接口数据,建议统一返回 `ResultBean` 对象。若是分页查询,将查询数据装到 `PageInfo` 里, `pageInfo` 对象封装到 `ResultBean` 的 `data` 属性中。
