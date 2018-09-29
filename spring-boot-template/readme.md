@@ -21,6 +21,9 @@ Web页面支持 JSP, 支持打 `war` 包, 支持打 `Docker` 镜像。
     - 开启了实体类属性名驼峰规则和下划线的转换, 若转换后可对应表字段, 在 XML 里的字段和属性映射可省略。
     - MyBatis 的自动配置默认开启了 Mapper 级别(二级)缓存的支持, 若需要使用缓存, 可在业务 mapper 接口上添加缓存引用注解 `@CacheNamespaceRef(XxxMapper.class)`,
         在 `mapper.xml` 文件中添加缓存配置 `<cache />`, 有多个属性支持详细配置,例如 `flushInterval` 设置缓存刷新间隔,单位是毫秒。
+	- 缓存的配置还有另一种方式: 若只使用通用 Mapper 接口中的方法, 只需在业务接口上添加 `@CacheNamespace` 注解来启用缓存, 
+	    如果要和 XML 混合使用缓存, 需要在 XML 文件添加缓存引用`<cache-ref namespace="业务mapper接口的全限定名,即该mapper接口在mapper文件的命名空间" />`。 
+	    通用 Mapper 的作者发现此方式会报错并给 **Mybatis** 提交了 `issue`, 但在此模板项目上验证未出现异常。
 5. Mapper
     - 在 mapper 包下的 base 目录里, 有个 `BaseMapper<T>` 基础接口, 此接口继承了通用 mapper 中的 `Mapper<T>, MySqlMapper<T>` 两个接口, 
         此基础接口不能被 Spring 扫描到,否则会报错, 此项目配置扫描 `mapper` 包时设置了 `markerInterface` 参数, 即只扫描该参数值的父级包下的 mapper 接口文件。
