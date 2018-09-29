@@ -53,7 +53,7 @@ public class ShiroRealm extends AuthorizingRealm {
 			logger.error("密码错误:{}",password);
 			throw new AccountException("帐号或密码错误");
 		}
-		logger.info("用户身份认证结束 ......");
+		logger.info("用户身份认证成功:{}",usernamePasswordToken.getUsername());
 		return new SimpleAuthenticationInfo(user, password, getName());
 	}
 

@@ -24,5 +24,25 @@
     - 在 mapper 包下的 base 目录里, 有个 `BaseMapper<T>` 基础接口, 此接口继承了通用 mapper 中的 `Mapper<T>, MySqlMapper<T>` 两个接口, 
         此基础接口不能被 Spring 扫描到,否则会报错, 此项目配置扫描 `mapper` 包时设置了 `markerInterface` 参数, 即只扫描该参数值的父级包下的 mapper 接口文件。
     - 若不需要使用 `MySqlMapper<T>` 中的独有方法, 则业务方法可直接继承通过 `mapper` 的 `Mapper<T>`接口。
+6. Shiro
+    使用了 Shiro 的认证功能对登录用户身份进行认证, 用户登录密码使用 Shiro 的 Md5Hash 进行加密码。
+7. Docker
+    - 在pom.xml文件里集成了将应用打包成 docker 镜像的插件, Dockerfile 文件指向 src/main/docker 目录。
+    - 打镜像命令见 `document` 目录下的 `打Docker镜像命令.txt` 文件内容。
 
 ## 项目改造
+拉取项目模板, 改造成实际要开发的项目。以下描述基于 IDEA 开发工具。
+
+1. 修改项目名称
+    File → Project Structure → Project Settings → Project, 修改 Project name 为实际开发的项目名称; 
+    点击 Modules , 修改 Name 名称为实际模块名称。
+2. 修改包路径名
+	将 com.springboot.template 改为实际需要的包路径名, 包括测试的包路径, 同步修改包下的 Java 文件中的引用包路径。
+3. 修改 `pom.xml`文件
+	将文件中的 `groupId、 artifactId、 name`三个标签的值，改为实际项目信息。
+4. 修改日志配置文件 `log4j2.xml`
+	将日志文件里 `log.file` 名称改为实际项目名称。
+5. 修改数据源信息
+	根据实际的开发、测试、生产环境的数据库修改链接、账号、密码信息。
+
+    

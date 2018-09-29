@@ -1,0 +1,39 @@
+===========阿里 Docker 仓库=======================
+docker login --username=qmph@qmdream.com registry.cn-shenzhen.aliyuncs.com
+Huadata123456
+
+==========编译环境==============
+1. 代码位置: https://git.coding.net/leimiremy/spring-boot-template.git
+
+2. docker编译镜像
+	编译环境：jdk1.8 maven git
+	docker镜像基础：hzb-base-img 1.0
+	
+3. 下载代码地址后
+	git clone https://git.coding.net/leimiremy/spring-boot-template.git
+	以后每次更新使用
+	git pull
+	
+4. 在代码的pom.xml所在文件夹执行 
+	mvn clean install -Dmaven.test.skip=true
+	
+	就会生成新的 spring-boot-template:latest 镜像 
+	
+5. 打tag并指向阿里云docker仓库
+	docker tag spring-boot-template:latest registry.cn-shenzhen.aliyuncs.com/huadata/spring-boot-template:日期
+
+6. 推送镜像
+	docker push registry.cn-shenzhen.aliyuncs.com/huadata/spring-boot-template:日期
+
+--------------运行环境------------------
+1. 拉取镜像
+	docker pull registry.cn-shenzhen.aliyuncs.com/huadata/spring-boot-template:日期
+
+2. 测试环境	
+	docker run -d -p 8080:8080 --name spring-boot-template -v /root/bslogs/spring-boot-template:/usr/local/tomcat/bin/logs -e spring.profiles.active=test registry.cn-shenzhen.aliyuncs.com/huadata/spring-boot-template:日期
+
+3. 生产环境
+	docker run -d -p 8080:8080 --name spring-boot-template -v /root/bslogs/spring-boot-template:/usr/local/tomcat/bin/logs -e spring.profiles.active=pro  registry.cn-shenzhen.aliyuncs.com/huadata/spring-boot-template:日期
+	
+
+备注：上面涉及的项目git地址,项目名,镜像名等根据实际信息进行替换或设置

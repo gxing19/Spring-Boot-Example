@@ -13,6 +13,6 @@ public class ParamConst {
     public static final int DISABLE = 0;
 
     //密码盐
-    public static final String PWD_SALT = "Z6pLL@W#";
+    public static final String PWD_SALT = "abc";
 
 }

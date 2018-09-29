@@ -138,12 +138,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-
-
-
-
-
-
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>2.1.0</version>
+        </dependency>
 
 
         <!--热重启-->
@@ -169,25 +168,15 @@
 
 
     <build>
+        <!-- 最终war包名:默认是 ${project.artifactId}-${project.version} -->
+        <finalName>${project.name}</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-            <!-- 编译插件 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>utf-8</encoding>
-                    <!--跳过测试-->
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-
+            <!-- docker打包插件 -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
@@ -200,7 +189,10 @@
                         </goals>
                     </execution>
                 </executions>
+
                 <configuration>
+                    <!--禁用构建缓存-->
+                    <noCache>true</noCache>
                     <!-- 镜像名称 -->
                     <imageName>${project.name}:latest</imageName>
                     <!-- Dockerfile文件地址 -->
@@ -216,24 +208,6 @@
                     </resources>
                 </configuration>
             </plugin>
-
-            <!-- Docker maven plugin -->
-            <!--<plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.${project.packaging}</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>-->
         </plugins>
     </build>
 
