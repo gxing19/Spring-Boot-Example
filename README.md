@@ -81,8 +81,6 @@ Spring Boot 对配置文件中的密码进行加密,使用两种方案：jasypt 
 [Spring Boot 2实践系列(三十二)：Spring Boot 配置文件密码加密两种方案](http://112.74.59.39/2018/09/19/springboot-app-32-password-encryptor/)
 
 ## 20. spring-boot-template
-这是一个基于Spring Boot 2.0.4 版本的快速开发模板,尽量采用 boot-starter 依赖, 使用最精简的配置。
+基于`Spring Boot 2.0.4 Release` 版本的快速开发模板, 尽量采用 `boot-starter` 依赖, 使用最精简的配置。
 
-此模板集成了 MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro, 支持打 war 包, 支持打 Docker 镜像。
-
-
+此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro, JSTL`, Web页面支持 `JSP`, 支持 Maven 打 `war` 包, 支持打 `Docker` 镜像。
