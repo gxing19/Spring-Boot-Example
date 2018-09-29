@@ -25,9 +25,9 @@
         此基础接口不能被 Spring 扫描到,否则会报错, 此项目配置扫描 `mapper` 包时设置了 `markerInterface` 参数, 即只扫描该参数值的父级包下的 mapper 接口文件。
     - 若不需要使用 `MySqlMapper<T>` 中的独有方法, 则业务方法可直接继承通过 `mapper` 的 `Mapper<T>`接口。
 6. Shiro
-    使用了 Shiro 的认证功能对登录用户身份进行认证, 用户登录密码使用 Shiro 的 Md5Hash 进行加密码。
+    - 使用了 Shiro 的认证功能对登录用户身份进行认证, 用户登录密码使用 Shiro 的 `Md5Hash` 进行加密码。
 7. Docker
-    - 在pom.xml文件里集成了将应用打包成 docker 镜像的插件, Dockerfile 文件指向 src/main/docker 目录。
+    - 在pom.xml文件里集成了将应用打包成 docker 镜像的插件, `Dockerfile` 文件指向 `src/main/docker` 目录。
     - 打镜像命令见 `document` 目录下的 `打Docker镜像命令.txt` 文件内容。
 
 ## 项目改造
