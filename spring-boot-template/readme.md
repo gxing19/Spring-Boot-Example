@@ -1,5 +1,5 @@
 # spring-boot-template 说明
-这是一个基于`Spring Boot 2.0.4 Release` 版本的快速开发模板, 尽量采用 `boot-starter` 依赖, 使用最精简的配置。
+基于`Spring Boot 2.0.4 Release` 版本的快速开发模板, 尽量采用 `boot-starter` 依赖, 使用最精简的配置。
 
 此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro, JSTL`, 
 Web页面支持 JSP, 支持打 `war` 包, 支持打 `Docker` 镜像。
@@ -45,5 +45,7 @@ Web页面支持 JSP, 支持打 `war` 包, 支持打 `Docker` 镜像。
 	将日志文件里 `log.file` 名称改为实际项目名称。
 5. 修改数据源信息
 	根据实际的开发、测试、生产环境的数据库修改链接、账号、密码信息。
+6. 替换Web页面
+7. 需要的话修改登录路径
 
     
