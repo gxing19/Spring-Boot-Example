@@ -84,3 +84,6 @@ Spring Boot 对配置文件中的密码进行加密,使用两种方案：jasypt 
 基于`Spring Boot 2.0.4 Release` 版本的快速开发模板, 尽量采用 `boot-starter` 依赖, 使用最精简的配置。
 
 此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro, JSTL`, Web页面支持 `JSP`, 支持 Maven 打 `war` 包, 支持打 `Docker` 镜像。
+
+## 21. spring-boot-spring-jms
+集成 Spring JMS，使用异步消息来支持系统间的通信。异步消息通信方式主要有两种：点对点的对列(queue)方式 和 发布订阅的(topic)方式。
