@@ -86,4 +86,7 @@ Spring Boot 对配置文件中的密码进行加密,使用两种方案：jasypt 
 此模板集成了 `MySQL, Druid, Mybatis, Common Mapper, pageHelper, Log4j2, Shiro, JSTL`, Web页面支持 `JSP`, 支持 Maven 打 `war` 包, 支持打 `Docker` 镜像。
 
 ## 21. spring-boot-spring-jms
-集成 Spring JMS，使用异步消息来支持系统间的通信。异步消息通信方式主要有两种：点对点的对列(queue)方式 和 发布订阅的(topic)方式。
+集成 Spring JMS, ActiveMQ, RabbitMQ, Kafka 消息中间件来实现系统间的异步消息。异步消息通信方式主要有两种：点对点的队列(queue)方式 和 发布订阅的主题(topic)方式。
+
+[Spring Boot 2实践系列(三十四)：集成 AcitveMQ 消息中间件](http://112.74.59.39/2018/10/17/springboot-app-34-activemq/)
+[Spring Boot 2实践系列(三十三)：JMS 和 AMQP 消息服务及支持的消息组件](http://112.74.59.39/2018/10/16/springboot-app-33-spring-jms-mq/)
