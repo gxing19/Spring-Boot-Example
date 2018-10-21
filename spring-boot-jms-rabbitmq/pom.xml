@@ -56,16 +56,6 @@
             <version>1.2.47</version>
         </dependency>
 
-        <!--ActiveMQ-->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-activemq</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-pool</artifactId>
-        </dependency>-->
-
         <!--AMQP-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
