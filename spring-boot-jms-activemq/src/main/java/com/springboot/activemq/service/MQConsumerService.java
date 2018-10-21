@@ -1,4 +1,4 @@
-package com.springboot.springjms.service;
+package com.springboot.activemq.service;
 
 import org.springframework.stereotype.Service;
 

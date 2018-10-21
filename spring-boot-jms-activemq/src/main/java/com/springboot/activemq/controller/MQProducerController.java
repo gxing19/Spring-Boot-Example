@@ -1,6 +1,6 @@
-package com.springboot.springjms.controller;
+package com.springboot.activemq.controller;
 
-import com.springboot.springjms.service.MQProducerService;
+import com.springboot.activemq.service.MQProducerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

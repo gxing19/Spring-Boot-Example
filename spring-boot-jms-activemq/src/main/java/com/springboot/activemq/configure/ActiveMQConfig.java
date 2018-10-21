@@ -1,4 +1,4 @@
-package com.springboot.springjms.configure;
+package com.springboot.activemq.configure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

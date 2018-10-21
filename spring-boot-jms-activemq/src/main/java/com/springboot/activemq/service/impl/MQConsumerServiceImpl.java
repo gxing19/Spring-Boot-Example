@@ -1,6 +1,6 @@
-package com.springboot.springjms.service.impl;
+package com.springboot.activemq.service.impl;
 
-import com.springboot.springjms.service.MQConsumerService;
+import com.springboot.activemq.service.MQConsumerService;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.springboot.springjms.service.impl;
+package com.springboot.activemq.service.impl;
 
-import com.springboot.springjms.service.MQProducerService;
+import com.springboot.activemq.service.MQProducerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
