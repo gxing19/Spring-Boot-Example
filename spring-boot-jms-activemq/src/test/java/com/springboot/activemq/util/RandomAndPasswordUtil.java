@@ -1,4 +1,4 @@
-package com.springboot.web.util;
+package com.springboot.activemq.util;
 
 import org.springframework.util.DigestUtils;
 

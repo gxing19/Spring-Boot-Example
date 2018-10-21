@@ -1,4 +1,4 @@
-package com.springboot.web.util;
+package com.springboot.activemq.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

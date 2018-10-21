@@ -1,4 +1,4 @@
-package com.springboot.web;
+package com.springboot.activemq;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Assert;
