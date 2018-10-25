@@ -32,25 +32,4 @@ public class MQConsumerController {
         mqConsumerService.activeMQQueueReceive(message);
     }
 
-    /**
-     * RabbitMQ 接收消息
-     * @param message
-     * @return
-     */
-    @RequestMapping("/rabbitmq/get")
-    public String rabbitMQSendMsg(String message){
-        mqConsumerService.rabbitMQReceive(message);
-        return null;
-    }
-
-    /**
-     * Kafka 接收消息
-     * @param message
-     * @return
-     */
-    @RequestMapping("/Kafka/get")
-    public String kafkaSendMsg(String message){
-        mqConsumerService.kafkaReceive(message);
-        return null;
-    }
 }

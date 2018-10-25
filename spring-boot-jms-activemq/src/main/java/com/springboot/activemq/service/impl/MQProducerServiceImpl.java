@@ -45,15 +45,4 @@ public class MQProducerServiceImpl implements MQProducerService {
         jmsTemplate.convertAndSend(queueDestination, "Hello Topic");
 
     }
-
-
-    @Override
-    public void rabbitMQSend(String msg) {
-
-    }
-
-    @Override
-    public void kafkaSend(String msg) {
-
-    }
 }

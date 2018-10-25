@@ -35,15 +35,4 @@ public class MQConsumerServiceImpl implements MQConsumerService {
         System.out.println("监听收到my-topic消息:" + message);
     }
 
-
-
-    @Override
-    public void rabbitMQReceive(String msg) {
-
-    }
-
-    @Override
-    public void kafkaReceive(String msg) {
-
-    }
 }

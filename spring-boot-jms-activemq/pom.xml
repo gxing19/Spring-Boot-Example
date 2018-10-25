@@ -66,19 +66,6 @@
             <artifactId>activemq-pool</artifactId>
         </dependency>
 
-        <!--AMQP-->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>-->
-
-        <!--Kafka-->
-        <!--<dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>-->
-
-
         <!-- processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -33,29 +33,4 @@ public class MQProducerController {
     public void activeMQSendMsg(String msg) throws InterruptedException, JMSException {
         mqProducerService.activeMQSend(msg);
     }
-
-    /**
-     * RabbitMQ 发布消息
-     *
-     * @param msg
-     * @return
-     */
-    @RequestMapping("/rabbitmq/send")
-    public String rabbitMQSendMsg(String msg) {
-        mqProducerService.rabbitMQSend(msg);
-        return null;
-    }
-
-    /**
-     * Kafka 发布消息
-     *
-     * @param msg
-     * @return
-     */
-    @RequestMapping("/Kafka/send")
-    public String kafkaSendMsg(String msg) {
-        mqProducerService.kafkaSend(msg);
-        return null;
-    }
-
 }

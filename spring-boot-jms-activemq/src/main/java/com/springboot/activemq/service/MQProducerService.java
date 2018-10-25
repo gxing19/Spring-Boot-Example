@@ -18,16 +18,4 @@ public interface MQProducerService {
      */
     void activeMQSend(String msg) throws InterruptedException, JMSException;
 
-    /**
-     * rabbitMQ 发布消息
-     * @param msg
-     */
-    void rabbitMQSend(String msg);
-
-    /**
-     * Kafka 发布消息
-     * @param msg
-     */
-    void kafkaSend(String msg);
-
 }

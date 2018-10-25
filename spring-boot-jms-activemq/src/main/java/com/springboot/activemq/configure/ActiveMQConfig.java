@@ -16,6 +16,12 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class ActiveMQConfig {
 
+    /**
+     * 一个项目里若要同时使用 Queue队列 和 Topic主题(发布-订阅)
+     * 需要为 Topic主题再定义一个JmsListenerContainerFactory,开启发布-订阅
+     * @param activeMQConnectionFactory
+     * @return
+     */
     @Bean
     public JmsListenerContainerFactory<?> topicListenerContainer(ConnectionFactory activeMQConnectionFactory) {
         DefaultJmsListenerContainerFactory topicListenerContainer = new DefaultJmsListenerContainerFactory();
