@@ -11,13 +11,19 @@ import org.springframework.context.annotation.Configuration;
  * @date: 2018-10-18 14:47
  **/
 @Configuration
-public class RabbitMQConfig {
+public class QueueRabbitMQConfig {
+
+    private static final String QUEUE_NAME_1 = "my-queue";
+    private static final String QUEUE_NAME_2 = "object";
 
     @Bean
-    public Queue declareQueue(){
-        return new Queue("my-queue");
+    public Queue strQueue(){
+        return new Queue(QUEUE_NAME_1);
     }
 
-
+    @Bean
+    public Queue objQueue(){
+        return new Queue(QUEUE_NAME_2);
+    }
 
 }
