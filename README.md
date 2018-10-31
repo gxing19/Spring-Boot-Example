@@ -96,3 +96,8 @@ Spring Boot 对配置文件中的密码进行加密,使用两种方案：jasypt 
 Spring AMQP 默认支持的实现是 Rabbitmq。该项目集成 Rabbitmq, 消息中间件来实现系统间的异步消息。
 
 [Spring Boot 2实践系列(三十五)：集成 RabbitMQ 消息中间件](http://112.74.59.39/2018/10/19/springboot-app-35-rabbitmq/)
+
+## 22. spring-boot-email
+集成 JavaMail 发送电子邮件：简单文本邮件、带附件邮件、HTML邮件、内嵌静态资源文件、模板邮件
+
+[Spring Boot 2实践系列(三十六)：集成 JavaMail 发送邮件 ](http://112.74.59.39/2018/10/29/springboot-app-36-email/)
