@@ -1,23 +1,33 @@
 package com.springboot.cache.service.ServiceImpl;
 
+import com.alibaba.fastjson.JSON;
 import com.springboot.cache.dao.ActorRedisDao;
 import com.springboot.cache.entity.Actor;
 import com.springboot.cache.repository.ActorRepository;
 import com.springboot.cache.service.ActorService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 public class ActorServiceImpl implements ActorService {
 
-    //调用的是CrudRepository的方法
+    private static final Logger logger = LogManager.getLogger(ActorServiceImpl.class);
+
+
     @Autowired
     private ActorRepository actorRepository;
 
-    //调用的是RedisTemplate
     @Autowired
     private ActorRedisDao actorRedisDao;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 先查Redis缓存,没有从库里查再写入缓存,手动写入Redis库
@@ -50,5 +60,14 @@ public class ActorServiceImpl implements ActorService {
         Actor actor = actorRepository.findById(actorId).get();
         System.out.println("--------数据来自于数据库---------");
         return actor;
+    }
+
+    public void saveActorToRedis(){
+        Actor actor = new Actor();
+        for (Long i = 0l; i < 10000; i++) {
+            actor.setActorId(i).setFirstName("first_" + i)
+                    .setLastName("last_" + i).setLastUpdate(new Date());
+            redisTemplate.opsForValue().set(String.valueOf(actor.getActorId()),actor);
+        }
     }
 }

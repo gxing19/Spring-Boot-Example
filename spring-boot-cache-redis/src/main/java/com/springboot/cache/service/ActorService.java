@@ -7,4 +7,6 @@ public interface ActorService {
     Actor queryById(Long actorId);
 
     Actor queryByActorId(Long actorId);
+
+    void saveActorToRedis();
 }

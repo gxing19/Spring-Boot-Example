@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Actor implements Serializable {
@@ -53,5 +54,15 @@ public class Actor implements Serializable {
     public Actor setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "actorId=" + actorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 }
