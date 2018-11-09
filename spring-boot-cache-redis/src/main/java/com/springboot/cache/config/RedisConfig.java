@@ -1,5 +1,6 @@
 package com.springboot.cache.config;
 
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,13 +47,14 @@ public class RedisConfig {
         template.setConnectionFactory(redisConnectionFactory);
 
         /* 序列化10000个对象数据,在Redis 所占用空间
-         * 根据最终测试, String 和 FastJson 占用较少
+         * 根据最终测试, String 和 FastJson 占用较少,
+         * 将10000个对象存在一个HASH列表中,所占空间更少,只需要2.24M
          * */
 //        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);//2.5M,若开启类型检测是2.96M
 //        StringRedisSerializer serializer = new StringRedisSerializer();//2.33M
-//        FastJsonRedisSerializer serializer = new FastJsonRedisSerializer(Object.class);//2.35M
+        FastJsonRedisSerializer serializer = new FastJsonRedisSerializer(Object.class);//2.35M
 //        KryoRedisSerializer serializer = new KryoRedisSerializer(Object.class);//2.35M
-        MsgpackRedisSerializer serializer = new MsgpackRedisSerializer();//2.96M
+//        MsgpackRedisSerializer serializer = new MsgpackRedisSerializer();//2.96M
 
 //        ObjectMapper om = new ObjectMapper();
 //        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);

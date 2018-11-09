@@ -8,5 +8,9 @@ public interface ActorService {
 
     Actor queryByActorId(Long actorId);
 
-    void saveActorToRedis();
+    void saveActorToString();
+
+    void saveActorToHash();
+
+    void saveToHashTest();
 }
