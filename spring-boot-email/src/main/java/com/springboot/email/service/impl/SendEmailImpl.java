@@ -193,7 +193,7 @@ public class SendEmailImpl implements SendEmail {
             helper.setFrom(from);
             helper.setTo(user.getEmailAddress());
             helper.setSubject("淘宝 11.11 活动");
-            helper.setText(emailContent,true);
+            helper.setText(emailContent, true);
 
             mailSender.send(message);
             logger.info("邮件发送成功！");
