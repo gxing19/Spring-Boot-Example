@@ -3,7 +3,7 @@
     <Properties>
         <Property name="log.path.root">logs</Property>
         <Property name="log.file">template</Property>
-        <Property name="log.pattern">%d %p [%C{1.}->%M:%L] [%t] %m%n</Property>
+        <Property name="log.pattern">%d %p [LogId:%X{LogId}] [%C{1.}->%M:%L] [%t] %m%n</Property>
     </Properties>
 
     <Appenders>
