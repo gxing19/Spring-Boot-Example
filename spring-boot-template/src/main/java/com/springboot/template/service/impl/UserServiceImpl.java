@@ -60,4 +60,10 @@ public class UserServiceImpl implements UserService {
         return userList1;
     }
 
+    @Override
+    public void addUser(User user) {
+        userMapper.insert(user);
+        System.out.println();
+    }
+
 }

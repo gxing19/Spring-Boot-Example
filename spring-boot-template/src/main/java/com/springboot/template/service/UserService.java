@@ -65,4 +65,13 @@ public interface UserService {
      * @return: java.util.List<com.springboot.template.entity.User>
      **/
     List<User> queryByUser(User user);
+
+    /**
+     * @desc: 添加用户
+     * @author: gxing
+     * @date: 2018/9/26 9:38
+     * @param: [id]
+     * @return: com.springboot.template.entity.User
+     **/
+    void addUser(User user);
 }
