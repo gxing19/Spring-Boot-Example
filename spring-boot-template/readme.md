@@ -12,7 +12,8 @@ Web页面支持 JSP, 支持打 `war` 包, 支持打 `Docker` 镜像。
     - 实体类 `entity` 包下的 `base` 目录里有个实体类的基类 `BaseEntity` , 基类里面包含 `id,pageNum,pageSize` 三个公用属性,
 其中 `pageNum(页码)` 和 `pageSize(每页显示条数)` 是分页参数, 这两个属性不参与持久化。
     - 让实体类继承 `BaseEntity` 基类, 在 `properties` 配置文件添加支持方法参数分页配置(`pagehelper.supportMethodsArguments=true`),
-在实体类作为查询参数时就会根据 `pageNum` 和 `pageSize` 这两个属性执行自动分页, 可以省略查询方法前的 `PageHelper.startPage(pageNum, pageSize)` 设置。
+        在实体类作为查询参数时就会根据 `pageNum` 和 `pageSize` 这两个属性执行自动分页, 可以省略查询方法前的 `PageHelper.startPage(pageNum, pageSize)` 设置。
+        如果需要构建 `Example` 查询，则必须设置`PageHelper.startPage(pageNum, pageSize)`, 否则分页无效。
     - 若查询参数和和分页参数不封装在实体类里, 是直接作为方法参数传递, 在执行查询方法前需要设置分页参数(`PageHelper.startPage(pageNum, pageSize)`)。
     - 通用 Mapper 默认是根据实体类名首字母小写来找对应的表,若实体类名与表名无法对应,可在实体类上添加注解(`@Table(name = "table_name")`)来映射表名。
     - 通用 Mapper 默认支持下划线和驼峰规则转换,若属性名与表字段无法匹配, 可在属性上添加注解(`@Column(name = "column_name")`)来映射表字段。
