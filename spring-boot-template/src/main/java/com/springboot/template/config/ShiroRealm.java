@@ -36,14 +36,14 @@ public class ShiroRealm extends AuthorizingRealm {
 		List<User> userList = userMapper.select(new User(usernamePasswordToken.getUsername()));
 
 		if(null == userList || userList.isEmpty()){
-			logger.error("用户名不存在:{}", usernamePasswordToken.getUsername());
+			logger.info("用户名不存在:{}", usernamePasswordToken.getUsername());
 			throw new AccountException("帐号或密码不正确");
 		}
 
         User user = userList.get(0);
 
 		if(!user.getState().equals(ParamConst.ENABLE)){
-			logger.error("用户账号被禁用:{}", usernamePasswordToken.getUsername());
+			logger.info("用户账号被禁用:{}", usernamePasswordToken.getUsername());
 			throw new AccountException("账号已被禁用");
 		}
 
@@ -51,7 +51,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		String encryPwd = new Md5Hash(password,ParamConst.PWD_SALT,2).toString();
 
 		if(!user.getPassword().equals(encryPwd)){
-			logger.error("密码错误:{}",password);
+			logger.info("密码错误:{}",password);
 			throw new AccountException("帐号或密码错误");
 		}
 		SecurityUtils.getSubject().getSession().setAttribute("user",user);

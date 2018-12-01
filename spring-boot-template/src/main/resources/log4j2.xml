@@ -18,7 +18,7 @@
 
         <!-- INFO 日志 -->
         <RollingFile name="INFO-LOG" fileName="${log.path.root}/info/${log.file}.log"
-                     filePattern="${log.path.root}/info/${log.file}-%d{yyyy-MM-dd}.log.gz">
+                     filePattern="${log.path.root}/info/${log.file}-%d{yyyy-MM-dd}_%i.log.gz">
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${log.pattern}" charset="UTF-8"/>
             <Policies>
@@ -28,7 +28,7 @@
 
         <!-- ERROR 日志 -->
         <RollingFile name="ERROR-LOG" fileName="${log.path.root}/error/${log.file}.log"
-                     filePattern="${log.path.root}/info/${log.file}-%d{yyyy-MM-dd}.log.gz">
+                     filePattern="${log.path.root}/error/${log.file}-%d{yyyy-MM-dd}_%i.log.gz">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${log.pattern}" charset="UTF-8"/>
             <Policies>
