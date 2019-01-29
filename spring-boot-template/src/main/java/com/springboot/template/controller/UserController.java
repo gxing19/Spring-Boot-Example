@@ -44,7 +44,7 @@ public class UserController {
      * @return: com.springboot.template.common.constant.ResultBean
      **/
     @RequestMapping("/queryById")
-    public ResultBean queryById(Integer id) {
+    public ResultBean queryById(Long id) {
         if (null == id) {
             return new ResultBean("ID不能为空").setFailCodeAndState();
         }
@@ -85,15 +85,20 @@ public class UserController {
     }
 
     /**
-    * @desc: 多条件查询
-    * @author: gxing
-    * @date: 2018/9/26 17:04
-    * @param: [user]
-    * @return: java.util.List<com.springboot.template.entity.User>
-    **/
+     * @desc: 多条件查询
+     * @author: gxing
+     * @date: 2018/9/26 17:04
+     * @param: [user]
+     * @return: java.util.List<com.springboot.template.entity.User>
+     **/
     @RequestMapping("/queryByUser")
     public List<User> queryByUser(User user) {
         List<User> userList = userService.queryByUser(user);
         return userList;
+    }
+
+    @RequestMapping("/updateUserMoney")
+    public void updateUserMoney() throws InterruptedException {
+        userService.updateUserMoney();
     }
 }

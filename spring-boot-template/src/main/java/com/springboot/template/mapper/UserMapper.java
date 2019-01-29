@@ -3,6 +3,7 @@ package com.springboot.template.mapper;
 import com.springboot.template.entity.User;
 import com.springboot.template.mapper.base.BaseMapper;
 import org.apache.ibatis.annotations.CacheNamespaceRef;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -45,5 +46,5 @@ public interface UserMapper extends BaseMapper<User> {
      * @return: com.springboot.template.entity.User
      **/
     @Select(value = "select * from user where id = #{id}")
-    User queryById(Integer id);
+    User queryById(@Param("id") Long id);
 }

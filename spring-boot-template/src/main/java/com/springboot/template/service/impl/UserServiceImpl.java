@@ -3,6 +3,7 @@ package com.springboot.template.service.impl;
 import com.springboot.template.entity.User;
 import com.springboot.template.mapper.UserMapper;
 import com.springboot.template.service.UserService;
+import com.springboot.template.userthread.UserThread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User queryByPrimaryKey(Integer id) {
+    public User queryByPrimaryKey(Long id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User queryById(Integer id) {
+    public User queryById(Long id) {
         return userMapper.queryById(id);
     }
 
@@ -64,6 +65,15 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         userMapper.insert(user);
         System.out.println();
+    }
+
+    @Override
+    public void updateUserMoney() throws InterruptedException {
+        int threadNum = 20;
+        for (int i = 0; i < threadNum; i++) {
+            new UserThread(threadNum).run();
+        }
+
     }
 
 }

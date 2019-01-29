@@ -17,6 +17,7 @@ public class User extends BaseEntity implements Serializable {
     private String username;
     private String password;
     private String homeAddress;
+    private Integer restMoney;
     private Integer state;
 
     public User() {
@@ -24,12 +25,6 @@ public class User extends BaseEntity implements Serializable {
 
     public User(String username) {
         this.username = username;
-    }
-
-    public User(String username, String password, String homeAddress) {
-        this.username = username;
-        this.password = password;
-        this.homeAddress = homeAddress;
     }
 
     public String getUsername() {
@@ -59,6 +54,15 @@ public class User extends BaseEntity implements Serializable {
         return this;
     }
 
+    public Integer getRestMoney() {
+        return restMoney;
+    }
+
+    public User setRestMoney(Integer restMoney) {
+        this.restMoney = restMoney;
+        return this;
+    }
+
     public Integer getState() {
         return state;
     }
@@ -66,5 +70,16 @@ public class User extends BaseEntity implements Serializable {
     public User setState(Integer state) {
         this.state = state;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", homeAddress='" + homeAddress + '\'' +
+                ", restMoney='" + restMoney + '\'' +
+                ", state=" + state +
+                '}';
     }
 }

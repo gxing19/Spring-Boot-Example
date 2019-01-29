@@ -28,7 +28,7 @@ public interface UserService {
      * @param: [id]
      * @return: com.springboot.template.entity.User
      **/
-    User queryByPrimaryKey(Integer id);
+    User queryByPrimaryKey(Long id);
 
     /**
      * @desc: 根据用户名查询
@@ -55,7 +55,7 @@ public interface UserService {
      * @param: [id]
      * @return: com.springboot.template.entity.User
      **/
-    User queryById(Integer id);
+    User queryById(Long id);
 
     /**
      * @desc: 多条件查询
@@ -74,4 +74,13 @@ public interface UserService {
      * @return: com.springboot.template.entity.User
      **/
     void addUser(User user);
+
+    /**
+     * @desc: 更新用户余额
+     * @author: gxing
+     * @date: 2018/9/26 9:38
+     * @param: [id]
+     * @return: com.springboot.template.entity.User
+     **/
+    void updateUserMoney() throws InterruptedException;
 }
