@@ -1,0 +1,80 @@
+package com.springboot.template.common.datasource;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import tk.mybatis.spring.annotation.MapperScan;
+
+import javax.sql.DataSource;
+
+/**
+ * @name: DataSourceTwoConfig
+ * @desc: 多数据源配置之数据源二
+ * @author: gxing
+ * @date: 2019-02-15 15:53
+ **/
+@Configuration
+@MapperScan(basePackages = "com.springboot.template.mapper.source2", sqlSessionTemplateRef = "sqlSessionTemplateTwo")
+public class DataSourceTwoConfig {
+
+    /**
+     * @desc: 数据源 2
+     * @author: gxing
+     * @date: 2019/2/15 16:46
+     * @param: []
+     * @return: javax.sql.DataSource
+     **/
+    @Bean(name = "dataSourceTwo")
+    @ConfigurationProperties(prefix = "spring.datasource.source2")
+    public DataSource dataSourceTwo() {
+        //一定要用DruidDataSource类，不然的话druid数据库连接池是不会起作用的
+        DruidDataSource dataSourceTwo = new DruidDataSource();
+        return dataSourceTwo;
+    }
+
+    /**
+     * @desc: SqlSessionFactory 2
+     * @author: gxing
+     * @date: 2019/2/15 16:52
+     * @param: [dataSource]
+     * @return: org.apache.ibatis.session.SqlSessionFactory
+     **/
+    @Bean(name = "sqlSessionFactoryTwo")
+    public SqlSessionFactory sqlSessionFactoryTwo(@Qualifier("dataSourceTwo") DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        return sqlSessionFactoryBean.getObject();
+    }
+
+    /**
+     * @desc: SqlSessionTemplate
+     * @author: gxing
+     * @date: 2019/2/15 16:54
+     * @param: [sqlSessionFactory]
+     * @return: SqlSessionTemplate
+     **/
+    @Bean(name = "sqlSessionTemplateTwo")
+    public SqlSessionTemplate sqlSessionTemplateTwo(@Qualifier("sqlSessionFactoryTwo") SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
+    }
+
+    /**
+     * @desc: 数据源2的事务管理
+     * @author: gxing
+     * @date: 2019/2/15 16:48
+     * @param: [dataSource]
+     * @return: org.springframework.jdbc.datasource.DataSourceTransactionManager
+     **/
+    @Bean(name = "dataSourceTransactionManagerTwo")
+    public DataSourceTransactionManager dataSourceTransactionManagerTwo(@Qualifier("dataSourceTwo") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
+
+}

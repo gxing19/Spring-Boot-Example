@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.template.mapper.source2.UserMapperTwo">
+
+    <!--SQL片段:字段-->
+    <sql id="base_columns">id, username, password, home_address, state</sql>
+
+    <!--缓存-->
+    <!--<cache flushInterval="10000" />-->
+
+    <!--根据用户名查-->
+    <select id="queryByUsername" parameterType="String" resultType="user">
+        select * from user where username = #{username}
+    </select>
+
+    <!--查所有(自动分页)-->
+    <select id="queryByPage" parameterType="user" resultType="user">
+        select <include refid="base_columns"/> from user
+    </select>
+</mapper>
