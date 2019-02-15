@@ -1,4 +1,4 @@
-package com.springboot.template.config;
+package com.springboot.template.common.config;
 
 import com.springboot.template.common.constant.ParamConst;
 import com.springboot.template.entity.User;

@@ -1,4 +1,4 @@
-package com.springboot.template.config;
+package com.springboot.template.common.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

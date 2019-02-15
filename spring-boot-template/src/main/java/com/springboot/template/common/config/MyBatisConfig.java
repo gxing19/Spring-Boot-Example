@@ -1,4 +1,4 @@
-package com.springboot.template.config;
+package com.springboot.template.common.config;
 
 import com.springboot.template.mapper.base.BaseMapper;
 import org.springframework.context.annotation.Configuration;

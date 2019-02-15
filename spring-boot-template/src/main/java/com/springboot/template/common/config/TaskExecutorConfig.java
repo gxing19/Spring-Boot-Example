@@ -1,4 +1,4 @@
-package com.springboot.template.config;
+package com.springboot.template.common.config;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.ComponentScan;

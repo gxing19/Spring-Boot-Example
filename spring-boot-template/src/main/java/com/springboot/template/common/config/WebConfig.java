@@ -1,4 +1,4 @@
-package com.springboot.template.config;
+package com.springboot.template.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
