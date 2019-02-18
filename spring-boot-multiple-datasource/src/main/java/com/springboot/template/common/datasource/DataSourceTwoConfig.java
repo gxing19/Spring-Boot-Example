@@ -1,6 +1,7 @@
 package com.springboot.template.common.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,7 +16,7 @@ import javax.sql.DataSource;
 
 /**
  * @name: DataSourceTwoConfig
- * @desc: 多数据源配置之数据源二
+ * @desc: 多数据源配置之数据源2
  * @author: gxing
  * @date: 2019-02-15 15:53
  **/
@@ -24,7 +25,7 @@ import javax.sql.DataSource;
 public class DataSourceTwoConfig {
 
     /**
-     * @desc: 数据源 2
+     * @desc: 数据源2
      * @author: gxing
      * @date: 2019/2/15 16:46
      * @param: []
@@ -34,7 +35,8 @@ public class DataSourceTwoConfig {
     @ConfigurationProperties(prefix = "spring.datasource.source2")
     public DataSource dataSourceTwo() {
         //一定要用DruidDataSource类，不然的话druid数据库连接池是不会起作用的
-        DruidDataSource dataSourceTwo = new DruidDataSource();
+//        DruidDataSource dataSourceTwo = new DruidDataSource();
+        DruidDataSource dataSourceTwo = DruidDataSourceBuilder.create().build();
         return dataSourceTwo;
     }
 

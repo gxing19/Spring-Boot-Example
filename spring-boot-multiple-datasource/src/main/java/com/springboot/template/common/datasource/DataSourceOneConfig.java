@@ -1,6 +1,7 @@
 package com.springboot.template.common.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -36,7 +37,8 @@ public class DataSourceOneConfig {
     @Primary
     public DataSource dataSourceOne() {
         //一定要用DruidDataSource类，不然的话druid数据库连接池是不会起作用的
-        DruidDataSource dataSourceOne = new DruidDataSource();
+//        DruidDataSource dataSourceOne = new DruidDataSource();
+        DruidDataSource dataSourceOne = DruidDataSourceBuilder.create().build();
         return dataSourceOne;
     }
 

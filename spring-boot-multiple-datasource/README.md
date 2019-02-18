@@ -35,7 +35,7 @@ Web页面支持 JSP, 支持打 `war` 包, 支持打 `Docker` 镜像。
     - 在pom.xml文件里集成了将应用打包成 docker 镜像的插件, `Dockerfile` 文件指向 `src/main/docker` 目录。
     - 打镜像命令见 `document` 目录下的 `打Docker镜像命令.txt` 文件内容。
 8. 多数据源
-    - 此项目模板在 spring-boot-template 模板的基础上实现了多数据源配置。
+    - 此项目模板在 spring-boot-template 模板的基础上实现了多数据源配置。``
 
 ## 项目改造
 拉取项目模板, 改造成实际要开发的项目。以下描述基于 IDEA 开发工具。
