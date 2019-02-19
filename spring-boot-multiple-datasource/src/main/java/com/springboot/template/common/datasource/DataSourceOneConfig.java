@@ -56,7 +56,7 @@ public class DataSourceOneConfig {
     @Bean(name = "configurationOne")
     public org.apache.ibatis.session.Configuration configurationOne() {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        //增加驼峰映射
+        //开启驼峰映射
         configuration.setMapUnderscoreToCamelCase(true);
         return configuration;
     }
