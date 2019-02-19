@@ -1,9 +1,9 @@
 package com.springboot.template.controller;
 
-import com.github.pagehelper.PageInfo;
 import com.springboot.template.common.ResultBean;
 import com.springboot.template.entity.User;
-import com.springboot.template.service.UserService;
+import com.springboot.template.service1.UserServiceOne;
+import com.springboot.template.service2.UserServiceTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,10 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceOne userServiceOne;
+
+    @Autowired
+    private UserServiceTwo userServiceTwo;
 
     /**
      * @desc: 查所有
@@ -32,73 +35,51 @@ public class UserController {
      **/
     @RequestMapping("/queryAll")
     public ResultBean queryAll() {
-        List<User> userList = userService.queryAll();
-        return new ResultBean(userList).setSuccessCodeAndState();
+        //调用通用Mapper方法
+        List<User> userListOne = userServiceOne.queryAll();
+        List<User> userListTwo = userServiceTwo.queryAll();
+        return new ResultBean(userListOne).setSuccessCodeAndState();
     }
 
     /**
-     * @desc: 根据ID查
+     * @desc: 根据主键ID查询
      * @author: gxing
-     * @date: 2018/9/25 18:25
+     * @date: 2019/2/19 11:26
      * @param: [id]
-     * @return: com.springboot.template.common.constant.ResultBean
+     * @return: com.springboot.template.common.ResultBean
      **/
     @RequestMapping("/queryById")
-    public ResultBean queryById(Long id) {
-        if (null == id) {
-            return new ResultBean("ID不能为空").setFailCodeAndState();
-        }
-        //通用Mapper接口方法
-        User user1 = userService.queryByPrimaryKey(id);
-        //手写注解式查询
-        User user2 = userService.queryById(id);
-        return new ResultBean(user1).setSuccessCodeAndState();
+    public ResultBean queryById(int id) {
+        User userOne = userServiceOne.queryById(id);
+        User userTwo = userServiceTwo.queryById(id);
+        return new ResultBean(userOne).setSuccessCodeAndState();
     }
 
     /**
-     * @desc: 根据用户名查
+     * @desc: 根据用户名查询
      * @author: gxing
-     * @date: 2018/9/25 18:26
+     * @date: 2019/2/19 11:31
      * @param: [username]
-     * @return: com.springboot.template.entity.User
+     * @return: com.springboot.template.common.ResultBean
      **/
     @RequestMapping("/queryByUsername")
-    public User queryByUsername(String username) {
-        User user = userService.queryByUsername(username);
-        return user;
+    public ResultBean queryByUsername(String username) {
+        User userOne = userServiceOne.queryByUsername(username);
+        User userTwo = userServiceTwo.queryByUsername(username);
+        return new ResultBean(userOne).setSuccessCodeAndState();
     }
 
     /**
-     * @desc: 分页查
+     * @desc: 根据用户名查询,调用XML
      * @author: gxing
-     * @date: 2018/9/25 18:27
-     * @param: [user]
-     * @return: com.springboot.template.entity.User
+     * @date: 2019/2/19 11:31
+     * @param: [username]
+     * @return: com.springboot.template.common.ResultBean
      **/
-    @RequestMapping("/queryByPage")
-    public ResultBean queryByPage(User user) {
-        //实体类继承基类默认的分页参数,可不用设置
-//        PageHelper.startPage(user.getPageNum(), user.getPageSize());
-        List<User> userList = userService.queryByPage(user);
-        PageInfo<User> userPageInfo = new PageInfo<>(userList);
-        return new ResultBean(userPageInfo).setSuccessCodeAndState();
-    }
-
-    /**
-     * @desc: 多条件查询
-     * @author: gxing
-     * @date: 2018/9/26 17:04
-     * @param: [user]
-     * @return: java.util.List<com.springboot.template.entity.User>
-     **/
-    @RequestMapping("/queryByUser")
-    public List<User> queryByUser(User user) {
-        List<User> userList = userService.queryByUser(user);
-        return userList;
-    }
-
-    @RequestMapping("/updateUserMoney")
-    public void updateUserMoney() throws InterruptedException {
-        userService.updateUserMoney();
+    @RequestMapping("/queryByUsernameXml")
+    public ResultBean queryByUsernameXml(String username) {
+        User userOne = userServiceOne.queryByUsernameXml(username);
+        User userTwo = userServiceTwo.queryByUsernameXml(username);
+        return new ResultBean(userOne).setSuccessCodeAndState();
     }
 }

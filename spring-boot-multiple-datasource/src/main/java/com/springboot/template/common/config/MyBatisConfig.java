@@ -2,13 +2,25 @@ package com.springboot.template.common.config;
 
 /**
  * @name: MyBatisConfig
- * @desc: mybatis配置类,扫描mapper包,自定义继承mapper<T>接口的基础接口不能被扫描
+ * @desc: mybatis配置类
  * @author: gxing
  * @date: 2018-09-25 15:23
  **/
-
-/*@Configuration
-@tk.mybatis.spring.annotation.MapperScan(
-        basePackages = "com.springboot.template.mapper", markerInterface = BaseMapper.class)
-public class MyBatisConfig {
-}*/
+//@Configuration
+//public class MyBatisConfig {
+//
+//    /**
+//     * @desc: Mybatis 配置
+//     * @author: gxing
+//     * @date: 2019/2/19 10:38
+//     * @param: []
+//     * @return: org.apache.ibatis.session.Configuration
+//     **/
+//    @Bean
+//    public org.apache.ibatis.session.Configuration configuration() {
+//        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+//        //增加驼峰映射
+//        configuration.setMapUnderscoreToCamelCase(true);
+//        return configuration;
+//    }
+//}

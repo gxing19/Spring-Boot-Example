@@ -2,6 +2,7 @@ package com.springboot.template.common.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
+import com.springboot.template.mapper.base.BaseMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import tk.mybatis.spring.annotation.MapperScan;
 
@@ -21,7 +24,8 @@ import javax.sql.DataSource;
  * @date: 2019-02-15 15:53
  **/
 @Configuration
-@MapperScan(basePackages = "com.springboot.template.mapper.source2", sqlSessionTemplateRef = "sqlSessionTemplateTwo")
+@MapperScan(basePackages = "com.springboot.template.mapper.source2",
+        sqlSessionTemplateRef = "sqlSessionTemplateTwo", markerInterface = BaseMapper.class)
 public class DataSourceTwoConfig {
 
     /**
@@ -40,6 +44,14 @@ public class DataSourceTwoConfig {
         return dataSourceTwo;
     }
 
+    @Bean(name = "configurationTwo")
+    public org.apache.ibatis.session.Configuration configurationTwo() {
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        //增加驼峰映射
+        configuration.setMapUnderscoreToCamelCase(true);
+        return configuration;
+    }
+
     /**
      * @desc: SqlSessionFactory 2
      * @author: gxing
@@ -51,6 +63,11 @@ public class DataSourceTwoConfig {
     public SqlSessionFactory sqlSessionFactoryTwo(@Qualifier("dataSourceTwo") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        //指定mapper xml目录
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.springboot.template.entity");
+        sqlSessionFactoryBean.setConfiguration(configurationTwo());
         return sqlSessionFactoryBean.getObject();
     }
 
