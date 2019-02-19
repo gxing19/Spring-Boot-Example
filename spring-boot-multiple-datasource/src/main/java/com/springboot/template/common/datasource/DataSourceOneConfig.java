@@ -47,7 +47,7 @@ public class DataSourceOneConfig {
     }
 
     /**
-     * @desc: Mybatis 配置
+     * @desc: sqlSession 配置
      * @author: gxing
      * @date: 2019/2/19 10:38
      * @param: []

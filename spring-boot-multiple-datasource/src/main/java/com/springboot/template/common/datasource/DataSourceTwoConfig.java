@@ -44,10 +44,17 @@ public class DataSourceTwoConfig {
         return dataSourceTwo;
     }
 
+    /**
+     * @desc: sqlSession 配置
+     * @author: gxing
+     * @date: 2019/2/19 11:55
+     * @param: []
+     * @return: org.apache.ibatis.session.Configuration
+     **/
     @Bean(name = "configurationTwo")
     public org.apache.ibatis.session.Configuration configurationTwo() {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        //增加驼峰映射
+        //开启驼峰映射
         configuration.setMapUnderscoreToCamelCase(true);
         return configuration;
     }
