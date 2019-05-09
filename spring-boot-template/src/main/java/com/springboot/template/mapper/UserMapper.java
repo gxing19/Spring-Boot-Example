@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 /**
  * @name: UserMapper
  * @desc: 继承自定义的基础接口Mapper<T>
@@ -48,3 +47,4 @@ public interface UserMapper extends BaseMapper<User> {
     @Select(value = "select * from user where id = #{id}")
     User queryById(@Param("id") Long id);
 }
+

@@ -2,6 +2,7 @@ package com.springboot.template.entity;
 
 import com.springboot.template.entity.base.BaseEntity;
 
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -17,6 +18,7 @@ public class User extends BaseEntity implements Serializable {
     private String username;
     private String password;
     private String homeAddress;
+    @Transient
     private Integer restMoney;
     private Integer state;
 
