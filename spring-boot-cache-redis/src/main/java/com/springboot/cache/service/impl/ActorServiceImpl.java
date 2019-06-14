@@ -1,4 +1,4 @@
-package com.springboot.cache.service.ServiceImpl;
+package com.springboot.cache.service.impl;
 
 import com.springboot.cache.dao.ActorRedisDao;
 import com.springboot.cache.entity.Actor;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class ActorServiceImpl implements ActorService {
@@ -35,6 +36,7 @@ public class ActorServiceImpl implements ActorService {
      * @param actorId
      * @return
      */
+    @Override
     public Actor queryById(Long actorId) {
         Actor actor = (Actor) actorRedisDao.getActor(String.valueOf(actorId));
 //        return actor != null ? actor : actorRepository.findById(actorId).get();
@@ -64,6 +66,7 @@ public class ActorServiceImpl implements ActorService {
         return actor;
     }
 
+    @Override
     public void saveActorToString() {
         Actor actor = new Actor();
         for (Long i = 0l; i < 10000; i++) {
@@ -73,6 +76,7 @@ public class ActorServiceImpl implements ActorService {
         }
     }
 
+    @Override
     public void saveActorToHash() {
         Actor actor = new Actor();
         for (Long i = 0l; i < 10000; i++) {
@@ -88,6 +92,7 @@ public class ActorServiceImpl implements ActorService {
         }
     }
 
+    @Override
     public void saveToHashTest() {
         String nickName1 = null;
         String nickName2 = null;
@@ -118,5 +123,12 @@ public class ActorServiceImpl implements ActorService {
             将每个呢称作为key 的 field，profile_id作为 value
             */
         }
+    }
+
+    @Cacheable(value = "#userId", keyGenerator = "keyGenerator")
+    public Actor getById(Long userId){
+        Actor actor = new Actor();
+        Optional<Actor> actorOptional = actorRepository.findById(userId);
+        return actorOptional.get();
     }
 }

@@ -1,9 +1,9 @@
-package com.springboot.rest.template.service.impl;
+package com.springboot.rest.template.rest.template.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.springboot.rest.template.config.RestServerProperties;
-import com.springboot.rest.template.entity.City;
-import com.springboot.rest.template.service.CallRemoteService;
+import com.springboot.rest.template.rest.template.config.RestServerProperties;
+import com.springboot.rest.template.rest.template.entity.City;
+import com.springboot.rest.template.rest.template.service.CallRemoteService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

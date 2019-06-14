@@ -1,14 +1,17 @@
 package com.springboot.cache.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
-@Entity
+//@Entity(name = "actor")
+@RedisHash(value = "actor", timeToLive = 3600)
 public class Actor implements Serializable {
 
     private static final long serialVersionUID = -336743741742403986L;

@@ -21,7 +21,6 @@ public class ActorServiceImpl implements ActorService {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-
     /**
      * 增-insert
      * @param actor

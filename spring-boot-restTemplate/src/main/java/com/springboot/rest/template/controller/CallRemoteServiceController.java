@@ -1,19 +1,14 @@
-package com.springboot.rest.template.controller;
+package com.springboot.rest.template.rest.template.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.springboot.rest.template.entity.City;
-import com.springboot.rest.template.service.CallRemoteService;
-import com.sun.org.apache.regexp.internal.RE;
+import com.springboot.rest.template.rest.template.entity.City;
+import com.springboot.rest.template.rest.template.service.CallRemoteService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.net.URI;
-import java.net.URL;
-import java.util.List;
 
 @RestController
 @RequestMapping("/remote")

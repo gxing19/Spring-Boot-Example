@@ -4,14 +4,22 @@ import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.cache.entity.Actor;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Method;
 import java.net.UnknownHostException;
 
 @Configuration
@@ -70,5 +78,30 @@ public class RedisConfig {
         template.afterPropertiesSet();
         return template;
     }
+
+    /*@Bean
+    public CacheManager cacheManager(RedisTemplate redisTemplate) {
+        return new RedisCacheManager(redisTemplate);
+
+    }*/
+
+    @Bean
+    public KeyGenerator keyGenerator() {
+        return new KeyGenerator() {
+            @Override
+            public Object generate(Object target, Method method, Object... objects) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(target.getClass().getName());
+                sb.append(":" + method.getName());
+                for (Object obj : objects) {
+                    sb.append(":" + obj.toString());
+                }
+
+                return sb;
+            }
+        };
+    }
+
+
 
 }

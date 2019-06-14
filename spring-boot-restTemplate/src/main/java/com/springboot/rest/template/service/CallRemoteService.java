@@ -1,9 +1,6 @@
-package com.springboot.rest.template.service;
+package com.springboot.rest.template.rest.template.service;
 
-import com.springboot.rest.template.entity.City;
-
-import java.net.URI;
-import java.util.List;
+import com.springboot.rest.template.rest.template.entity.City;
 
 public interface CallRemoteService {
 

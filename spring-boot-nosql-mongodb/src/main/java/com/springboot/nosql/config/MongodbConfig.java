@@ -1,7 +1,7 @@
-/*
 package com.springboot.nosql.config;
 
-import com.mongodb.*;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -32,4 +32,3 @@ public class MongodbConfig {
         return new MongoTemplate(mongoDbFactory);
     }
 }
-*/

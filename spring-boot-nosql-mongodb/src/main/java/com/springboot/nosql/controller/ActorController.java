@@ -25,8 +25,6 @@ public class ActorController {
     @Autowired
     private ActorRepository actorRepository;
 
-    //----------MongoTemplate-------------------------
-
     /**
      * 保存
      * @param actor
@@ -77,29 +75,4 @@ public class ActorController {
         return actorService.deleteByActorId(actorId);
     }
 
-
-    //------ActorRepository extends MongoRepository-------
-    //------以下示例代码,省略了Service层----------------------
-    @RequestMapping("/addActor")
-    public Actor addActor(Actor actor ){
-        actor.setLastUpdate(new Date());
-        return actorRepository.save(actor);
-    }
-
-    @RequestMapping("/findAll")
-    public List<Actor> findAll( ){
-        return actorRepository.findAll();
-    }
-
-    @RequestMapping("/findById")
-    public Actor findById(Long actorId){
-        return actorRepository.findById(actorId).get();
-    }
-
-    @RequestMapping("/deleteById")
-    public void deleteById(Long actorId){
-        actorRepository.deleteById(actorId);
-    }
-
-    //MongoRepository没有update方法
 }

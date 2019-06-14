@@ -1,4 +1,4 @@
-package com.springboot.rest.template.entity;
+package com.springboot.rest.template.rest.template.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
