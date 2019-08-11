@@ -18,8 +18,7 @@ import java.util.List;
 public interface ActorRepository extends JpaRepository<Actor, Long> {
 
     /**
-     * @RestResource注解常用属性
-     * path: 映射路径
+     * @RestResource注解常用属性 path: 映射路径
      * rel: 引用别名,不设置默认是方法名
      * exported: 两个值,不设置默认是true,设置为false时表示不作为Rest资源暴露;也可作用在类上
      * /api: 添加的路径映射
@@ -33,7 +32,7 @@ public interface ActorRepository extends JpaRepository<Actor, Long> {
     List<Actor> findByFirstNameStartsWith(@Param("firstName") String firstName);
 
 
-     //定制路径：http://localhost:8080/api/actor/search/firstNameStartsWith?firstName=NICK
+    //定制路径：http://localhost:8080/api/actor/search/firstNameStartsWith?firstName=NICK
     @RestResource(path = "findByLikeFirstName", rel = "likeFirstName")
     List<Actor> findByFirstNameContains(@Param("firstName") String firstName);
 

@@ -28,7 +28,7 @@ public class LoginController {
         //添加用户认证信息
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(
-                user.getUsername(),user.getPassword());
+                user.getUsername(), user.getPassword());
         //进行验证，这里可以捕获异常，然后返回对应信息
         try {
             subject.login(usernamePasswordToken);

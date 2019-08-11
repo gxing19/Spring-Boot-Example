@@ -34,7 +34,7 @@ public class CityServiceImpl implements CityService {
     @Override
     public int updateCity(Long cityId, String cityName) {
 //        return cityRepository.save(new City().setCityId(cityId).setCityName(cityName));
-        return cityRepository.update(cityId,cityName);
+        return cityRepository.update(cityId, cityName);
     }
 
     @Override

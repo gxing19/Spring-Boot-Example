@@ -11,7 +11,7 @@ public interface ActorService {
     void saveActor(Actor actor);
 
     void saveActorList(List<Actor> actorList);
-    
+
     UpdateResult addNXupdateEX(Actor actor);
 
     Actor queryByActorId(Long actorId);

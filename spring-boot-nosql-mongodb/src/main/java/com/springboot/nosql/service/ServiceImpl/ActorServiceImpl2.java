@@ -22,36 +22,40 @@ public class ActorServiceImpl2 {
 
     /**
      * 保存
+     *
      * @param actor
      * @return
      */
-    public Actor addActor(Actor actor ){
+    public Actor addActor(Actor actor) {
         actor.setLastUpdate(new Date());
         return actorRepository.save(actor);
     }
 
     /**
      * 查所有
+     *
      * @return
      */
-    public List<Actor> findAll( ){
+    public List<Actor> findAll() {
         return actorRepository.findAll();
     }
 
     /**
      * 根据ID查
+     *
      * @param actorId
      * @return
      */
-    public Actor findById(Long actorId){
+    public Actor findById(Long actorId) {
         return actorRepository.findById(actorId).get();
     }
 
     /**
      * 根据ID删除
+     *
      * @param actorId
      */
-    public void deleteById(Long actorId){
+    public void deleteById(Long actorId) {
         actorRepository.deleteById(actorId);
     }
 

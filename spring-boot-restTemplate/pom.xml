@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.2.RELEASE</version>
+        <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -77,7 +77,6 @@
             <version>2.0.0</version>
         </dependency>
 
-
         <!-- processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -107,9 +106,6 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.8</version>
         </dependency>
-
-
-
 
         <!-- test -->
         <dependency>

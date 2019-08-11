@@ -24,13 +24,13 @@ public class UserController {
     private UserRepository userRepository;
 
     @RequestMapping("/add")
-    public User addUser(){
+    public User addUser() {
         User user = new User().setId(10L).setAddress("中国").setAge(11).setName("Rose");
         return userService.addUser(user);
     }
 
     @RequestMapping("/queryById")
-    public User queryById(Long id){
+    public User queryById(Long id) {
         return userService.queyrById(id);
     }
 
@@ -52,14 +52,14 @@ public class UserController {
 
     //查询所有
     @RequestMapping("/queryAll")
-    public List<User> queryAll(){
+    public List<User> queryAll() {
         List<User> userList = userRepository.findAll();
         return userList;
     }
 
     //条件查询
     @RequestMapping("/queryByNameAndAge")
-    public List<User> queryByName(String name, Integer age){
+    public List<User> queryByName(String name, Integer age) {
         Example<User> example = new Example<User>() {
 
             //查询条件
@@ -93,13 +93,13 @@ public class UserController {
     //排序-倒序
     @RequestMapping("/querySortByAge")
     public List<User> querySortByAge() {
-        List<User> userList = userRepository.findAll(new Sort(Sort.Direction.DESC,"age"));
+        List<User> userList = userRepository.findAll(new Sort(Sort.Direction.DESC, "age"));
         return userList;
     }
 
     //分页
     @RequestMapping("/queryByPage")
-    public Page<User> queryByPage(){
+    public Page<User> queryByPage() {
         Page<User> userList = userRepository.findAll(PageRequest.of(1, 2));
         return userList;
     }

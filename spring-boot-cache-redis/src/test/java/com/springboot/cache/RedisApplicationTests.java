@@ -19,19 +19,19 @@ public class RedisApplicationTests {
     }
 
     @Test
-    public void saveActorToRedis(){
+    public void saveActorToRedis() {
         actorService.saveActorToString();
 
     }
 
     @Test
-    public void saveActorToHash(){
+    public void saveActorToHash() {
         actorService.saveActorToHash();
 
     }
 
     @Test
-    public void saveToHashTest(){
+    public void saveToHashTest() {
         actorService.saveToHashTest();
     }
 

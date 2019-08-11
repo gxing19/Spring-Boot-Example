@@ -1,18 +1,16 @@
-package com.springboot.rest.template.rest.template.service;
+package com.springboot.rest.template.service;
 
-import com.springboot.rest.template.rest.template.entity.City;
+import com.springboot.rest.template.entity.City;
 
 public interface CallRemoteService {
 
-    String getForObjectForAll();
+    String getForObject();
 
-    String getForEntityForAll();
+    String getForEntity();
+
+    String postForLocation();
 
     City getForEntityByCityId(Long cityId);
-
-    String postForLocationForCity(City city);
-
-    String postForEntityForCity(City city);
 
     String postForObjectForCity(City city);
 

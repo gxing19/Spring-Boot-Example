@@ -29,6 +29,6 @@ public class CustomUserServiceImpl implements CustomUserDetailsService {
 //        List<GrantedAuthority> authorityList = new ArrayList<>();
 //        authorityList.add(new SimpleGrantedAuthority(sysUser.getRole()));
 //        return new User(sysUser.getUsername(), sysUser.getPassword(),authorityList);
-        return  sysUser;
+        return sysUser;
     }
 }

@@ -49,7 +49,7 @@ public class JpaApplicationTests {
      * 在测试之前初始化些数据
      */
     @Before
-    public void setUp(){
+    public void setUp() {
         User user1 = new User().setId(11L).setAge(11).setName("Linker").setAddress("深圳。。。。。");
         User user2 = new User().setId(12L).setAge(12).setName("Kinger").setAddress("广州。。。。。");
         userRepository.save(user1);
@@ -84,6 +84,7 @@ public class JpaApplicationTests {
 
     /**
      * TestRestTemplate
+     *
      * @throws Exception
      */
     @Test
@@ -98,6 +99,7 @@ public class JpaApplicationTests {
 
     /**
      * MockMvc
+     *
      * @throws Exception
      */
     @Test

@@ -19,7 +19,7 @@ public class AsyncTaskExecutePool implements AsyncConfigurer {
     private Logger logger = LoggerFactory.getLogger(AsyncTaskExecutePool.class);
 
     @Override
-    public Executor getAsyncExecutor(){
+    public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         /*核收线程数*/
         executor.setCorePoolSize(5);
@@ -37,7 +37,7 @@ public class AsyncTaskExecutePool implements AsyncConfigurer {
     }
 
     @Override
-    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler(){
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new AsyncUncaughtExceptionHandler() {
             @Override
             public void handleUncaughtException(Throwable ex, Method method, Object... params) {

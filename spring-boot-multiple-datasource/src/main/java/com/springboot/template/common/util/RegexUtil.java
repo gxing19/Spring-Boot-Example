@@ -19,45 +19,45 @@ public class RegexUtil {
 
 
     /**
-    * @Author: gxing
-    * @Desc: 检查Email地址
-    * @Date: 2018/5/11 13:47
-    * @Param: []
-    * @Return: java.lang.Boolean
-    **/
-    public static boolean checkEmail(String email){
+     * @Author: gxing
+     * @Desc: 检查Email地址
+     * @Date: 2018/5/11 13:47
+     * @Param: []
+     * @Return: java.lang.Boolean
+     **/
+    public static boolean checkEmail(String email) {
         return executeRegex(email, EMAIL_REGEX);
     }
 
     /**
-    * @Author: gxing
-    * @Desc: 检查手机号码
-    * @Date: 2018/5/11 13:49
-    * @Param: []
-    * @Return: void
-    **/
-    public static boolean checkMobileNo(String mobileNo){
+     * @Author: gxing
+     * @Desc: 检查手机号码
+     * @Date: 2018/5/11 13:49
+     * @Param: []
+     * @Return: void
+     **/
+    public static boolean checkMobileNo(String mobileNo) {
         return executeRegex(mobileNo, MOBILE_NO_REGEX);
     }
 
     /**
-    * @Author: gxing
-    * @Desc: 检查身份证号码
-    * @Date: 2018/5/11 15:12
-    * @Param: [idCardNo]
-    * @Return: boolean
-    **/
-    public static boolean checkIdCardNo(String idCardNo){
+     * @Author: gxing
+     * @Desc: 检查身份证号码
+     * @Date: 2018/5/11 15:12
+     * @Param: [idCardNo]
+     * @Return: boolean
+     **/
+    public static boolean checkIdCardNo(String idCardNo) {
         return executeRegex(idCardNo, ID_CARD_NO_REGEX);
     }
 
     /**
-    * @Author: gxing
-    * @Desc: 执行正则校验
-    * @Date: 2018/5/11 14:44
-    * @Param: [mobileNo, mobileNoRegex]
-    * @Return: boolean
-    **/
+     * @Author: gxing
+     * @Desc: 执行正则校验
+     * @Date: 2018/5/11 14:44
+     * @Param: [mobileNo, mobileNoRegex]
+     * @Return: boolean
+     **/
     private static boolean executeRegex(String str, String regex) {
         boolean flag = false;
         try {

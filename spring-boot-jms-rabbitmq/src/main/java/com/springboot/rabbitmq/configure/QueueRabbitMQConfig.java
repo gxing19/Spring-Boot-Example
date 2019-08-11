@@ -17,12 +17,12 @@ public class QueueRabbitMQConfig {
     private static final String QUEUE_NAME_2 = "object";
 
     @Bean
-    public Queue strQueue(){
+    public Queue strQueue() {
         return new Queue(QUEUE_NAME_1);
     }
 
     @Bean
-    public Queue objQueue(){
+    public Queue objQueue() {
         return new Queue(QUEUE_NAME_2);
     }
 

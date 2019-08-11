@@ -17,17 +17,16 @@ public class ActorController {
     private ActorService actorService;
 
     @RequestMapping("/queryById")
-    public Actor queryById(Long actorId){
+    public Actor queryById(Long actorId) {
         Actor acotr = actorService.queryById(actorId);
         return acotr;
     }
 
     @RequestMapping("/queryByActorId")
-    public Actor queryByActorId(Long actorId){
+    public Actor queryByActorId(Long actorId) {
         Actor acotr = actorService.queryByActorId(actorId);
         return acotr;
     }
-
 
 
 }

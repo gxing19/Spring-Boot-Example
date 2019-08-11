@@ -60,6 +60,7 @@ public class ApplicationTests {
 
     /**
      * TestRestTemplate
+     *
      * @throws Exception
      */
     @Test
@@ -74,6 +75,7 @@ public class ApplicationTests {
 
     /**
      * MockMvc
+     *
      * @throws Exception
      */
     @Test

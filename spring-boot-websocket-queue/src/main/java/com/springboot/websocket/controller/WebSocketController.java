@@ -21,15 +21,15 @@ public class WebSocketController {
     private SimpMessagingTemplate simpMessagingTemplate;
 
     @MessageMapping("/chat")
-    public void handleChat(Principal principal,String msg){
+    public void handleChat(Principal principal, String msg) {
         //下面的代码就是如果发送人是Michael，接收人就是Janet，发送的信息是message，反之亦然。
-        if(principal.getName().equals("tom")){
+        if (principal.getName().equals("tom")) {
             //通过SimpMessagingTemplate的convertAndSendToUser向用户发送消息。
             //第一参数表示接收信息的用户，第二个是浏览器订阅的地址，第三个是消息本身
-            simpMessagingTemplate.convertAndSendToUser("kitty","/queue/notifications",
+            simpMessagingTemplate.convertAndSendToUser("kitty", "/queue/notifications",
                     principal.getName() + "-发送:" + msg);
         } else {
-            simpMessagingTemplate.convertAndSendToUser("tom","/queue/notifications",
+            simpMessagingTemplate.convertAndSendToUser("tom", "/queue/notifications",
                     principal.getName() + "-发送:" + msg);
         }
     }

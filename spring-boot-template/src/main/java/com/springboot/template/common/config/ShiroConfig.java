@@ -33,8 +33,8 @@ public class ShiroConfig {
 
         // 拦截器.配置不被拦截路径
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-        filterChainDefinitionMap.put("/","anon");
-        filterChainDefinitionMap.put("/doLogin","anon");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/doLogin", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/home", "anon");
         filterChainDefinitionMap.put("/**", "authc");
@@ -60,7 +60,7 @@ public class ShiroConfig {
     @Bean
     public SessionManager sessionManager() {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-        sessionManager.setGlobalSessionTimeout(60*60*1000);//  Session 设置1个小时超时
+        sessionManager.setGlobalSessionTimeout(60 * 60 * 1000);//  Session 设置1个小时超时
         return sessionManager;
     }
 }

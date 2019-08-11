@@ -1,9 +1,9 @@
-package com.springboot.rest.template.rest.template.service.impl;
+package com.springboot.rest.template.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.springboot.rest.template.rest.template.config.RestServerProperties;
-import com.springboot.rest.template.rest.template.entity.City;
-import com.springboot.rest.template.rest.template.service.CallRemoteService;
+import com.springboot.rest.template.config.RestServerProperties;
+import com.springboot.rest.template.entity.City;
+import com.springboot.rest.template.service.CallRemoteService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,8 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class CallRemoteServiceImpl implements CallRemoteService {
@@ -29,44 +31,49 @@ public class CallRemoteServiceImpl implements CallRemoteService {
     private RestTemplate restTemplate;
 
     /**
+     * getForObject()
+     * 返回的只有实体数据,没有响应头的数据
+     */
+    @Override
+    public String getForObject() {
+        String cityListStr = restTemplate.getForObject("http://localhost:8080/city", String.class);
+        logger.info("cityListStr:{}" + cityListStr);
+        return cityListStr;
+    }
+
+    /**
      * getForEntity()
      * 获取数据-所有
      * 包含响应头,响应体数据
      */
     @Override
-    public String getForEntityForAll() {
-        String uri = "http://localhost:8080/city";
-        ResponseEntity<Object> actorResponseEntity = null;
+    public String getForEntity() {
+        ResponseEntity<String> entity = null;
         try {
-            actorResponseEntity = restTemplate.getForEntity(uri, Object.class);
+            entity = restTemplate.getForEntity("http://localhost:8080/city", String.class);
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        String cityListStr = JSON.toJSONString(actorResponseEntity);
-        return cityListStr;
+
+        String body = entity.getBody();
+
+        return body;
     }
 
-    /**
-     * getForObject()
-     * 返回的只有实体数据,没有响应头的数据
-     */
     @Override
-    public String getForObjectForAll() {
-        String uri = restServerProperties.getUrl() + "/city";
-        Object object = restTemplate.getForObject(uri, Object.class);
-        String cityListStr = JSON.toJSONString(object);
-        logger.info("cityListStr:{}" + cityListStr);
-        return cityListStr;
+    public String postForLocation() {
+        return null;
     }
 
 
     /**
+     * 路径传参
      * getForEntity()
      * 获取数据-参数
      */
     public City getForEntityByCityId(Long cityId) {
-        String uri = "http://localhost:8080/city/" + cityId;
-        ResponseEntity<Object> responseEntity = restTemplate.getForEntity(uri, Object.class);
+        City city1 = restTemplate.getForObject("http://localhost:8080/city/" + cityId, City.class);
+        ResponseEntity<City> responseEntity2 = restTemplate.getForEntity("http://localhost:8080/city/" + cityId, City.class);
 
         //Body是LinkHashMap类型
         /*Object body = responseEntity.getBody();
@@ -74,9 +81,18 @@ public class CallRemoteServiceImpl implements CallRemoteService {
         City city = JSON.parseObject(botyStr, City.class);*/
 
         //从响应体中拿取实体类数据
-        City city = JSON.parseObject(JSON.toJSONString(responseEntity.getBody()), City.class);
+        City city2 = JSON.parseObject(JSON.toJSONString(responseEntity2.getBody()), City.class);
 
-        return city;
+
+        Map<String, Long> varMap = new HashMap<>(1);
+        varMap.put("cityId", cityId);
+        //getForObject方法
+        City city3 = restTemplate.getForObject("http://localhost:8080/city/{cityId}", City.class, varMap);
+        //getForEntity方法
+        ResponseEntity<City> responseEntity4 = restTemplate.getForEntity("http://localhost:8080/city/{cityId}", City.class, varMap);
+        City city4 = responseEntity2.getBody();
+
+        return city4;
     }
 
     /**
@@ -92,7 +108,7 @@ public class CallRemoteServiceImpl implements CallRemoteService {
 
         HttpEntity<String> formEntity = new HttpEntity<String>(JSON.toJSONString(city), headers);
 
-        String url = restServerProperties.getUrl() + "/city";
+        String url = "http://localhost:8080/city";
 
         //rest服务中Controller方法使用对象无法接收参数
 //        URI uri = restTemplate.postForLocation(url, city);
@@ -104,7 +120,7 @@ public class CallRemoteServiceImpl implements CallRemoteService {
         // 调用的Rest服务的Controller方法中使用 @RequestBody 解析参数封装到对象中,
         // 而@RequestBody注解解析的是JSON数据,所以需要设置消息头告诉数据类型和编码
         URI uri = restTemplate.postForLocation(url, formEntity);
-        if(uri != null){
+        if (uri != null) {
             uriStr = JSON.toJSONString(uri);
         }
         return uriStr;
@@ -115,7 +131,7 @@ public class CallRemoteServiceImpl implements CallRemoteService {
      * 添加数据
      */
     public String postForEntityForCity(City city) {
-        String url = restServerProperties.getUrl() + "/city";
+        String url = "http://localhost:8080/city";
         ResponseEntity<City> cityResponseEntity = restTemplate.postForEntity(url, city, City.class);
         String str = JSON.toJSONString(cityResponseEntity);
         return str;
@@ -126,7 +142,7 @@ public class CallRemoteServiceImpl implements CallRemoteService {
      * 添加数据
      */
     public String postForObjectForCity(City city) {
-        String url = restServerProperties.getUrl() + "/city";
+        String url = "http://localhost:8080/city";
         City city1 = restTemplate.postForObject(url, city, City.class);
         String str = JSON.toJSONString(city1);
         return str;
@@ -144,17 +160,23 @@ public class CallRemoteServiceImpl implements CallRemoteService {
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
         HttpEntity<String> formEntity = new HttpEntity<String>(JSON.toJSONString(
                 new City().setCityId(cityId).setCityName(cityName)), headers);
-        restTemplate.put(url,null);
+        restTemplate.put(url, null);
     }
 
     /**
      * delete删除
+     *
      * @param cityId
      */
     @Override
     public void deleteById(Long cityId) {
         String url = restServerProperties.getUrl() + "/city" + "/" + cityId;
         restTemplate.delete(url);
+    }
+
+    public void restTemplateTest() {
+
+//        restTemplate.getForObject()
     }
 
 }

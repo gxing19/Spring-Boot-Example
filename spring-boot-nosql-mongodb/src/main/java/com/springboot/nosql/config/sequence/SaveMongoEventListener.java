@@ -25,6 +25,7 @@ public class SaveMongoEventListener extends AbstractMongoEventListener<Object> {
 
     /**
      * 域对象转持久化之前引发的事件
+     *
      * @param event
      */
     @Override
@@ -45,6 +46,7 @@ public class SaveMongoEventListener extends AbstractMongoEventListener<Object> {
 
     /**
      * 获取最新的自增序列ID
+     *
      * @param collName
      * @return
      */

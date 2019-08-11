@@ -1,16 +1,23 @@
-package com.springboot.rest.template.rest.template.config;
+package com.springboot.rest.template.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+
 @Configuration
 public class RestTemplateConfig {
+
+    @Autowired
+    private RestTemplateBuilder restTemplateBuilder;
 
     @Bean
     public RestTemplate restTemplate() {
         //设置超时时间,毫秒
-        return new RestTemplateBuilder().setConnectTimeout(5000).setReadTimeout(5000).build();
+        return restTemplateBuilder.setConnectTimeout(Duration.ofSeconds(5))
+                .setReadTimeout(Duration.ofSeconds(10)).build();
     }
 }

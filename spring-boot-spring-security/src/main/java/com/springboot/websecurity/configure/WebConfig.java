@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/error").setViewName("error");
         registry.addViewController("/404").setViewName("404");
         //根目录默认定位到首页
-        registry.addRedirectViewController("/","/index");
+        registry.addRedirectViewController("/", "/index");
         registry.addRedirectViewController("/selectAll", "/city/queryAll");
     }
 }

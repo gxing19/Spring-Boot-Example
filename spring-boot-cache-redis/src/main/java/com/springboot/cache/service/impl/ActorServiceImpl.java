@@ -87,7 +87,7 @@ public class ActorServiceImpl implements ActorService {
             redisTemplate.opsForHash().put("actor" + i, "lastUpdate",actor.getLastUpdate());*/
 
             //每个KEY 存1000个字段; 10000条数据占内存 1.77M
-            Long a = i/1000;
+            Long a = i / 1000;
             redisTemplate.opsForHash().put("actor:" + a, String.valueOf(i), actor);
         }
     }
@@ -126,7 +126,7 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Cacheable(value = "#userId", keyGenerator = "keyGenerator")
-    public Actor getById(Long userId){
+    public Actor getById(Long userId) {
         Actor actor = new Actor();
         Optional<Actor> actorOptional = actorRepository.findById(userId);
         return actorOptional.get();

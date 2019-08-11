@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/city",method = RequestMethod.POST)
+@RequestMapping(value = "/city", method = RequestMethod.POST)
 public class CityController {
     private static final Logger logger = LogManager.getLogger(CityController.class);
 
@@ -21,14 +21,14 @@ public class CityController {
     private CityService cityService;
 
     @RequestMapping("/queryAll")
-    public List<City> queryAll(){
+    public List<City> queryAll() {
         List<City> cityList = cityService.queryAll();
         logger.info("cityList:{}", JSON.toJSONString(cityList));
         return cityList;
     }
 
     @RequestMapping("/queryById")
-    public City queryById(Long cityId){
+    public City queryById(Long cityId) {
         City city = cityService.queryById(cityId);
         logger.info("city:{}", JSON.toJSONString(city));
         return city;

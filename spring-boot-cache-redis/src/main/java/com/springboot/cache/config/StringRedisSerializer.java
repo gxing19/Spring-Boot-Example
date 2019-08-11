@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
 
 /**
  * @name: StringRedisSerializer
- * @desc: 重写StringRedisSerializer,支持对象数据序列化,默认只支持String数据
+ * @desc: 重写StringRedisSerializer, 支持对象数据序列化, 默认只支持String数据
  * @author: gxing
  * @date: 2018-11-05 16:15
  **/

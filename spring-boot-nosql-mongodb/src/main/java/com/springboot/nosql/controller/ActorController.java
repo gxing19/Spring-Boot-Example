@@ -27,51 +27,56 @@ public class ActorController {
 
     /**
      * 保存
+     *
      * @param actor
      */
     @RequestMapping("/saveActor")
-    public void saveActor(Actor actor ){
+    public void saveActor(Actor actor) {
         actor.setLastUpdate(new Date());
         actorService.saveActor(actor);
     }
 
     /**
      * 根据主键id查
+     *
      * @param actorId
      * @return
      */
     @RequestMapping("/queryByActorId")
-    public Actor queryByActorId(Long actorId ){
+    public Actor queryByActorId(Long actorId) {
         return actorService.queryByActorId(actorId);
     }
 
     /**
      * 根据用户名查
+     *
      * @param firstName
      * @return
      */
     @RequestMapping("/queryByFirstName")
-    public List<Actor> queryByFirstName(String firstName ){
+    public List<Actor> queryByFirstName(String firstName) {
         return actorService.queryByFirstName(firstName);
     }
 
     /**
      * 更新
+     *
      * @param Actor
      * @return
      */
     @RequestMapping("/updateActor")
-    public UpdateResult updateActor(Actor Actor ){
+    public UpdateResult updateActor(Actor Actor) {
         return actorService.updateActor(Actor);
     }
 
     /**
      * 删除
+     *
      * @param actorId
      * @return
      */
     @RequestMapping("/deleteByActorId")
-    public DeleteResult deleteByActorId(Long actorId ){
+    public DeleteResult deleteByActorId(Long actorId) {
         return actorService.deleteByActorId(actorId);
     }
 

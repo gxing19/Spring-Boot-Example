@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebSocketController {
 
     @RequestMapping("/stomp")
-    public String stomp(){
+    public String stomp() {
         return "stomp";
     }
 

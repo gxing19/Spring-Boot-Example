@@ -40,7 +40,7 @@ public interface UserServiceOne {
     User queryByUsername(String username);
 
     /**
-     * @desc: 根据用户名查询,调用XML
+     * @desc: 根据用户名查询, 调用XML
      * @author: gxing
      * @date: 2019/2/19 11:38
      * @param: [username]

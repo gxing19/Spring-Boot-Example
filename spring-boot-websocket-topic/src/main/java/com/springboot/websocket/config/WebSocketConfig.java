@@ -13,7 +13,7 @@ import org.springframework.web.socket.config.annotation.*;
  **/
 @Configuration
 @EnableWebSocketMessageBroker   //开启使用STOMP协议来传输基于代理(message broker)的消息
-public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{               //v2.0.x
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {               //v2.0.x
 //public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{        //v1.5.x
 
     //注册 WebSocketp客户端连接端点(路径)

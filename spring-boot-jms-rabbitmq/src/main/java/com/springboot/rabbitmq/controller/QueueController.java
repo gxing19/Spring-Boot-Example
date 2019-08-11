@@ -24,6 +24,7 @@ public class QueueController {
 
     /**
      * RabbitMQ 发布文本消息
+     *
      * @param msg
      * @return
      */
@@ -36,11 +37,12 @@ public class QueueController {
     /**
      * RabbitMQ 发布对象消息
      * 前提是对象要实现序列化接口
+     *
      * @return
      */
     @RequestMapping("/sendObj")
     public String rabbitMQSendObj() {
-        queueProducerService.rabbitMQSendObj(new User("Andy",33));
+        queueProducerService.rabbitMQSendObj(new User("Andy", 33));
         return null;
     }
 }

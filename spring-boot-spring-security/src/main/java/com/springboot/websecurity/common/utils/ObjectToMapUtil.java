@@ -14,7 +14,7 @@ public class ObjectToMapUtil {
 
     public static Map<String, String> obj2Map(Object obj) {
 
-        if(obj == null){
+        if (obj == null) {
             return null;
         }
 
@@ -32,7 +32,7 @@ public class ObjectToMapUtil {
                 e.printStackTrace();
             }
         }*/
-        
+
         for (int i = 0, len = fields.length; i < len; i++) {
             String varName = fields[i].getName();
             varName = varName.toLowerCase();//将key置为小写，默认为对象的属性

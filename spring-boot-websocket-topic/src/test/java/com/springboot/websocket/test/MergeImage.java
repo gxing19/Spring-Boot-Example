@@ -16,7 +16,7 @@ public class MergeImage {
 
     public static void main(String[] args) {
         BufferedImage img = new BufferedImage(1080, 1920, BufferedImage.TYPE_INT_RGB);//创建图片
-        img.setRGB(32,217,120);
+        img.setRGB(32, 217, 120);
         try {
             BufferedImage teamImg = ImageIO.read(new File("d:/image/qrcode_team.PNG"));//读取互联网图片
             BufferedImage logImg = ImageIO.read(new File("d:/image/qrcode_new.PNG"));//读取本地图片
@@ -25,12 +25,12 @@ public class MergeImage {
             //开启画图
             Graphics g = img.getGraphics();
             g.setColor(Color.decode("#EEAD0E"));
-            g.fillRect(0,0,1080,1920);//填充整个屏幕
+            g.fillRect(0, 0, 1080, 1920);//填充整个屏幕
 
 
-            g.drawImage(teamImg.getScaledInstance(1080,320, Image.SCALE_DEFAULT), 0, 250, null); // 绘制缩小后的图
-            g.drawImage(logImg.getScaledInstance(800,250, Image.SCALE_DEFAULT), 120, 600, null); // 绘制缩小后的图
-            g.drawImage(textImg.getScaledInstance(800,250, Image.SCALE_DEFAULT), 120, 1500, null); // 绘制缩小后的图
+            g.drawImage(teamImg.getScaledInstance(1080, 320, Image.SCALE_DEFAULT), 0, 250, null); // 绘制缩小后的图
+            g.drawImage(logImg.getScaledInstance(800, 250, Image.SCALE_DEFAULT), 120, 600, null); // 绘制缩小后的图
+            g.drawImage(textImg.getScaledInstance(800, 250, Image.SCALE_DEFAULT), 120, 1500, null); // 绘制缩小后的图
 
             g.setFont(new Font("黑体", Font.BOLD, 72));//设置字体
             g.setColor(Color.white);//绘制文字

@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
 
     <name>springboot-kafka</name>
-    <description>kafka  project for Spring Boot</description>
+    <description>kafka project for Spring Boot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

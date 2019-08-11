@@ -24,7 +24,7 @@ public class Actor {
     public Actor() {
     }
 
-    public Actor(Long actorId,String firstName, String lastName, Date lastUpdate) {
+    public Actor(Long actorId, String firstName, String lastName, Date lastUpdate) {
         this.actorId = actorId;
         this.firstName = firstName;
         this.lastName = lastName;

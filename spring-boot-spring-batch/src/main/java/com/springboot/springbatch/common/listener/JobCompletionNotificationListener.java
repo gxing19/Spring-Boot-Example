@@ -29,10 +29,10 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-        if(jobExecution.getStatus() == BatchStatus.COMPLETED){
+        if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             logger.info("!!! JOB FINISHED! Time to verify the results");
             Integer count = jdbcTemplate.queryForObject("select count(*) from person", Integer.class);
-            logger.info("!!! Found Person Number:{}",count);
+            logger.info("!!! Found Person Number:{}", count);
         }
 
 

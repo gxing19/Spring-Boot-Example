@@ -26,7 +26,7 @@ public class IndexController {
     private final Logger logger = LogManager.getRootLogger();
 
     @RequestMapping("/index")
-    public String indexPage(Model model){
+    public String indexPage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         logger.info("authentication:{}", JSON.toJSONString(authentication));
         //返回的是个用户实体

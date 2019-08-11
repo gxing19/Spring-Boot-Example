@@ -22,8 +22,8 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 public class KafkaConfig {
 
     @Bean
-    public NewTopic newTopic(){
-        return new NewTopic("NBA",1, (short) 1);
+    public NewTopic newTopic() {
+        return new NewTopic("NBA", 1, (short) 1);
     }
 
     @Bean

@@ -22,7 +22,7 @@ public class CityController {
     private CityService cityService;
 
     @RequestMapping("/queryAll")
-    public List<City> queryAll(){
+    public List<City> queryAll() {
         //生成LogId,以时间毫秒值
         ThreadContext.put("LogId", Long.toString(System.currentTimeMillis()));
         List<City> cityList = cityService.queryAll();
@@ -32,7 +32,7 @@ public class CityController {
     }
 
     @RequestMapping("/queryById")
-    public City queryById(Long cityId){
+    public City queryById(Long cityId) {
         //生成LogId,以线程ID
         ThreadContext.put("LogId", Long.toString(Thread.currentThread().getId()));
         City city = cityService.queryById(cityId);

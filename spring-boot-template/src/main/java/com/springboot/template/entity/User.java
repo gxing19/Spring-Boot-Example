@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * @name: User
- * @desc: 用户信息,继承基类
+ * @desc: 用户信息, 继承基类
  * @author: gxing
  * @date: 2018-09-25 11:48
  **/

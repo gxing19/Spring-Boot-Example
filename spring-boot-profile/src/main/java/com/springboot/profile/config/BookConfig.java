@@ -13,8 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class BookConfig {
 
     /**
-     * @Value("${xxx}")
-     * 全限定属性名注入值
+     * @Value("${xxx}") 全限定属性名注入值
      */
     @Value("${book.author}")
     private String author;

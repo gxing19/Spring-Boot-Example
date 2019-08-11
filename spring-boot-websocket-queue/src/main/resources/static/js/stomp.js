@@ -6,7 +6,7 @@
  Copyright (C) 2012 [FuseSource, Inc.](http://fusesource.com)
  */
 
-(function() {
+(function () {
     var Byte, Client, Frame, Stomp,
         __hasProp = {}.hasOwnProperty,
         __slice = [].slice;
@@ -16,7 +16,7 @@
         NULL: '\x00'
     };
 
-    Frame = (function() {
+    Frame = (function () {
         var unmarshallSingle;
 
         function Frame(command, headers, body) {
@@ -25,7 +25,7 @@
             this.body = body != null ? body : '';
         }
 
-        Frame.prototype.toString = function() {
+        Frame.prototype.toString = function () {
             var lines, name, skipContentLength, value, _ref;
             lines = [this.command];
             skipContentLength = this.headers['content-length'] === false ? true : false;
@@ -45,7 +45,7 @@
             return lines.join(Byte.LF);
         };
 
-        Frame.sizeOfUTF8 = function(s) {
+        Frame.sizeOfUTF8 = function (s) {
             if (s) {
                 return encodeURI(s).match(/%..|./g).length;
             } else {
@@ -53,13 +53,14 @@
             }
         };
 
-        unmarshallSingle = function(data) {
-            var body, chr, command, divider, headerLines, headers, i, idx, len, line, start, trim, _i, _j, _len, _ref, _ref1;
+        unmarshallSingle = function (data) {
+            var body, chr, command, divider, headerLines, headers, i, idx, len, line, start, trim, _i, _j, _len, _ref,
+                _ref1;
             divider = data.search(RegExp("" + Byte.LF + Byte.LF));
             headerLines = data.substring(0, divider).split(Byte.LF);
             command = headerLines.shift();
             headers = {};
-            trim = function(str) {
+            trim = function (str) {
                 return str.replace(/^\s+|\s+$/g, '');
             };
             _ref = headerLines.reverse();
@@ -86,14 +87,14 @@
             return new Frame(command, headers, body);
         };
 
-        Frame.unmarshall = function(datas) {
+        Frame.unmarshall = function (datas) {
             var frame, frames, last_frame, r;
             frames = datas.split(RegExp("" + Byte.NULL + Byte.LF + "*"));
             r = {
                 frames: [],
                 partial: ''
             };
-            r.frames = (function() {
+            r.frames = (function () {
                 var _i, _len, _ref, _results;
                 _ref = frames.slice(0, -1);
                 _results = [];
@@ -112,7 +113,7 @@
             return r;
         };
 
-        Frame.marshall = function(command, headers, body) {
+        Frame.marshall = function (command, headers, body) {
             var frame;
             frame = new Frame(command, headers, body);
             return frame.toString() + Byte.NULL;
@@ -122,7 +123,7 @@
 
     })();
 
-    Client = (function() {
+    Client = (function () {
         var now;
 
         function Client(ws) {
@@ -139,12 +140,12 @@
             this.partialData = '';
         }
 
-        Client.prototype.debug = function(message) {
+        Client.prototype.debug = function (message) {
             var _ref;
             return typeof window !== "undefined" && window !== null ? (_ref = window.console) != null ? _ref.log(message) : void 0 : void 0;
         };
 
-        now = function() {
+        now = function () {
             if (Date.now) {
                 return Date.now();
             } else {
@@ -152,7 +153,7 @@
             }
         };
 
-        Client.prototype._transmit = function(command, headers, body) {
+        Client.prototype._transmit = function (command, headers, body) {
             var out;
             out = Frame.marshall(command, headers, body);
             if (typeof this.debug === "function") {
@@ -171,12 +172,12 @@
             }
         };
 
-        Client.prototype._setupHeartbeat = function(headers) {
+        Client.prototype._setupHeartbeat = function (headers) {
             var serverIncoming, serverOutgoing, ttl, v, _ref, _ref1;
             if ((_ref = headers.version) !== Stomp.VERSIONS.V1_1 && _ref !== Stomp.VERSIONS.V1_2) {
                 return;
             }
-            _ref1 = (function() {
+            _ref1 = (function () {
                 var _i, _len, _ref1, _results;
                 _ref1 = headers['heart-beat'].split(",");
                 _results = [];
@@ -191,8 +192,8 @@
                 if (typeof this.debug === "function") {
                     this.debug("send PING every " + ttl + "ms");
                 }
-                this.pinger = Stomp.setInterval(ttl, (function(_this) {
-                    return function() {
+                this.pinger = Stomp.setInterval(ttl, (function (_this) {
+                    return function () {
                         _this.ws.send(Byte.LF);
                         return typeof _this.debug === "function" ? _this.debug(">>> PING") : void 0;
                     };
@@ -203,8 +204,8 @@
                 if (typeof this.debug === "function") {
                     this.debug("check PONG every " + ttl + "ms");
                 }
-                return this.ponger = Stomp.setInterval(ttl, (function(_this) {
-                    return function() {
+                return this.ponger = Stomp.setInterval(ttl, (function (_this) {
+                    return function () {
                         var delta;
                         delta = now() - _this.serverActivity;
                         if (delta > ttl * 2) {
@@ -218,7 +219,7 @@
             }
         };
 
-        Client.prototype._parseConnect = function() {
+        Client.prototype._parseConnect = function () {
             var args, connectCallback, errorCallback, headers;
             args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
             headers = {};
@@ -242,7 +243,7 @@
             return [headers, connectCallback, errorCallback];
         };
 
-        Client.prototype.connect = function() {
+        Client.prototype.connect = function () {
             var args, errorCallback, headers, out;
             args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
             out = this._parseConnect.apply(this, args);
@@ -250,10 +251,11 @@
             if (typeof this.debug === "function") {
                 this.debug("Opening Web Socket...");
             }
-            this.ws.onmessage = (function(_this) {
-                return function(evt) {
-                    var arr, c, client, data, frame, messageID, onreceive, subscription, unmarshalledData, _i, _len, _ref, _results;
-                    data = typeof ArrayBuffer !== 'undefined' && evt.data instanceof ArrayBuffer ? (arr = new Uint8Array(evt.data), typeof _this.debug === "function" ? _this.debug("--- got data length: " + arr.length) : void 0, ((function() {
+            this.ws.onmessage = (function (_this) {
+                return function (evt) {
+                    var arr, c, client, data, frame, messageID, onreceive, subscription, unmarshalledData, _i, _len,
+                        _ref, _results;
+                    data = typeof ArrayBuffer !== 'undefined' && evt.data instanceof ArrayBuffer ? (arr = new Uint8Array(evt.data), typeof _this.debug === "function" ? _this.debug("--- got data length: " + arr.length) : void 0, ((function () {
                         var _i, _len, _results;
                         _results = [];
                         for (_i = 0, _len = arr.length; _i < _len; _i++) {
@@ -293,13 +295,13 @@
                                 if (onreceive) {
                                     client = _this;
                                     messageID = frame.headers["message-id"];
-                                    frame.ack = function(headers) {
+                                    frame.ack = function (headers) {
                                         if (headers == null) {
                                             headers = {};
                                         }
                                         return client.ack(messageID, subscription, headers);
                                     };
-                                    frame.nack = function(headers) {
+                                    frame.nack = function (headers) {
                                         if (headers == null) {
                                             headers = {};
                                         }
@@ -323,8 +325,8 @@
                     return _results;
                 };
             })(this);
-            this.ws.onclose = (function(_this) {
-                return function() {
+            this.ws.onclose = (function (_this) {
+                return function () {
                     var msg;
                     msg = "Whoops! Lost connection to " + _this.ws.url;
                     if (typeof _this.debug === "function") {
@@ -334,8 +336,8 @@
                     return typeof errorCallback === "function" ? errorCallback(msg) : void 0;
                 };
             })(this);
-            return this.ws.onopen = (function(_this) {
-                return function() {
+            return this.ws.onopen = (function (_this) {
+                return function () {
                     if (typeof _this.debug === "function") {
                         _this.debug('Web Socket Opened...');
                     }
@@ -346,7 +348,7 @@
             })(this);
         };
 
-        Client.prototype.disconnect = function(disconnectCallback, headers) {
+        Client.prototype.disconnect = function (disconnectCallback, headers) {
             if (headers == null) {
                 headers = {};
             }
@@ -357,7 +359,7 @@
             return typeof disconnectCallback === "function" ? disconnectCallback() : void 0;
         };
 
-        Client.prototype._cleanUp = function() {
+        Client.prototype._cleanUp = function () {
             this.connected = false;
             if (this.pinger) {
                 Stomp.clearInterval(this.pinger);
@@ -367,7 +369,7 @@
             }
         };
 
-        Client.prototype.send = function(destination, headers, body) {
+        Client.prototype.send = function (destination, headers, body) {
             if (headers == null) {
                 headers = {};
             }
@@ -378,7 +380,7 @@
             return this._transmit("SEND", headers, body);
         };
 
-        Client.prototype.subscribe = function(destination, callback, headers) {
+        Client.prototype.subscribe = function (destination, callback, headers) {
             var client;
             if (headers == null) {
                 headers = {};
@@ -392,20 +394,20 @@
             client = this;
             return {
                 id: headers.id,
-                unsubscribe: function() {
+                unsubscribe: function () {
                     return client.unsubscribe(headers.id);
                 }
             };
         };
 
-        Client.prototype.unsubscribe = function(id) {
+        Client.prototype.unsubscribe = function (id) {
             delete this.subscriptions[id];
             return this._transmit("UNSUBSCRIBE", {
                 id: id
             });
         };
 
-        Client.prototype.begin = function(transaction) {
+        Client.prototype.begin = function (transaction) {
             var client, txid;
             txid = transaction || "tx-" + this.counter++;
             this._transmit("BEGIN", {
@@ -414,28 +416,28 @@
             client = this;
             return {
                 id: txid,
-                commit: function() {
+                commit: function () {
                     return client.commit(txid);
                 },
-                abort: function() {
+                abort: function () {
                     return client.abort(txid);
                 }
             };
         };
 
-        Client.prototype.commit = function(transaction) {
+        Client.prototype.commit = function (transaction) {
             return this._transmit("COMMIT", {
                 transaction: transaction
             });
         };
 
-        Client.prototype.abort = function(transaction) {
+        Client.prototype.abort = function (transaction) {
             return this._transmit("ABORT", {
                 transaction: transaction
             });
         };
 
-        Client.prototype.ack = function(messageID, subscription, headers) {
+        Client.prototype.ack = function (messageID, subscription, headers) {
             if (headers == null) {
                 headers = {};
             }
@@ -444,7 +446,7 @@
             return this._transmit("ACK", headers);
         };
 
-        Client.prototype.nack = function(messageID, subscription, headers) {
+        Client.prototype.nack = function (messageID, subscription, headers) {
             if (headers == null) {
                 headers = {};
             }
@@ -462,11 +464,11 @@
             V1_0: '1.0',
             V1_1: '1.1',
             V1_2: '1.2',
-            supportedVersions: function() {
+            supportedVersions: function () {
                 return '1.1,1.0';
             }
         },
-        client: function(url, protocols) {
+        client: function (url, protocols) {
             var klass, ws;
             if (protocols == null) {
                 protocols = ['v10.stomp', 'v11.stomp'];
@@ -475,7 +477,7 @@
             ws = new klass(url, protocols);
             return new Client(ws);
         },
-        over: function(ws) {
+        over: function (ws) {
             return new Client(ws);
         },
         Frame: Frame
@@ -486,10 +488,10 @@
     }
 
     if (typeof window !== "undefined" && window !== null) {
-        Stomp.setInterval = function(interval, f) {
+        Stomp.setInterval = function (interval, f) {
             return window.setInterval(f, interval);
         };
-        Stomp.clearInterval = function(id) {
+        Stomp.clearInterval = function (id) {
             return window.clearInterval(id);
         };
         window.Stomp = Stomp;

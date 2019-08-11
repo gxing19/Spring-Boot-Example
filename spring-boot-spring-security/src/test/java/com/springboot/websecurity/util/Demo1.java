@@ -19,7 +19,7 @@ import javax.swing.*;
 public class Demo1 {
 
     @Test
-    public void bcryptPassword(){
+    public void bcryptPassword() {
         String password = "123456";
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encode = passwordEncoder.encode(password);

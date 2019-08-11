@@ -34,7 +34,7 @@ public class UserServiceTwoImpl implements UserServiceTwo {
     @Override
     public User queryByUsername(String username) {
         Example example = new Example(User.class);
-        example.createCriteria().andEqualTo("username",username);
+        example.createCriteria().andEqualTo("username", username);
         return userMapperTwo.selectOneByExample(example);
     }
 

@@ -25,10 +25,10 @@ public class WebSocketInterceptor extends HttpSessionHandshakeInterceptor {
             HttpSession session = servletRequest.getServletRequest().getSession(false);
             if (session != null) {
                 String userName = (String) session.getAttribute("userName");
-                if(userName == null){
+                if (userName == null) {
                     userName = "WEBSOCKET_USERNAME_IS_NULL";
                 }
-                attributes.put("userName",userName);
+                attributes.put("userName", userName);
             }
         }
 

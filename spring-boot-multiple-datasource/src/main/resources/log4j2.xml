@@ -38,16 +38,16 @@
     </Appenders>
 
     <Loggers>
-        <logger name="jdbc.sqlonly" level="INFO" />
+        <logger name="jdbc.sqlonly" level="INFO"/>
         <logger name="jdbc.sqltiming" level="OFF"/>
         <logger name="jdbc.resultsettable" level="INFO"/>
         <logger name="jdbc.resultset" level="OFF"/>
         <logger name="jdbc.connection" level="OFF"/>
         <logger name="jdbc.audit" level="OFF"/>
         <Root level="INFO">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="INFO-LOG" />
-            <AppenderRef ref="ERROR-LOG" />
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="INFO-LOG"/>
+            <AppenderRef ref="ERROR-LOG"/>
         </Root>
     </Loggers>
 

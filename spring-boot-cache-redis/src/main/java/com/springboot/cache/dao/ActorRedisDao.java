@@ -15,10 +15,10 @@ import javax.annotation.Resource;
  * @Date: 2018-06-06 10:23
  **/
 @Repository
-public class ActorRedisDao{
+public class ActorRedisDao {
 
     @Autowired
-    private RedisTemplate<Object,Object> redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
     @Resource(name = "redisTemplate")
     ValueOperations<Object, Object> objValueOperations;
@@ -29,19 +29,19 @@ public class ActorRedisDao{
     @Resource(name = "stringRedisTemplate")
     ValueOperations<String, String> stringValueOperations;
 
-    public void stringRedisTemplateDmoe(String key, String value){
+    public void stringRedisTemplateDmoe(String key, String value) {
         stringValueOperations.set(key, value);
     }
 
-    public void save(String key, Object obj){
+    public void save(String key, Object obj) {
         objValueOperations.set(key, obj);
     }
 
-    public String getStr(String key){
+    public String getStr(String key) {
         return stringValueOperations.get(key);
     }
 
-    public Object getActor(String key){
-       return objValueOperations.get(key);
+    public Object getActor(String key) {
+        return objValueOperations.get(key);
     }
 }

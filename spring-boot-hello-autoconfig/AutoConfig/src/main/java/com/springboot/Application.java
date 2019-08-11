@@ -11,16 +11,16 @@ import com.springboot.service.HelloService;
 @RestController
 @SpringBootApplication
 public class Application {
-	
-	@Autowired
-	HelloService helloService;
-	
-	@RequestMapping("/")
-	public String index() {
-		return helloService.sayHello();
-	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    @Autowired
+    HelloService helloService;
+
+    @RequestMapping("/")
+    public String index() {
+        return helloService.sayHello();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 }

@@ -22,7 +22,7 @@ public class MyWebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public HttpMessageConverters fastJsonConfigure(){
+    public HttpMessageConverters fastJsonConfigure() {
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         //序列化配置

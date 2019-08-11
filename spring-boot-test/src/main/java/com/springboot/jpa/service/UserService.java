@@ -4,7 +4,7 @@ import com.springboot.jpa.entity.User;
 
 public interface UserService {
 
-	public User queyrById(Long id);
+    public User queyrById(Long id);
 
-	User addUser(User user);
+    User addUser(User user);
 }

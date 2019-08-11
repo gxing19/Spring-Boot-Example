@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
 <div>
     <h1>欢迎来到首页:
         <%--从authentication中取值--%>
-        <sec:authentication property="principal.username" />
+        <sec:authentication property="principal.username"/>
 
         <%--从model中取值--%>
         ${username}

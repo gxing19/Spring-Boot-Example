@@ -9,23 +9,23 @@
 </head>
 
 <body onload='document.f.username.focus();'>
-    <h3>欢迎登录</h3>
-    <form name='f' action='/login' method='POST'>
-        <table>
-            <tr>
-                <td>User:</td>
-                <td><input type='text' name='username' value=''></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type='password' name='password'/></td>
-            </tr>
-            <tr>
-                <td colspan='2'><input name="submit" type="submit" value="Login"/></td>
-            </tr>
-            <%--<input name="_csrf" type="hidden" value="a029a020-6e8f-4bce-9155-23545f36275d"/>--%>
-        </table>
-    </form>
+<h3>欢迎登录</h3>
+<form name='f' action='/login' method='POST'>
+    <table>
+        <tr>
+            <td>User:</td>
+            <td><input type='text' name='username' value=''></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password'/></td>
+        </tr>
+        <tr>
+            <td colspan='2'><input name="submit" type="submit" value="Login"/></td>
+        </tr>
+        <%--<input name="_csrf" type="hidden" value="a029a020-6e8f-4bce-9155-23545f36275d"/>--%>
+    </table>
+</form>
 </body>
 
 </html>

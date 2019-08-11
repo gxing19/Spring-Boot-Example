@@ -18,22 +18,24 @@ import java.util.List;
 @Service
 public class ActorServiceImpl implements ActorService {
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     /**
      * 增-insert
+     *
      * @param actor
      * @return
      */
-	@Override
-	public int addActor(Actor actor) {
-		String sql = "insert into actor (actor_id,first_name,last_name,last_update) values (?,?,?,?)";
-		return jdbcTemplate.update(sql, actor.getActorId(), actor.getFirstName(), actor.getLastName(), actor.getLastUpdate());
-	}
+    @Override
+    public int addActor(Actor actor) {
+        String sql = "insert into actor (actor_id,first_name,last_name,last_update) values (?,?,?,?)";
+        return jdbcTemplate.update(sql, actor.getActorId(), actor.getFirstName(), actor.getLastName(), actor.getLastUpdate());
+    }
 
     /**
      * 改-update
+     *
      * @param firstName
      * @param actorId
      * @return
@@ -46,17 +48,19 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 删除-delete
+     *
      * @param actorId
      * @return
      */
     @Override
     public int deleteActor(Long actorId) {
         String sql = "delete from actor where actor_id = ?";
-        return jdbcTemplate.update(sql,actorId);
+        return jdbcTemplate.update(sql, actorId);
     }
 
     /**
      * rowCount
+     *
      * @return
      */
     @Override
@@ -67,16 +71,18 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * count by
+     *
      * @return
      */
     @Override
     public int queryCountByLastName(String lastName) {
         String sql = "select count(*) from actor where last_name = ?";
-        return jdbcTemplate.queryForObject(sql,Integer.class,lastName);
+        return jdbcTemplate.queryForObject(sql, Integer.class, lastName);
     }
 
     /**
      * 查询结果是字符串
+     *
      * @param actorId
      * @return
      */
@@ -90,6 +96,7 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 返回对象
+     *
      * @param actorId
      * @return
      */
@@ -115,10 +122,11 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 查询对象集合
+     *
      * @return
      */
     @Override
-    public List<Actor> queryActorList(){
+    public List<Actor> queryActorList() {
         /*try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -137,7 +145,7 @@ public class ActorServiceImpl implements ActorService {
                 return actor;
             }
         };
-        return jdbcTemplate.query(sql,actorRowMapper);
+        return jdbcTemplate.query(sql, actorRowMapper);
     }
 
 }

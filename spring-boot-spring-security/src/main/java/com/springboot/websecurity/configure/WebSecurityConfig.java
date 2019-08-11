@@ -34,10 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 注入跨域配置
+     *
      * @return
      */
     @Bean
-    public UrlBasedCorsConfigurationSource corsConfig(){
+    public UrlBasedCorsConfigurationSource corsConfig() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
@@ -64,27 +65,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()                                    //开启请求权限配置
 //                    .antMatchers("/admin/**").hasRole("ADMIN")
 //                    .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
-                    .antMatchers(HttpMethod.OPTIONS).permitAll()
-                    .antMatchers("/admin/**","/userInfo").hasAuthority("ADMIN") //是否授权
-                    .antMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
-                    .antMatchers("/", "/login").permitAll()                     //匹配路径,允许任何人访问(不拦截,放行)
-                    .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                    .anyRequest().authenticated()                               //其它请求,要求登录验证后可访问
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
+                .antMatchers("/admin/**", "/userInfo").hasAuthority("ADMIN") //是否授权
+                .antMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/", "/login").permitAll()                     //匹配路径,允许任何人访问(不拦截,放行)
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                .anyRequest().authenticated()                               //其它请求,要求登录验证后可访问
                 .and()
-                    .formLogin()
-                    .loginPage("/login")                //自定义登录
-                    .defaultSuccessUrl("/index")        //登录成功后跳转url
-                    .failureUrl("/error")               //登录失败跳转url(无法跳转到/error路径,提示无映射,实际有映射,换其它路径正常)
-                    .permitAll()
+                .formLogin()
+                .loginPage("/login")                //自定义登录
+                .defaultSuccessUrl("/index")        //登录成功后跳转url
+                .failureUrl("/error")               //登录失败跳转url(无法跳转到/error路径,提示无映射,实际有映射,换其它路径正常)
+                .permitAll()
                 .and()
-                    .rememberMe()                   //开启Cookie存储用户信息
-                    .tokenValiditySeconds(604800)   //Cookie有效期
-                    .key("myKey")                   //Cookie中的私钥
+                .rememberMe()                   //开启Cookie存储用户信息
+                .tokenValiditySeconds(604800)   //Cookie有效期
+                .key("myKey")                   //Cookie中的私钥
                 .and()
-                    .logout()                       //注销用户
-                    .logoutUrl("/logout")           //注销用户url
-                    .logoutSuccessUrl("/login")     //注解成功后跳转url
-                    .permitAll()
+                .logout()                       //注销用户
+                .logoutUrl("/logout")           //注销用户url
+                .logoutSuccessUrl("/login")     //注解成功后跳转url
+                .permitAll()
                 .and()
                 .httpBasic();
     }

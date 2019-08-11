@@ -14,6 +14,7 @@ import Properties.HelloServiceProperties;
 
 /**
  * 自动配置配置类
+ *
  * @author gxing
  * 1. 配置类需要注册为Bean
  * 2. Properties属性类注册为Bean
@@ -27,14 +28,14 @@ import Properties.HelloServiceProperties;
 @ConditionalOnProperty(prefix = "hello", value = "enabled", matchIfMissing = true) // 4. 对条件进行检查
 public class AutoConfiguration {
 
-	@Autowired
-	private HelloServiceProperties helloServiceProperties;
+    @Autowired
+    private HelloServiceProperties helloServiceProperties;
 
-	@Bean
-	@ConditionalOnMissingBean(HelloService.class)
-	public HelloService helloService() {
-		HelloService helloService = new HelloService();
-		helloService.setMsg(helloServiceProperties.getMsg());
-		return helloService;
-	}
+    @Bean
+    @ConditionalOnMissingBean(HelloService.class)
+    public HelloService helloService() {
+        HelloService helloService = new HelloService();
+        helloService.setMsg(helloServiceProperties.getMsg());
+        return helloService;
+    }
 }

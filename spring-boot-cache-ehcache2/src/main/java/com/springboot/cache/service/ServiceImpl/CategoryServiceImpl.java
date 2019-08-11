@@ -19,6 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * Cacheable 先从缓存中查找，没有再找数据库
+     *
      * @param categoryId
      * @return
      */
@@ -30,6 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 先查缓存，再查数据库
+     *
      * @param category
      * @return
      */
@@ -41,6 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 保存数据并存入缓存
+     *
      * @param category
      * @return
      */
@@ -53,6 +56,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 删除数据同时删除缓存
+     *
      * @param categoryId
      */
     @Override
@@ -63,13 +67,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 查数据并存缓存
+     *
      * @param category
      * @return
      */
     @Override
     @CachePut(key = "#category.name", value = "category")
     public Category queryByName(Category category) {
-        Example<Category> example = new Example<Category>(){
+        Example<Category> example = new Example<Category>() {
 
             @Override
             public Category getProbe() {
@@ -88,13 +93,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 先从缓存中查，没有再从库里查
+     *
      * @param category
      * @return
      */
     @Override
     @Cacheable(key = "#category.name", value = "category")
     public Category queryByCategoryName(Category category) {
-        Example<Category> example = new Example<Category>(){
+        Example<Category> example = new Example<Category>() {
 
             @Override
             public Category getProbe() {

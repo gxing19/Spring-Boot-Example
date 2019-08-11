@@ -14,7 +14,7 @@ public class ActorController {
     private ActorRepository actorRepository;
 
     @RequestMapping("/queryByActorId")
-    public Actor queryByActorId(Long actorId){
+    public Actor queryByActorId(Long actorId) {
 
         return actorRepository.findById(actorId).get();
     }

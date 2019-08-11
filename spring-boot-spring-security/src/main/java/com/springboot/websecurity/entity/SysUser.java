@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @Name: SysUser
- * @Desc: 实现UserDetails接口,该用户实体类即为Spring Security 所使用的用户
+ * @Desc: 实现UserDetails接口, 该用户实体类即为Spring Security 所使用的用户
  * @User: gxing
  * @Date: 2018-09-04 17:18
  **/
@@ -121,6 +121,7 @@ public class SysUser implements UserDetails {           //实现 UserDetails,重
 
     /**
      * 重写getAuthorities方法,将用户角色做为权限
+     *
      * @return
      */
     @Override

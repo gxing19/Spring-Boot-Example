@@ -1,4 +1,4 @@
-package com.springboot.rest.template.rest.template.entity;
+package com.springboot.rest.template.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -18,6 +18,16 @@ public class City {
     private Long countryId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdate;
+
+    public City() {
+    }
+
+    public City(Long cityId, String cityName, Long countryId, Date lastUpdate) {
+        this.cityId = cityId;
+        this.cityName = cityName;
+        this.countryId = countryId;
+        this.lastUpdate = lastUpdate;
+    }
 
     public Long getCityId() {
         return cityId;

@@ -12,7 +12,7 @@ import javax.mail.MessagingException;
  **/
 public interface SendEmail {
 
-    void sendSimpleMail() ;
+    void sendSimpleMail();
 
     void sendMailUseMimeMessagePreparator();
 

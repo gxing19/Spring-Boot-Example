@@ -20,7 +20,7 @@ public class ActorController {
     private ActorService actorService;
 
     @RequestMapping("/add")
-    public int addActor(Actor actor){
+    public int addActor(Actor actor) {
 //        Actor actor = new Actor()
 //                .setActorId(20L).setLastUpdate(new Date())
 //                .setFirstName("Hello").setLastName("Kitty");
@@ -29,37 +29,37 @@ public class ActorController {
     }
 
     @RequestMapping("/update")
-    public int updateActor(String firstName, Long actorId){
+    public int updateActor(String firstName, Long actorId) {
         return actorService.updateActor(firstName, actorId);
     }
 
     @RequestMapping("/delete")
-    public int delete(Long actorId){
+    public int delete(Long actorId) {
         return actorService.deleteActor(actorId);
     }
 
     @RequestMapping("/queryCount")
-    public int queryCount(){
+    public int queryCount() {
         return actorService.queryCount();
     }
 
     @RequestMapping("queryCountByLastName")
-    public int queryCountByLastName(String lastName){
+    public int queryCountByLastName(String lastName) {
         return actorService.queryCountByLastName(lastName);
     }
 
     @RequestMapping("queryLastName")
-    public String queryLastName(Long actorId){
+    public String queryLastName(Long actorId) {
         return actorService.queryLastName(actorId);
     }
 
     @RequestMapping("/queryByActorId")
-    public Actor queryById(Long actorId){
+    public Actor queryById(Long actorId) {
         return actorService.queryByActorId(actorId);
     }
 
     @RequestMapping("/queryActorList")
-    public List<Actor> queryActorList(){
+    public List<Actor> queryActorList() {
         return actorService.queryActorList();
     }
 }

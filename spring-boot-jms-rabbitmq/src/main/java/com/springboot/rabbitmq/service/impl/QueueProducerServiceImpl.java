@@ -21,18 +21,20 @@ public class QueueProducerServiceImpl implements QueueProducerService {
 
     /**
      * 发送普通消息到队列-queue
+     *
      * @param msg
      */
     @Override
     public void rabbitMQSendStr(String msg) {
         for (int i = 0; i < 100; i++) {
             System.out.println(i);
-            rabbitTemplate.convertAndSend("my-queue", System.nanoTime() + "__" +i);
+            rabbitTemplate.convertAndSend("my-queue", System.nanoTime() + "__" + i);
         }
     }
 
     /**
      * 发送对象,对象必须实现序列化接口
+     *
      * @param user
      */
     @Override

@@ -11,20 +11,20 @@ public class StartConfig {
     public StartConfig(String[] args) {
         Boolean isServerPort = false;
         String serverPort = "";
-        if(args != null){
+        if (args != null) {
             for (String arg : args) {
-                if(StringUtils.hasText(arg) && arg.startsWith("--server.port")){
+                if (StringUtils.hasText(arg) && arg.startsWith("--server.port")) {
                     isServerPort = true;
                     serverPort = arg;
                     break;
                 }
             }
         }
-        if(!isServerPort){
+        if (!isServerPort) {
             int port = ServerPortUtil.getAvailablePort();
             logger.info("current server.port=" + port);
-            System.setProperty("server.port",String.valueOf(port));
-        }else {
+            System.setProperty("server.port", String.valueOf(port));
+        } else {
             logger.info("current server.port=" + serverPort.split("=")[1]);
             System.setProperty("server.port", serverPort.split("=")[1]);
         }

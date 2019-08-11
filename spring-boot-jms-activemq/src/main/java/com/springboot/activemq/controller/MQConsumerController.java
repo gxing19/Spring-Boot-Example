@@ -24,11 +24,12 @@ public class MQConsumerController {
 
     /**
      * ActiveMQ 接收
+     *
      * @param message
      * @return
      */
     @RequestMapping("/activemq/get")
-    public void activeMQSendMsg(String message){
+    public void activeMQSendMsg(String message) {
         mqConsumerService.activeMQQueueReceive(message);
     }
 

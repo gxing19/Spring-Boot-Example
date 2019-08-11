@@ -21,12 +21,12 @@ public class ResultBean implements Serializable {
     private String msg;
     private Object data;
 
-    public ResultBean successResult(){
+    public ResultBean successResult() {
         this.state = SUCCESS;
         return this;
     }
 
-    public ResultBean failResult(){
+    public ResultBean failResult() {
         this.state = FAIL;
         return this;
     }

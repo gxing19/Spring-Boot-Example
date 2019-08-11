@@ -37,18 +37,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
-		<!-- starter web -->
+        <!-- starter web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-		<!-- security -->
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>-->
+        <!-- security -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
 
-		<!-- 监控客户端:admin-client -->
+        <!-- 监控客户端:admin-client -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
@@ -56,16 +56,16 @@
         </dependency>
 
         <!-- 监控服务端:admin-server -->
-		<dependency>  
-			<groupId>de.codecentric</groupId>  
-			<artifactId>spring-boot-admin-server</artifactId>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server</artifactId>
             <version>2.0.0</version>
-		</dependency>  
-		<dependency>
-			<groupId>de.codecentric</groupId>  
-			<artifactId>spring-boot-admin-server-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
             <version>2.0.0</version>
-		</dependency>
+        </dependency>
         <!--end-->
 
         <!--log4j2 -->
@@ -124,7 +124,6 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
-
 
 
         <!-- test -->

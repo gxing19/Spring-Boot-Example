@@ -88,7 +88,7 @@ public class FuMingBank {
 
             String string = JSON.toJSONString(stringMap);
 
-            StringEntity basicHttpEntity = new StringEntity(string,ContentType.APPLICATION_JSON);
+            StringEntity basicHttpEntity = new StringEntity(string, ContentType.APPLICATION_JSON);
 
             httpPost.setEntity(basicHttpEntity);
 

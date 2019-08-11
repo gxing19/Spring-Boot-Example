@@ -70,7 +70,7 @@ public class UserController {
     }
 
     /**
-     * @desc: 根据用户名查询,调用XML
+     * @desc: 根据用户名查询, 调用XML
      * @author: gxing
      * @date: 2019/2/19 11:31
      * @param: [username]

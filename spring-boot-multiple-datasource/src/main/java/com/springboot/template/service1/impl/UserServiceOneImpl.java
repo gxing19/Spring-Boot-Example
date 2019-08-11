@@ -34,7 +34,7 @@ public class UserServiceOneImpl implements UserServiceOne {
     @Override
     public User queryByUsername(String username) {
         Example example = new Example(User.class);
-        example.createCriteria().andEqualTo("username",username);
+        example.createCriteria().andEqualTo("username", username);
         return userMapperOne.selectOneByExample(example);
     }
 

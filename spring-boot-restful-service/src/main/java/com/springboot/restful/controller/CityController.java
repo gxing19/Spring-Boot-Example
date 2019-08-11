@@ -37,8 +37,8 @@ public class CityController {
      * @return
      */
     @RequestMapping(value = "/{cityId}", method = RequestMethod.GET)
-    public City queryByCityId(@PathVariable Long cityId) {
-        return cityService.queryByCityId(cityId);
+    public City queryByCityId(@PathVariable String cityId) {
+        return cityService.queryByCityId(Long.valueOf(cityId));
     }
 
     /**
@@ -47,7 +47,6 @@ public class CityController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public City addCity(@RequestBody City city) {
-        city.setLastUpdate(new Date());
         return cityService.addCity(city);
     }
 

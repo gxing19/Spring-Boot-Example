@@ -89,6 +89,7 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 查: 定制查询条件和匹配规则
+     *
      * @param firstName
      * @param lastName
      * @return
@@ -104,6 +105,7 @@ public class ActorServiceImpl implements ActorService {
             public Actor getProbe() {
                 return actor;
             }
+
             //设置查询匹配规则
             @Override
             public ExampleMatcher getMatcher() {
@@ -117,6 +119,7 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 排序查询
+     *
      * @param sort
      * @return
      */
@@ -127,6 +130,7 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 分页查询
+     *
      * @param pageRequest
      * @return
      */
@@ -137,6 +141,7 @@ public class ActorServiceImpl implements ActorService {
 
     /**
      * 使用HQL查询语句
+     *
      * @param lastName
      * @return
      */

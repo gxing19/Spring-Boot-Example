@@ -13,6 +13,8 @@
 
     <!--查所有(自动分页)-->
     <select id="queryByPage" parameterType="user" resultType="user">
-        select <include refid="base_columns"/> from user
+        select
+        <include refid="base_columns"/>
+        from user
     </select>
 </mapper>

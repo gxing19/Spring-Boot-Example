@@ -45,9 +45,10 @@ public class TopicRabbitMQConfig {
     /**
      * 队列绑定到交换器,设置匹配的routing_key
      * /
-
-    /**
+     * <p>
+     * /**
      * 订阅新闻主题可以收到所有新闻包括NBA
+     *
      * @param queueNews
      * @param exchange
      * @return
@@ -59,6 +60,7 @@ public class TopicRabbitMQConfig {
 
     /**
      * 订阅新闻下的NBA主题只可以收到NBA新闻
+     *
      * @param queueNewsNba
      * @param exchange
      * @return

@@ -22,7 +22,6 @@ public class ApplicationTests {
     private UserService userService;
 
 
-
     @Test
     public void contextLoads() {
 

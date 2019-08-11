@@ -12,8 +12,8 @@ public enum ResultCodeAndMsg {
 
 
     //-------参数检验----------------
-    ERR_PARAM_BLANK(4000,"参数为空"),
-    ERR_PARAM_EXIST(4001,"参数已存在");
+    ERR_PARAM_BLANK(4000, "参数为空"),
+    ERR_PARAM_EXIST(4001, "参数已存在");
 
     private int code;
     private String msg;

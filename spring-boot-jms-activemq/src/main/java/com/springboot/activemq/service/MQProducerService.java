@@ -14,6 +14,7 @@ public interface MQProducerService {
 
     /**
      * activeMQ 发布消息
+     *
      * @param msg
      */
     void activeMQSend(String msg) throws InterruptedException, JMSException;

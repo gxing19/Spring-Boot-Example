@@ -20,21 +20,21 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @RequestMapping("/queryById")
-    public Category queryById(Long CategoryId){
-       Category category = categoryService.queryById(CategoryId);
-       logger.info(JSON.toJSONString(category));
-       return category;
+    public Category queryById(Long CategoryId) {
+        Category category = categoryService.queryById(CategoryId);
+        logger.info(JSON.toJSONString(category));
+        return category;
     }
 
     @RequestMapping("/queryByCategoryId")
-    public Category queryByCategoryId(Category category){
+    public Category queryByCategoryId(Category category) {
         category = categoryService.queryByCategoryId(category);
         logger.info(JSON.toJSONString(category));
         return category;
     }
 
     @RequestMapping("/saveCategory")
-    public Category saveCategory(){
+    public Category saveCategory() {
         Category category = new Category().setCategoryId(18L).setLastUpdate(new Date()).setName("Hello Kitty");
         category = categoryService.saveCategory(category);
         logger.info(JSON.toJSONString(category));
@@ -42,19 +42,19 @@ public class CategoryController {
     }
 
     @RequestMapping("/deleteById")
-    public void deleteById(Long categoryId){
+    public void deleteById(Long categoryId) {
         categoryService.deleteById(categoryId);
     }
 
     @RequestMapping("/queryByName")
-    public Category queryByName(Category category){
+    public Category queryByName(Category category) {
         category = categoryService.queryByName(category);
         logger.info(JSON.toJSONString(category));
         return category;
     }
 
     @RequestMapping("/queryByCategoryName")
-    public Category queryByCategoryName(Category category){
+    public Category queryByCategoryName(Category category) {
         category = categoryService.queryByCategoryName(category);
         logger.info(JSON.toJSONString(category));
         return category;
