@@ -39,9 +39,9 @@ public class RedisLockApplicationTests {
         String lockKey = "goods_id_10002";
         String lockValue = String.valueOf(System.currentTimeMillis());
         try {
-            boolean lockResult = redisDistributedLock.tryToLock(lockKey, lockValue, 6);
+            boolean lockResult = redisDistributedLock.tryToLock(lockKey, lockValue, 2);
             System.out.println("lock result: " + lockResult);
-            Thread.sleep(10 * 1000);
+            Thread.sleep(3 * 1000);
 
         } finally {
             boolean releaseResult = redisDistributedLock.releaseLockByLua(lockKey, lockValue);
