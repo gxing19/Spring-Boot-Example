@@ -105,7 +105,11 @@ Spring AMQP 默认支持的实现是 Rabbitmq。该项目集成 Rabbitmq, 消息
 [Spring Boot 2实践系列(三十六)：集成 JavaMail 发送邮件 ](http://www.gxitsky.com/2018/10/29/springboot-app-36-email/)
 
 ## 24. spring-boot-redis-distributed-lock
-
 分布式架构之分布式锁 及 Redis 实现分布式锁方案
 
 [分布式微服务应用系列(十一)：分布式锁理解及实现方案](http://www.gxitsky.com/2019/08/03/distributed-micro-app-11-lock/)
+
+## 25. spring-boot-aop
+集成拦截器 Interceptor：实现登录验证拦截，API 接口请求限制(防刷)，统一获以 API 接口处理时长。
+
+集成Spring AOP ：实现 API 接口防刷, 统一记录 API 入参和返回数据到日志，统一获以 API 接口处理时长。
