@@ -113,3 +113,7 @@ Spring AMQP 默认支持的实现是 Rabbitmq。该项目集成 Rabbitmq, 消息
 集成拦截器 Interceptor：实现登录验证拦截，API 接口请求限制(防刷)，统一获以 API 接口处理时长。
 
 集成Spring AOP ：实现 API 接口防刷, 统一记录 API 入参和返回数据到日志，统一获以 API 接口处理时长。
+
+[Spring Boot 2实践系列(四十六)：API接口请求限制之AOP与拦截器实现](http://www.gxitsky.com/2019/11/22/springboot-app-46-api-request-limit/)
+
+[Spring Boot 2实践系列(四十七)：API 接口请求响应耗时监控与优化](http://www.gxitsky.com/2019/11/30/springboot-app-47-api-resp-time-watch/)
