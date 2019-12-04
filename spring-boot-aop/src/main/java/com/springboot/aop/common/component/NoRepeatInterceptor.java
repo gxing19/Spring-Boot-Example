@@ -21,6 +21,16 @@ public class NoRepeatInterceptor implements HandlerInterceptor {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
+    /**
+     * 通过判断 Session 中的 Token 来处理重复提交
+     * 适用于单体应用,或使用了共享 Session 方案的集群系统
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {

@@ -29,8 +29,16 @@ public class NoRepeatCommitAspect {
     public void pointcut() {
     }
 
+    /**
+     * 通过判断 Session 中的 Token 来处理重复提交
+     * 适用于单体应用,或使用了共享 Session 方案的集群系统
+     *
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
     @Around("pointcut()")
-    public Object before(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("进入防止重复提交切面..........");
 
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
