@@ -32,8 +32,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Component
-@Order(Integer.MAX_VALUE - 1000)
+//@Component
+//@Order(Integer.MAX_VALUE - 900)
 public class APIHandleTimeInterceptor implements HandlerInterceptor, ApplicationContextAware  {
     private static final Logger logger = LogManager.getLogger(APIHandleTimeInterceptor.class);
 
@@ -53,6 +53,7 @@ public class APIHandleTimeInterceptor implements HandlerInterceptor, Application
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+        logger.info("API 处理请求拦截器.............");
 
         this.webApplicationContext = (WebApplicationContext) request.getServletContext().getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
         Set<String> uri = new HashSet<>();

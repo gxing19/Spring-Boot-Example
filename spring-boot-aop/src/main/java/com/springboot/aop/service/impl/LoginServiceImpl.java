@@ -11,7 +11,7 @@ public class LoginServiceImpl implements LoginService {
 
         if (null != account) {
             if(account.getUsername().equals("admin") && account.getPassword().equals("123456")){
-                return account.setId(100005L);
+                return account.setId(1003L);
             }
         }
         return null;
