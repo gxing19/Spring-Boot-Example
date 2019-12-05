@@ -7,8 +7,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.SourceLocation;
+import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -22,8 +25,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-//@Aspect
-//@Component
+@Aspect
+@Component
 public class RequestLimitAspectA {
 
     private static final Logger logger = LogManager.getLogger(RequestLimitAspectA.class);
@@ -44,11 +47,9 @@ public class RequestLimitAspectA {
     //ProceedingJoinPoint is only supported for around advice
 //    @Pointcut("within(org.springframework.web.bind.annotation.RestController) && @annotation(requestLimit)")
 //    @Pointcut("within(org.springframework.web.bind.annotation.RestController) && @annotation(requestLimit)")
-//    @Before("pointcut(requestLimit)")
-    public void around(JoinPoint joinPoint, RequestLimit requestLimit) throws IOException {
+    @Before("pointcut(requestLimit)")
+    public void before(JoinPoint joinPoint, RequestLimit requestLimit) throws IOException {
 
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
         //获取目标方法的参数信息
         Object[] args = joinPoint.getArgs();
         //AOP代理类的信息RequestLimitAspect
@@ -71,21 +72,21 @@ public class RequestLimitAspectA {
         //获取参数 0-Request,1-Session
         String[] attributeNames = requestAttributes.getAttributeNames(0);
         Object sessionMutex = requestAttributes.getSessionMutex();
-        //从获取RequestAttributes中获取HttpServletRequest的信息
-        request = (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
         //如果要获取Session信息的话，可以这样写：
-        //HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
+        HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
+        //从获取RequestAttributes中获取HttpServletRequest的信息
+        HttpServletRequest request1 = (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
         HttpServletRequest request2 = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
         //执行切点位置
         SourceLocation sourceLocation = joinPoint.getSourceLocation();
 
         int maxCount = requestLimit.count();
         int second = requestLimit.second();
         Account account = null;
-        HttpSession session = request.getSession();
-        String ip = IPUtil.getIpFromRequest(request);
-        String key = session.getId() + ":" + request.getRequestURI() + ":" + ip;
+        HttpSession session1 = request1.getSession();
+        String ip = IPUtil.getIpFromRequest(request1);
+        String key = session.getId() + ":" + request1.getRequestURI() + ":" + ip;
         if (requestLimit.needLogin()) {
             account = (Account) session.getAttribute("auth_user");
             if (null == account) {

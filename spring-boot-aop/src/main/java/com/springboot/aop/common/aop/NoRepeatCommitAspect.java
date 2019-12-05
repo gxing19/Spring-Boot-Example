@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class NoRepeatCommitAspect {
     private static final Logger logger = LogManager.getLogger(NoRepeatCommitAspect.class);
 

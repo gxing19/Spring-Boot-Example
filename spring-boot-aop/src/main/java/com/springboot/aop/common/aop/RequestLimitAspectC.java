@@ -42,7 +42,7 @@ public class RequestLimitAspectC {
 
     //ProceedingJoinPoint is only supported for around advice
     @Before("pointcut()")
-    public void around(JoinPoint joinPoint) throws IOException, NoSuchMethodException {
+    public void before(JoinPoint joinPoint) throws IOException, NoSuchMethodException {
 
         //代理的目标对象
         Object target = joinPoint.getTarget();

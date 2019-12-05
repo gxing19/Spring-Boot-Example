@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoRepeatCommit
 @RestController
@@ -37,7 +38,14 @@ public class UserController {
     @RequestLimit(needLogin = true, count = 5, second = 1)
     @RequestMapping("/getUser/{id}")
     public ResultBean<User> getUser(@PathVariable Integer id) {
-        User user = new User("张飞", 1, "深圳", "13622223333", LocalDate.now());
+
+        User user = new User()
+                .setUsername("张飞")
+                .setSex(1)
+                .setAddress("深圳")
+                .setPhone("13622223333")
+                .setBirthday(LocalDate.now())
+                .setDeadDateTime(LocalDateTime.now());
         user.setId(id);
         return ResultHelper.success(user);
     }
@@ -45,7 +53,12 @@ public class UserController {
     @NoRepeatCommit
     @RequestMapping("/getUser")
     public ResultBean<User> getUser(User user) {
-        user.setUsername("刘备").setSex(1).setAddress("湖北").setPhone("13622224444").setBirthday(LocalDate.now());
+        user.setUsername("刘备")
+                .setSex(1)
+                .setAddress("湖北")
+                .setPhone("13622224444")
+                .setBirthday(LocalDate.now())
+                .setDeadDateTime(LocalDateTime.now());
         return ResultHelper.success(user);
     }
 
@@ -54,6 +67,7 @@ public class UserController {
     public ResultBean<User> saveUser(User user) {
         logger.info("保存用户信息:{}", JSON.toJSONString(user));
         //执行保存
+        user.setDeadDateTime(LocalDateTime.now());
         userService.save(user);
         return ResultHelper.success(user);
     }

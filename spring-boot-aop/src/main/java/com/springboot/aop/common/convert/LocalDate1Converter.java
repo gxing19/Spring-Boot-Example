@@ -3,14 +3,13 @@ package com.springboot.aop.common.convert;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.http.converter.HttpMessageConverter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Configuration
-public class DateConfig {
+public class LocalDate1Converter {
 
     @Bean
     public Converter<String, LocalDate> localDateConverter() {
@@ -33,3 +32,4 @@ public class DateConfig {
     }
 
 }
+

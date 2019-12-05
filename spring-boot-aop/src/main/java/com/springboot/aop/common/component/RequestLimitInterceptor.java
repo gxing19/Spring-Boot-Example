@@ -19,8 +19,7 @@ import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-//@Component
-//@Order(Integer.MAX_VALUE - 100)
+@Order(Integer.MAX_VALUE - 100)
 public class RequestLimitInterceptor extends HandlerInterceptorAdapter {
 
     Logger logger = LogManager.getLogger(RequestLimitInterceptor.class);

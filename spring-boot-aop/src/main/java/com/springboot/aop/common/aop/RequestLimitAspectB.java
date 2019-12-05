@@ -48,7 +48,7 @@ public class RequestLimitAspectB {
     //ProceedingJoinPoint is only supported for around advice
 
 //    @Before("pointcut()")
-    public void around(JoinPoint joinPoint) throws IOException, NoSuchMethodException {
+    public void before(JoinPoint joinPoint) throws IOException, NoSuchMethodException {
 
         HttpServletRequest request = null;
         HttpServletResponse response = null;

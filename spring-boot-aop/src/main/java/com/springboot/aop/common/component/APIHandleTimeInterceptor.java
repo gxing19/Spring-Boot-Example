@@ -32,8 +32,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-//@Component
-//@Order(Integer.MAX_VALUE - 900)
+@Order(Integer.MAX_VALUE - 900)
 public class APIHandleTimeInterceptor implements HandlerInterceptor, ApplicationContextAware  {
     private static final Logger logger = LogManager.getLogger(APIHandleTimeInterceptor.class);
 

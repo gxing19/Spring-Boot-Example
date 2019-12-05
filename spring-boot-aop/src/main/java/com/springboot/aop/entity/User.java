@@ -1,5 +1,6 @@
 package com.springboot.aop.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.springboot.aop.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -26,7 +28,12 @@ public class User extends BaseEntity implements Serializable {
     private Integer sex;
     private String address;
     private String phone;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")//入参转换
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd")//出参
     private LocalDate birthday;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime deadDateTime;
+
+
 
 }

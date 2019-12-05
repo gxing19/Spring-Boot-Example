@@ -6,10 +6,12 @@ import com.springboot.aop.entity.Account;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -39,7 +41,8 @@ public class RequestLimitAspect {
      * 切点传入注解参数使用这种方式
      * @param requestLimit
      */
-    @Pointcut("within(@org.springframework.web.bind.annotation.RestController *) && @annotation(requestLimit)")
+//    @Pointcut("within(@org.springframework.web.bind.annotation.RestController *) && @annotation(requestLimit)")
+    @Pointcut("@annotation(requestLimit)")
     public void pointcut(RequestLimit requestLimit) {
     }
 
