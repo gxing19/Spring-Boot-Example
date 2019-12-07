@@ -1,5 +1,7 @@
 package com.springboot.aop.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.springboot.aop.common.bean.ResultBean;
 import com.springboot.aop.common.bean.ResultHelper;
 import com.springboot.aop.entity.Actor;
@@ -21,15 +23,21 @@ public class ActorController {
     @Autowired
     private ActorService actorService;
 
-    @GetMapping("/list")
-    public ResultBean listActor() {
-        List<Actor> actorList = actorService.listActor();
+    @GetMapping("/listByPage")
+    public ResultBean listByPage(Actor actor) {
+        List<Actor> actorList = actorService.listByPage(actor);
+        return ResultHelper.success(actorList);
+    }
+    @GetMapping("/getByPage")
+    public ResultBean getByPage(Actor actor) {
+        List<Actor> actorList = actorService.getByPage(actor);
         return ResultHelper.success(actorList);
     }
 
+
     @GetMapping("/getByActorId")
-    public ResultBean getByActorId(Long actorId) {
-        Actor actor = actorService.getByActorId(actorId);
+    public ResultBean getByActorId(Long id) {
+        Actor actor = actorService.getByActorId(id);
         return ResultHelper.success(actor);
     }
 

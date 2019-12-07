@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getByPage() {
-        List<User> userList = userMapper.selectAll();
+    public List<User> getByPage(User user) {
+        List<User> userList = userMapper.select(user);
         return userList;
     }
 }

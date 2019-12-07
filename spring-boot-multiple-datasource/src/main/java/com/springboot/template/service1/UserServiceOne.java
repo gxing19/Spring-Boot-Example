@@ -47,4 +47,6 @@ public interface UserServiceOne {
      * @return: com.springboot.template.entity.User
      **/
     User queryByUsernameXml(String username);
+
+    List<User> queryByPage(User user);
 }

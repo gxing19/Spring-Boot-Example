@@ -42,4 +42,9 @@ public class UserServiceTwoImpl implements UserServiceTwo {
     public User queryByUsernameXml(String username) {
         return userMapperTwo.queryByUsername(username);
     }
+
+    @Override
+    public List<User> queryByPage(User user) {
+        return null;
+    }
 }

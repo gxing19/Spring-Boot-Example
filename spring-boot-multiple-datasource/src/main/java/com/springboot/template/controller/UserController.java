@@ -41,6 +41,14 @@ public class UserController {
         return new ResultBean(userListOne).setSuccessCodeAndState();
     }
 
+    @RequestMapping("/queryByPage")
+    public ResultBean queryByPage(User user) {
+        //调用通用Mapper方法
+        List<User> userListOne = userServiceOne.queryByPage(user);
+        List<User> userListTwo = userServiceTwo.queryByPage(user);
+        return new ResultBean(userListOne).setSuccessCodeAndState();
+    }
+
     /**
      * @desc: 根据主键ID查询
      * @author: gxing

@@ -10,6 +10,6 @@ import javax.persistence.Transient;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseEntity {
-    private int pageNo = 1;
+    private int pageNum = 1;
     private int pageSize = 10;
 }

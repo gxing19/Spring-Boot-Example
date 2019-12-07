@@ -8,7 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ActorMapper extends BaseMapper<Actor> {
-    List<Actor> getActorByPage();
 
     Actor getByActorId(Long actorId);
+
+    List<Actor> getByPage(Actor actor);
 }

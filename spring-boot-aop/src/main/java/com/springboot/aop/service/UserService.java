@@ -9,5 +9,5 @@ public interface UserService {
 
     User getById(Long id);
 
-    List<User> getByPage();
+    List<User> getByPage(User user);
 }

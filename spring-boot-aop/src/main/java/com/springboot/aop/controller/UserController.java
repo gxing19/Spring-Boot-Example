@@ -1,6 +1,8 @@
 package com.springboot.aop.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.springboot.aop.common.annotation.NoRepeatCommit;
 import com.springboot.aop.common.annotation.RequestLimit;
 import com.springboot.aop.common.bean.ResultBean;
@@ -80,8 +82,8 @@ public class UserController {
     }
 
     @RequestMapping("/getByPage")
-    public ResultBean getByPage() {
-        List<User> userList = userService.getByPage();
+    public ResultBean getByPage(User user) {
+        List<User> userList = userService.getByPage(user);
         return ResultHelper.success(userList);
     }
 

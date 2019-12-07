@@ -43,4 +43,10 @@ public class UserServiceOneImpl implements UserServiceOne {
         return userMapperOne.queryByUsername(username);
     }
 
+    @Override
+    public List<User> queryByPage(User user) {
+        List<User> userList = userMapperOne.select(user);
+        return userList;
+    }
+
 }

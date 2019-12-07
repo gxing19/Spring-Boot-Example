@@ -5,7 +5,9 @@ import com.springboot.aop.entity.Actor;
 import java.util.List;
 
 public interface ActorService {
-    List<Actor> listActor();
+    Actor getByActorId(Long id);
 
-    Actor getByActorId(Long actorId);
+    List<Actor> listByPage(Actor actor);
+
+    List<Actor> getByPage(Actor actor);
 }
