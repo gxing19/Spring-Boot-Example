@@ -16,12 +16,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class APIInfoLogAspect {
     private static final Logger logger = LogManager.getLogger(APIInfoLogAspect.class);
 
-    //    @Pointcut("execution(* com.springboot.aop.controller.*.*(..))")
+//    @Pointcut("execution(* com.springboot.aop.controller.*.*(..))")
 //    @Pointcut("within(com.springboot.aop.controller..*)")
 //    @Pointcut("execution(public * *(..))")
 //    @Pointcut("execution(* save*(..))")
@@ -44,7 +44,7 @@ public class APIInfoLogAspect {
         String methodName = joinPoint.getSignature().getName();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //请求信息
-        logger.info("Request URI:{}, API:{}, Request Parameters:{}", request.getRequestURI(), fullClassName + "." + methodName, JSON.toJSONString(args));
+//        logger.info("Request URI:{}, API:{}, Request Parameters:{}", request.getRequestURI(), fullClassName + "." + methodName, JSON.toJSONString(args));
     }
 
     @AfterReturning(returning = "response", pointcut = "pointcut(requestMapping)")

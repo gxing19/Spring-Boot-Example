@@ -11,6 +11,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.SourceLocation;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.context.request.RequestAttributes;
@@ -25,9 +27,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-@Aspect
-@Component
-public class RequestLimitAspectA {
+//@Aspect
+//@Component
+public class RequestLimitAspectA{
 
     private static final Logger logger = LogManager.getLogger(RequestLimitAspectA.class);
 

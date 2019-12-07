@@ -1,6 +1,5 @@
 package com.springboot.aop.controller;
 
-import ch.qos.logback.core.util.TimeUtil;
 import com.springboot.aop.common.bean.ResultBean;
 import com.springboot.aop.common.bean.ResultHelper;
 import com.springboot.aop.entity.Account;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 public class LoginController {

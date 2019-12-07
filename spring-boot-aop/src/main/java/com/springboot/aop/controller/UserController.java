@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoRepeatCommit
 @RestController
@@ -37,7 +38,7 @@ public class UserController {
 
     @RequestLimit(needLogin = true, count = 5, second = 1)
     @RequestMapping("/getUser/{id}")
-    public ResultBean<User> getUser(@PathVariable Integer id) {
+    public ResultBean<User> getUser(@PathVariable Long id) {
 
         User user = new User()
                 .setUsername("张飞")
@@ -45,8 +46,8 @@ public class UserController {
                 .setAddress("深圳")
                 .setPhone("13622223333")
                 .setBirthday(LocalDate.now())
-                .setDeadDateTime(LocalDateTime.now());
-        user.setId(id);
+                .setDeadDateTime(LocalDateTime.now())
+                .setId(id);
         return ResultHelper.success(user);
     }
 
@@ -70,6 +71,18 @@ public class UserController {
         user.setDeadDateTime(LocalDateTime.now());
         userService.save(user);
         return ResultHelper.success(user);
+    }
+
+    @RequestMapping("/getById")
+    public ResultBean<User> getById(Long id) {
+        User user = userService.getById(id);
+        return ResultHelper.success(user);
+    }
+
+    @RequestMapping("/getByPage")
+    public ResultBean getByPage() {
+        List<User> userList = userService.getByPage();
+        return ResultHelper.success(userList);
     }
 
 }
