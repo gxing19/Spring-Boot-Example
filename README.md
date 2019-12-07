@@ -121,3 +121,5 @@ Spring AMQP 默认支持的实现是 Rabbitmq。该项目集成 Rabbitmq, 消息
 [Spring Boot 2实践系列(四十六)：API接口请求限制之AOP与拦截器实现](http://www.gxitsky.com/2019/11/22/springboot-app-46-api-request-limit/)
 
 [Spring Boot 2实践系列(四十七)：API 接口请求响应耗时监控与优化](http://www.gxitsky.com/2019/11/30/springboot-app-47-api-resp-time-watch/)
+
+[Spring Boot 2实践系列(四十八)：Spring AOP详解与应用](http://www.gxitsky.com/2019/12/01/springboot-app-48-aop-spring-aop/)
