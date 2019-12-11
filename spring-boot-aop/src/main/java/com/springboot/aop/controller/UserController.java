@@ -1,13 +1,10 @@
 package com.springboot.aop.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.springboot.aop.common.annotation.NoRepeatCommit;
 import com.springboot.aop.common.annotation.RequestLimit;
 import com.springboot.aop.common.bean.ResultBean;
 import com.springboot.aop.common.bean.ResultHelper;
-import com.springboot.aop.common.constant.Constant;
 import com.springboot.aop.entity.User;
 import com.springboot.aop.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -44,9 +41,7 @@ public class UserController {
 
         User user = new User()
                 .setUsername("张飞")
-                .setSex(1)
                 .setAddress("深圳")
-                .setPhone("13622223333")
                 .setBirthday(LocalDate.now())
                 .setDeadDateTime(LocalDateTime.now())
                 .setId(id);
@@ -57,9 +52,7 @@ public class UserController {
     @RequestMapping("/getUser")
     public ResultBean<User> getUser(User user) {
         user.setUsername("刘备")
-                .setSex(1)
                 .setAddress("湖北")
-                .setPhone("13622224444")
                 .setBirthday(LocalDate.now())
                 .setDeadDateTime(LocalDateTime.now());
         return ResultHelper.success(user);
@@ -71,8 +64,11 @@ public class UserController {
         logger.info("保存用户信息:{}", JSON.toJSONString(user));
         //执行保存
         user.setDeadDateTime(LocalDateTime.now());
-        userService.save(user);
-        return ResultHelper.success(user);
+        int row = userService.save(user);
+        if(row == 1){
+            return ResultHelper.success(user);
+        }
+        return ResultHelper.fail();
     }
 
     @RequestMapping("/getById")
@@ -86,5 +82,4 @@ public class UserController {
         List<User> userList = userService.getByPage(user);
         return ResultHelper.success(userList);
     }
-
 }

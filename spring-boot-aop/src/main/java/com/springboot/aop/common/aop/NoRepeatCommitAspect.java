@@ -22,9 +22,6 @@ import javax.servlet.http.HttpSession;
 public class NoRepeatCommitAspect {
     private static final Logger logger = LogManager.getLogger(NoRepeatCommitAspect.class);
 
-    @Autowired
-    private RedisLock redisLock;
-
     @Pointcut("@annotation(com.springboot.aop.common.annotation.NoRepeatCommit)")
     public void pointcut() {
     }
