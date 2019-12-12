@@ -118,8 +118,15 @@ Spring AMQP 默认支持的实现是 Rabbitmq。该项目集成 Rabbitmq, 消息
 
 集成Spring AOP ：实现 API 接口防刷, 统一记录 API 入参和返回数据到日志，统一获以 API 接口处理时长。
 
-[Spring Boot 2实践系列(四十六)：API接口请求限制之AOP与拦截器实现](http://www.gxitsky.com/2019/11/22/springboot-app-46-api-request-limit/)
+[Spring Boot 2实践系列(四十六)：Spring AOP与拦截器实现API接口请求限制](http://www.gxitsky.com/2019/11/22/springboot-app-46-aop-api-request-limit/)
 
-[Spring Boot 2实践系列(四十七)：API 接口请求响应耗时监控与优化](http://www.gxitsky.com/2019/11/30/springboot-app-47-api-resp-time-watch/)
+[Spring Boot 2实践系列(四十七)：Spring AOP 实现API接口处理请求耗时监控](http://www.gxitsky.com/2019/11/30/springboot-app-47-aop-api-resp-time-watch/)
 
 [Spring Boot 2实践系列(四十八)：Spring AOP详解与应用](http://www.gxitsky.com/2019/12/01/springboot-app-48-aop-spring-aop/)
+
+[Spring Boot 2实践系列(四十九)：Spring AOP 实现方法入参和返回统一记录日志](http://www.gxitsky.com/2019/12/08/springboot-app-49-aop-log/)
+
+## 26. spring-boot-datasource
+Spring AOP 实现数据源动态切换(读写分离)，支持注解显式指定数据源和根据方法名前缀来选择数据源
+
+[Spring Boot 2实践系列(五十)：Spring AOP 实现动态数据源切换](http://www.gxitsky.com/2019/12/11/springboot-app-50-aop-datasource-switch/)
