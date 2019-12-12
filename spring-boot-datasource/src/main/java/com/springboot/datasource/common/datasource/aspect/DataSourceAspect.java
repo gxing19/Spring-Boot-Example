@@ -41,7 +41,7 @@ public class DataSourceAspect {
             logger.info("Method Name:{}, DataSource:{}", methodName, DataSourceEnum.SLAVE);
         } else {
             DataSourceHolder.setDataSource(DataSourceEnum.MASTER);
-            logger.info("Method Name:{}, Datasource:{}", methodName, DataSourceEnum.SLAVE);
+            logger.info("Method Name:{}, Datasource:{}", methodName, DataSourceEnum.MASTER);
         }
 
     }
