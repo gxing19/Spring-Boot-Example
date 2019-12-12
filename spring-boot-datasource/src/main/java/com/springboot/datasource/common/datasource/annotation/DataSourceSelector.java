@@ -1,5 +1,7 @@
 package com.springboot.datasource.common.datasource.annotation;
 
+import com.springboot.datasource.common.datasource.DataSourceEnum;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,5 +13,5 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface DataSourceSelector {
-    String name() default "";
+    DataSourceEnum name();
 }

@@ -1,6 +1,6 @@
 package com.springboot.datasource.mapper;
 
-import com.springboot.datasource.common.datasource.DataSourceConstant;
+import com.springboot.datasource.common.datasource.DataSourceEnum;
 import com.springboot.datasource.common.datasource.annotation.DataSourceSelector;
 import com.springboot.datasource.entity.Actor;
 import org.apache.ibatis.annotations.Param;
@@ -16,6 +16,6 @@ public interface ActorMapper {
 
     void save(Actor actor);
 
-    @DataSourceSelector(name = DataSourceConstant.MASTER)
+    @DataSourceSelector(name = DataSourceEnum.MASTER)
     List<Actor> getActor(Actor actor);
 }

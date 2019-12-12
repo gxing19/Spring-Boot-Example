@@ -38,8 +38,8 @@ public class DataSourceConfig {
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         dynamicDataSource.setDefaultTargetDataSource(dataSourceMaster);
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put("master", dataSourceMaster);
-        targetDataSources.put("slave", dataSourceSlave);
+        targetDataSources.put(DataSourceEnum.MASTER, dataSourceMaster);
+        targetDataSources.put(DataSourceEnum.SLAVE, dataSourceSlave);
         dynamicDataSource.setTargetDataSources(targetDataSources);
         return dynamicDataSource;
     }

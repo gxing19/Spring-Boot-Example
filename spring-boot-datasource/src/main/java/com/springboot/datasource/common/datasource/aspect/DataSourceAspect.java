@@ -1,6 +1,6 @@
 package com.springboot.datasource.common.datasource.aspect;
 
-import com.springboot.datasource.common.datasource.DataSourceConstant;
+import com.springboot.datasource.common.datasource.DataSourceEnum;
 import com.springboot.datasource.common.datasource.DataSourceHolder;
 import com.springboot.datasource.common.datasource.annotation.DataSourceSelector;
 import org.apache.logging.log4j.LogManager;
@@ -32,16 +32,16 @@ public class DataSourceAspect {
         DataSourceSelector dsSelector = methodSignature.getMethod().getAnnotation(DataSourceSelector.class);
         //如果有注解,则使用注解指定的数据源;否则,根据方法名的前缀业判断读/写操作
         if (null != dsSelector) {
-            String name = dsSelector.name();
+            DataSourceEnum name = dsSelector.name();
             DataSourceHolder.setDataSource(name);
             logger.info("Method Name:{}, DataSource:{}", methodName, name);
         } else if (methodName.startsWith("get") || methodName.startsWith("query") || methodName.startsWith("find")
                 || methodName.startsWith("select") || methodName.startsWith("list")) {
-            DataSourceHolder.setDataSource(DataSourceConstant.SLAVE);
-            logger.info("Method Name:{}, DataSource:{}", methodName, DataSourceConstant.SLAVE);
+            DataSourceHolder.setDataSource(DataSourceEnum.SLAVE);
+            logger.info("Method Name:{}, DataSource:{}", methodName, DataSourceEnum.SLAVE);
         } else {
-            DataSourceHolder.setDataSource(DataSourceConstant.MASTER);
-            logger.info("Method Name:{}, Datasource:{}", methodName, DataSourceConstant.SLAVE);
+            DataSourceHolder.setDataSource(DataSourceEnum.MASTER);
+            logger.info("Method Name:{}, Datasource:{}", methodName, DataSourceEnum.SLAVE);
         }
 
     }

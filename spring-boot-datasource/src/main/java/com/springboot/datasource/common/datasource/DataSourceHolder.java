@@ -5,13 +5,13 @@ package com.springboot.datasource.common.datasource;
  */
 public class DataSourceHolder {
 
-    private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<DataSourceEnum> threadLocal = new ThreadLocal<>();
 
-    public static void setDataSource(String key){
+    public static void setDataSource(DataSourceEnum key){
         threadLocal.set(key);
     }
 
-    public static String getDataSource() {
+    public static DataSourceEnum getDataSource() {
         return threadLocal.get();
     }
 
