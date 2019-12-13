@@ -14,6 +14,15 @@ public class Actor implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8" )
     private Date lastUpdate;
 
+    public Actor() {
+    }
+
+    public Actor(String firstName, String lastName, Date lastUpdate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.lastUpdate = lastUpdate;
+    }
+
     public Long getActorId() {
         return actorId;
     }

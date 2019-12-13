@@ -1,16 +1,26 @@
 package com.springboot.datasource.common.datasource;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
+import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * 数据源配置类
@@ -19,20 +29,37 @@ import java.util.Map;
 @MapperScan(basePackages = "com.springboot.datasource.mapper")
 public class DataSourceConfig {
 
+    /**
+     * master datasource
+     *
+     * @return DataSource
+     */
     @Bean(name = "dataSourceMaster")
     @ConfigurationProperties("spring.datasource.master")
     public DataSource dataSourceMaster() {
         return DruidDataSourceBuilder.create().build();
     }
 
+    /**
+     * slave datasource
+     *
+     * @return DataSource
+     */
     @Bean(name = "dataSourceSlave")
     @ConfigurationProperties("spring.datasource.slave")
     public DataSource dataSourceSlave() {
         return DruidDataSourceBuilder.create().build();
     }
 
-    @Bean
+    /**
+     * DynamicDataSource
+     *
+     * @param dataSourceMaster
+     * @param dataSourceSlave
+     * @return DataSource
+     */
     @Primary
+    @Bean(name = "dataSource")
     public DynamicDataSource dataSource(@Qualifier("dataSourceMaster") DataSource dataSourceMaster,
                                         @Qualifier("dataSourceSlave") DataSource dataSourceSlave) {
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
@@ -43,4 +70,52 @@ public class DataSourceConfig {
         dynamicDataSource.setTargetDataSources(targetDataSources);
         return dynamicDataSource;
     }
+
+    @Bean(name = "mybatisConfiguration")
+    public org.apache.ibatis.session.Configuration mybatisConfiguration() {
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        //开启驼峰映射
+        configuration.setMapUnderscoreToCamelCase(true);
+        return configuration;
+    }
+
+    @Primary
+    @Bean(name = "sqlSessionFactory")
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        //指定mapper xml目录
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.springboot.datasource.entity");
+        sqlSessionFactoryBean.setConfiguration(mybatisConfiguration());
+        return sqlSessionFactoryBean.getObject();
+    }
+
+    @Primary
+    @Bean(name = "sqlSessionTemplate")
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
+    }
+
+    /**
+     * * 创建事务管理器
+     *
+     * @param dataSource
+     * @return DynamicDataSourceTransactionManager
+     */
+    /*@Primary
+    @Bean(name = "txManager")
+    public DynamicDataSourceTransactionManager transactionManager(@Qualifier("dataSource") DynamicDataSource dataSource) {
+        DynamicDataSourceTransactionManager dynamicDataSourceTransactionManager = new DynamicDataSourceTransactionManager();
+        dynamicDataSourceTransactionManager.setDataSource(dataSource);
+        return dynamicDataSourceTransactionManager;
+    }*/
+
+    @Bean
+    public DataSourceTransactionManager transactionManager(@Qualifier("dataSource") DynamicDataSource dynamicDataSource) {
+        return new DataSourceTransactionManager(dynamicDataSource);
+    }
+
+//https://blog.csdn.net/gaoshili001/article/details/79378902
 }

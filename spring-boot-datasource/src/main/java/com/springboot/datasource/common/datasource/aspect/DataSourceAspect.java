@@ -5,9 +5,9 @@ import com.springboot.datasource.common.datasource.DataSourceHolder;
 import com.springboot.datasource.common.datasource.annotation.DataSourceSelector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
@@ -20,13 +20,12 @@ import org.springframework.stereotype.Component;
 public class DataSourceAspect {
     private static final Logger logger = LogManager.getLogger(DataSourceAspect.class);
 
-    @Pointcut("execution(* com.springboot.datasource.mapper..*(..))")
+    @Pointcut("execution(* com.springboot.datasource.service..*(..))")
     public void pointcut() {
     }
 
-    @Before("pointcut()")
-    public void switchDataSource(JoinPoint joinPoint) {
-        DataSourceHolder.cleanDataSource();
+    @Around("pointcut()")
+    public Object switchDataSource(ProceedingJoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         String methodName = methodSignature.getName();
         DataSourceSelector dsSelector = methodSignature.getMethod().getAnnotation(DataSourceSelector.class);
@@ -44,5 +43,13 @@ public class DataSourceAspect {
             logger.info("Method Name:{}, Datasource:{}", methodName, DataSourceEnum.MASTER);
         }
 
+        try {
+            return joinPoint.proceed();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        } finally {
+            DataSourceHolder.cleanDataSource();
+        }
+        return null;
     }
 }

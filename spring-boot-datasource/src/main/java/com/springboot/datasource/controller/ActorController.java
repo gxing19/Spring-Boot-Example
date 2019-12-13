@@ -1,7 +1,10 @@
 package com.springboot.datasource.controller;
 
+import com.springboot.datasource.common.datasource.DataSourceEnum;
+import com.springboot.datasource.common.datasource.annotation.DataSourceSelector;
 import com.springboot.datasource.entity.Actor;
 import com.springboot.datasource.service.ActorService;
+import lombok.Data;
 import org.apache.catalina.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,5 +38,10 @@ public class ActorController {
         actor.setLastUpdate(new Date());
         actor = actorService.save(actor);
         return actor;
+    }
+
+    @PostMapping("/saveActorList")
+    public void saveActorList() {
+        actorService.saveActorList();
     }
 }

@@ -16,11 +16,7 @@ public interface ActorMapper {
 
     void save(Actor actor);
 
-    /**
-     * 显示指定数据源
-     * @param actor
-     * @return
-     */
-    @DataSourceSelector(name = DataSourceEnum.MASTER)
     List<Actor> getActor(Actor actor);
+
+    void saveActorList(List<Actor> actorList);
 }

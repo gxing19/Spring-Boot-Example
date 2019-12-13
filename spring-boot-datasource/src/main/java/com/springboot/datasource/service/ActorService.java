@@ -11,4 +11,6 @@ public interface ActorService {
     Actor save(Actor actor);
 
     List<Actor> getActor(Actor actor);
+
+    void saveActorList();
 }
