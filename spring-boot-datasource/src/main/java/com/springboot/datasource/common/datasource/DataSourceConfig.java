@@ -71,6 +71,11 @@ public class DataSourceConfig {
         return dynamicDataSource;
     }
 
+    /**
+     * Mybatis Configuration
+     *
+     * @return Configuration
+     */
     @Bean(name = "mybatisConfiguration")
     public org.apache.ibatis.session.Configuration mybatisConfiguration() {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
@@ -79,6 +84,13 @@ public class DataSourceConfig {
         return configuration;
     }
 
+    /**
+     * SqlSession Factory
+     *
+     * @param dataSource
+     * @return SqlSessionFactory
+     * @throws Exception
+     */
     @Primary
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
@@ -92,6 +104,12 @@ public class DataSourceConfig {
         return sqlSessionFactoryBean.getObject();
     }
 
+    /**
+     * SqlSession Template
+     *
+     * @param sqlSessionFactory
+     * @return SqlSessionTemplate
+     */
     @Primary
     @Bean(name = "sqlSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate(@Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
@@ -99,23 +117,13 @@ public class DataSourceConfig {
     }
 
     /**
-     * * 创建事务管理器
+     * Transaction Manager
      *
-     * @param dataSource
-     * @return DynamicDataSourceTransactionManager
+     * @param dynamicDataSource
+     * @return DataSourceTransactionManager
      */
-    /*@Primary
-    @Bean(name = "txManager")
-    public DynamicDataSourceTransactionManager transactionManager(@Qualifier("dataSource") DynamicDataSource dataSource) {
-        DynamicDataSourceTransactionManager dynamicDataSourceTransactionManager = new DynamicDataSourceTransactionManager();
-        dynamicDataSourceTransactionManager.setDataSource(dataSource);
-        return dynamicDataSourceTransactionManager;
-    }*/
-
     @Bean
     public DataSourceTransactionManager transactionManager(@Qualifier("dataSource") DynamicDataSource dynamicDataSource) {
         return new DataSourceTransactionManager(dynamicDataSource);
     }
-
-//https://blog.csdn.net/gaoshili001/article/details/79378902
 }

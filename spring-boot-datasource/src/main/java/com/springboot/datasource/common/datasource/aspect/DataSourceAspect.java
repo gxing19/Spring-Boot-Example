@@ -25,7 +25,7 @@ public class DataSourceAspect {
     }
 
     @Around("pointcut()")
-    public Object switchDataSource(ProceedingJoinPoint joinPoint) {
+    public Object switchDataSource(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         String methodName = methodSignature.getName();
         DataSourceSelector dsSelector = methodSignature.getMethod().getAnnotation(DataSourceSelector.class);
@@ -46,10 +46,9 @@ public class DataSourceAspect {
         try {
             return joinPoint.proceed();
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            throw throwable;
         } finally {
             DataSourceHolder.cleanDataSource();
         }
-        return null;
     }
 }
