@@ -12,5 +12,5 @@ public interface ActorService {
 
     List<Actor> getActor(Actor actor);
 
-    void saveActorList();
+    void saveActorList(Boolean errorFlag);
 }

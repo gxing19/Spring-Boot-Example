@@ -40,15 +40,18 @@ public class ActorServiceImpl implements ActorService {
 
     @Override
     @Transactional
-    @DataSourceSelector(name = DataSourceEnum.MASTER)
-    public void saveActorList() {
+    @DataSourceSelector(name = DataSourceEnum.SLAVE)
+    public void saveActorList(Boolean errorFlag) {
         List<Actor> actorList = new ArrayList<>();
         actorList.add(new Actor("张","飞", new Date()));
         actorList.add(new Actor("关","羽", new Date()));
         actorList.add(new Actor("刘","备", new Date()));
         actorMapper.saveActorList(actorList);
 
-        int i = 1/0;
+        //抛异常触发事务
+        if(null != errorFlag && errorFlag){
+            int i = 1/0;
+        }
 
         actorMapper.save(new Actor("曹","操",new Date()));
     }

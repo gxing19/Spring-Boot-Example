@@ -41,7 +41,7 @@ public class ActorController {
     }
 
     @PostMapping("/saveActorList")
-    public void saveActorList() {
-        actorService.saveActorList();
+    public void saveActorList(Boolean errorFlag) {
+        actorService.saveActorList(errorFlag);
     }
 }
