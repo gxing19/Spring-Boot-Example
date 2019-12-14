@@ -48,7 +48,7 @@ public class ActorServiceImpl implements ActorService {
         actorList.add(new Actor("刘","备", new Date()));
         actorMapper.saveActorList(actorList);
 
-        //抛异常触发事务
+        //抛异常触发事务回滚
         if(null != errorFlag && errorFlag){
             int i = 1/0;
         }

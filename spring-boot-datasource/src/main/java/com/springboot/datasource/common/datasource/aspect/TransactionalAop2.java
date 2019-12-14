@@ -67,9 +67,7 @@ public class TransactionalAop2 {
         DefaultTransactionAttribute txAttribute = new DefaultTransactionAttribute();
         txAttribute.setQualifier(transactional.value());
         txAttribute.setIsolationLevel(transactional.isolation().value());
-//        txAttribute.setIsolationLevelName(transactional.isolation().name());
         txAttribute.setPropagationBehavior(transactional.propagation().value());
-//        txAttribute.setPropagationBehaviorName(transactional.propagation().name());
         txAttribute.setTimeout(transactional.timeout());
         txAttribute.setReadOnly(transactional.readOnly());
         this.transactionStatus = transactionManager.getTransaction(new DefaultTransactionAttribute());

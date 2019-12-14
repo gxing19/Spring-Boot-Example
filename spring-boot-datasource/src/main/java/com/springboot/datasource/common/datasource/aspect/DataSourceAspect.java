@@ -36,17 +36,17 @@ public class DataSourceAspect {
         String methodName = method.getName();
 
         DataSourceSelector dsSelector = method.getAnnotation(DataSourceSelector.class);
-        Transactional annotation = method.getAnnotation(Transactional.class);
+        Transactional transactional = method.getAnnotation(Transactional.class);
 
         if (null != dsSelector) {
             //显式指定数据源优先
             DataSourceEnum dataSourceKey = dsSelector.name();
             DataSourceHolder.setDataSource(dataSourceKey);
             logger.info("DataSourceSelector name:{}, DataSource:{}", dsSelector.name(), dataSourceKey);
-        } else if (null != annotation && annotation.readOnly()) {
+        } else if (null != transactional && transactional.readOnly()) {
             //读事务路由到从库
             DataSourceHolder.setDataSource(DataSourceEnum.SLAVE);
-            logger.info("Transactional readOnly:{}, DataSource:{}", annotation.readOnly(), DataSourceEnum.SLAVE);
+            logger.info("Transactional readOnly:{}, DataSource:{}", transactional.readOnly(), DataSourceEnum.SLAVE);
         } else if (methodName.startsWith("get") || methodName.startsWith("query") || methodName.startsWith("find")
                 || methodName.startsWith("select") || methodName.startsWith("list")) {
             //根据方法前缀判断路由到从库
@@ -61,6 +61,7 @@ public class DataSourceAspect {
         try {
             return joinPoint.proceed();
         } catch (Throwable throwable) {
+            //这里必须抛出异常才会触发事务回滚
             throw throwable;
         } finally {
             DataSourceHolder.cleanDataSource();

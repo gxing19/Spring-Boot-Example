@@ -72,9 +72,4 @@ public class TransactionAspect {
         pointcut.setExpression(AOP_POINTCUT_EXPRESSION);
         return new DefaultPointcutAdvisor(pointcut, txAdvice());
     }
-
 }
-
-
-//https://www.jianshu.com/p/8ff9201ed7d6
-//https://blog.csdn.net/andy_zhang2007/article/details/85846066
