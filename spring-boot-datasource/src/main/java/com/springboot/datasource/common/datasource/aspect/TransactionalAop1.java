@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 
-@Order(Integer.MAX_VALUE - 1000)
+@Order(Integer.MAX_VALUE - 1000)//此是重点,Order值必须大于动态数据源切换AOP的Order值
 @Aspect
 @Component
-@Scope("prototype")
+@Scope("prototype")//线程安全,每次调用都是一个新的实例
 public class TransactionalAop1 {
 
     private TransactionStatus transactionStatus;

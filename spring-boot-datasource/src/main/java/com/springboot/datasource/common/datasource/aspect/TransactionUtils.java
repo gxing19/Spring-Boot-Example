@@ -31,7 +31,7 @@ public class TransactionUtils {
         txAttribute.setIsolationLevel(transactional.isolation().value());
         txAttribute.setPropagationBehavior(transactional.propagation().value());
         //注意: 注解 Transactional.rollbackFor() 返回的是一个继承 Throwable 的 Class 对象数组
-        //而下面方法只能调置单个继承 Throwable 的 Class 对象,且只对 RuntimeException 和 Error 异常有效
+        //而下面方法只能设置单个继承 Throwable 的 Class 对象,且只对 RuntimeException 和 Error 异常有效
 //        txAttribute.rollbackOn()
 
         TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(txAttribute);
