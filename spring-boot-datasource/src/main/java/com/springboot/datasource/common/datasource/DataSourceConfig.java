@@ -59,7 +59,7 @@ public class DataSourceConfig {
      * @return DataSource
      */
     @Primary
-    @Bean(name = "dataSource")
+    @Bean(name = "dynamicDataSource")
     public DynamicDataSource dataSource(@Qualifier("dataSourceMaster") DataSource dataSourceMaster,
                                         @Qualifier("dataSourceSlave") DataSource dataSourceSlave) {
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
@@ -93,9 +93,10 @@ public class DataSourceConfig {
      */
     @Primary
     @Bean(name = "sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("dynamicDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+//        sqlSessionFactoryBean.setTransactionFactory(new MultiDataSourceTransactionFactory());
         //指定mapper xml目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
@@ -123,7 +124,7 @@ public class DataSourceConfig {
      * @return DataSourceTransactionManager
      */
     @Bean
-    public DataSourceTransactionManager transactionManager(@Qualifier("dataSource") DynamicDataSource dynamicDataSource) {
+    public DataSourceTransactionManager transactionManager(@Qualifier("dynamicDataSource") DynamicDataSource dynamicDataSource) {
         return new DataSourceTransactionManager(dynamicDataSource);
     }
 }

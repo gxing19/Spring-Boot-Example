@@ -10,11 +10,16 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.lang.reflect.Method;
 
 /**
  * 数据源动态切换 AOP
  */
+@Order(Integer.MAX_VALUE - 2000)
 @Aspect
 @Component
 public class DataSourceAspect {
@@ -27,18 +32,28 @@ public class DataSourceAspect {
     @Around("pointcut()")
     public Object switchDataSource(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        String methodName = methodSignature.getName();
-        DataSourceSelector dsSelector = methodSignature.getMethod().getAnnotation(DataSourceSelector.class);
-        //如果有注解,则使用注解指定的数据源;否则,根据方法名的前缀业判断读/写操作
+        Method method = methodSignature.getMethod();
+        String methodName = method.getName();
+
+        DataSourceSelector dsSelector = method.getAnnotation(DataSourceSelector.class);
+        Transactional annotation = method.getAnnotation(Transactional.class);
+
         if (null != dsSelector) {
-            DataSourceEnum name = dsSelector.name();
-            DataSourceHolder.setDataSource(name);
-            logger.info("Method Name:{}, DataSource:{}", methodName, name);
+            //显式指定数据源优先
+            DataSourceEnum dataSourceKey = dsSelector.name();
+            DataSourceHolder.setDataSource(dataSourceKey);
+            logger.info("DataSourceSelector name:{}, DataSource:{}", dsSelector.name(), dataSourceKey);
+        } else if (null != annotation && annotation.readOnly()) {
+            //读事务路由到从库
+            DataSourceHolder.setDataSource(DataSourceEnum.SLAVE);
+            logger.info("Transactional readOnly:{}, DataSource:{}", annotation.readOnly(), DataSourceEnum.SLAVE);
         } else if (methodName.startsWith("get") || methodName.startsWith("query") || methodName.startsWith("find")
                 || methodName.startsWith("select") || methodName.startsWith("list")) {
+            //根据方法前缀判断路由到从库
             DataSourceHolder.setDataSource(DataSourceEnum.SLAVE);
             logger.info("Method Name:{}, DataSource:{}", methodName, DataSourceEnum.SLAVE);
         } else {
+            //其它到主库
             DataSourceHolder.setDataSource(DataSourceEnum.MASTER);
             logger.info("Method Name:{}, Datasource:{}", methodName, DataSourceEnum.MASTER);
         }
