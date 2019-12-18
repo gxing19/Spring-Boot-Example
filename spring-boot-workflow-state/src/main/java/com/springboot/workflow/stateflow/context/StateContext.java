@@ -1,4 +1,4 @@
-package com.springboot.workflow.stateflow.statecontext;
+package com.springboot.workflow.stateflow.context;
 
 import com.springboot.workflow.stateflow.state.IState;
 import lombok.Data;

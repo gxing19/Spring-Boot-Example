@@ -1,7 +1,7 @@
 package com.springboot.workflow.stateflow.state.impl;
 
 import com.springboot.workflow.repository.TakeLeaveRep;
-import com.springboot.workflow.stateflow.statecontext.StateContext;
+import com.springboot.workflow.stateflow.context.StateContext;
 import com.springboot.workflow.entity.TakeLeave;
 import com.springboot.workflow.stateflow.state.TakeLeaveState;
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package com.springboot.workflow.stateflow.statecontext;
+package com.springboot.workflow.stateflow.context;
 
 /**
  * 扩展状态上下文

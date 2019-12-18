@@ -1,15 +1,11 @@
 package com.springboot.workflow.stateflow.state.impl;
 
 import com.springboot.workflow.repository.TakeLeaveRep;
-import com.springboot.workflow.stateflow.statecontext.StateContext;
+import com.springboot.workflow.stateflow.context.StateContext;
 import com.springboot.workflow.entity.TakeLeave;
 import com.springboot.workflow.stateflow.state.TakeLeaveState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.Scanner;
 
 /**
  * 具体状态

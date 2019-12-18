@@ -1,6 +1,6 @@
 package com.springboot.workflow.stateflow.state;
 
-import com.springboot.workflow.stateflow.statecontext.StateContext;
+import com.springboot.workflow.stateflow.context.StateContext;
 
 /**
  * 状态抽象接口
