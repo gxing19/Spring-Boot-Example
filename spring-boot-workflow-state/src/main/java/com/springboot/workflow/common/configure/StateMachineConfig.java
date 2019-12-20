@@ -16,7 +16,7 @@ import org.springframework.statemachine.state.State;
 import java.util.EnumSet;
 
 @Configuration
-@EnableStateMachine
+@EnableStateMachine//开启状态机
 public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States, Events> {
 
     /**
@@ -78,5 +78,4 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States
         };
         return listenerAdapter;
     }
-
 }
