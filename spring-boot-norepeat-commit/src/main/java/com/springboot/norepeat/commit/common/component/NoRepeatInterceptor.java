@@ -47,6 +47,7 @@ public class NoRepeatInterceptor implements HandlerInterceptor {
             //如果有防重复提交的注解,则进入业务处理
             if (null != noRepeatToken) {
                 synchronized (this) {
+                    //此处最好使用 lua 脚本来确保原子性
                     boolean exist = redisTemplate.hasKey(key).booleanValue();
                     if (exist) {
                         redisTemplate.delete(key);
