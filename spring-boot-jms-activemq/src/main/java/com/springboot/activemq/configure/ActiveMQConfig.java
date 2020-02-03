@@ -1,9 +1,11 @@
 package com.springboot.activemq.configure;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.ConnectionFactory;
 
@@ -20,7 +22,6 @@ public class ActiveMQConfig {
      * 一个项目里若要同时使用 Queue队列 和 Topic主题(发布-订阅)
      * 需要为 Topic主题再定义一个JmsListenerContainerFactory,开启发布-订阅
      *
-     * @param activeMQConnectionFactory
      * @return
      */
     @Bean
@@ -30,4 +31,5 @@ public class ActiveMQConfig {
         topicListenerContainer.setConnectionFactory(activeMQConnectionFactory);
         return topicListenerContainer;
     }
+
 }

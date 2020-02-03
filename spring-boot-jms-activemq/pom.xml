@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.springboot</groupId>
-    <artifactId>spring-activemq</artifactId>
+    <artifactId>spring-boot-jms-activemq</artifactId>
     <version>v1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>springboot-spring-jms</name>
+    <name>spring-boot-jms-activemq</name>
     <description>activemq project for Spring Boot</description>
 
     <parent>
@@ -65,6 +65,12 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-pool</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-stomp</artifactId>
+        </dependency>
+
+
 
         <!-- processor -->
         <dependency>
