@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.Duration;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -37,7 +38,7 @@ public class JpaApplicationTests {
     private UserRepository userRepository;
     @Autowired
     private TestRestTemplate testRestTemplate;
-    @Autowired
+    @Autowired(required = false)
     private WebTestClient webTestClient;
 
     MockMvc mockMvc;
@@ -67,7 +68,7 @@ public class JpaApplicationTests {
 
         @Bean
         public RestTemplateBuilder restTemplateBuilder() {
-            return new RestTemplateBuilder().setConnectTimeout(1000).setReadTimeout(1000);
+            return new RestTemplateBuilder().setConnectTimeout(Duration.ofMillis(5000)).setReadTimeout(Duration.ofMillis(5000));
         }
     }
 

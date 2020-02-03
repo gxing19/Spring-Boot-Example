@@ -91,11 +91,11 @@ public class UserController {
     }
 
     //排序-倒序
-    @RequestMapping("/querySortByAge")
+    /*@RequestMapping("/querySortByAge")
     public List<User> querySortByAge() {
         List<User> userList = userRepository.findAll(new Sort(Sort.Direction.DESC, "age"));
         return userList;
-    }
+    }*/
 
     //分页
     @RequestMapping("/queryByPage")
