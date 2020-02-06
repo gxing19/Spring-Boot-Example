@@ -13,7 +13,7 @@ import java.util.Map;
 public class RepeatCommit {
 
     //重复提交测试
-    @GetMapping(value = "formCommit")
+    @RequestMapping(value = "formCommit")
     @AvoidRepeatableCommit(timeout = 3)
     public String testCommit(HttpServletRequest request) {
         Map<String, Object> resultMap = new HashMap<String, Object>();

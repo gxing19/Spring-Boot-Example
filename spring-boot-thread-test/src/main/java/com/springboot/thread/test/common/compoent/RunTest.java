@@ -29,7 +29,7 @@ public class RunTest implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("执行多线程测试");
-        String url="http://localhost:8080/user/add";
+        String url="http://localhost:8080/repeat/formCommit";
         CountDownLatch countDownLatch = new CountDownLatch(1);
         ExecutorService executorService = Executors.newFixedThreadPool(10);
 

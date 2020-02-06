@@ -47,7 +47,7 @@ public class AvoidRepeatableCommitAspect {
         //用多参数set方法保证对redis操作原子性
         boolean result = RedisUtil.setnxAndExpire(key, UUID.randomUUID().toString(), timeout * 1000);
         if (!result) {
-            HashMap<String,Object> resultMap = new HashMap<>(5);
+            HashMap<String, Object> resultMap = new HashMap<>(5);
             resultMap.put("errCode", 10001);
             resultMap.put("errMsg", "请勿重复提交");
             return JSON.toJSONString(resultMap);
