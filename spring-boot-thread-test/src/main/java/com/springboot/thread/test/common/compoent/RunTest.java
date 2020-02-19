@@ -1,5 +1,6 @@
 package com.springboot.thread.test.common.compoent;
 
+import com.springboot.thread.test.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,16 @@ public class RunTest implements ApplicationRunner {
     @Autowired
     private RestTemplate restTemplate;
 
+    private int maxThread = 22;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("执行多线程测试");
-        String url="http://localhost:8080/repeat/formCommit";
+        String url = "http://localhost:8080/limit/redisLimit";
         CountDownLatch countDownLatch = new CountDownLatch(1);
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(maxThread);
 
-        for(int i=0; i<10; i++){
+        /*for(int i=0; i<10; i++){
             String userId = "userId" + i;
             HttpEntity request = buildRequest(userId);
             executorService.submit(() -> {
@@ -47,9 +50,23 @@ public class RunTest implements ApplicationRunner {
                     e.printStackTrace();
                 }
             });
-        }
+        }*/
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < maxThread; i++) {
+            executorService.submit(() -> {
+                try {
+                    countDownLatch.await();
+//                    ResponseEntity<User> responseEntity = restTemplate.getForEntity(url, User.class);
+                    ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+                    System.out.println(Thread.currentThread().getName() + ":" + responseEntity.getBody());
 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
         countDownLatch.countDown();
+        System.out.println("总耗时:" + (System.currentTimeMillis() - startTime));
     }
 
     private HttpEntity buildRequest(String userId) {
