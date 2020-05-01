@@ -25,10 +25,11 @@ public class QueueProducerServiceImpl implements QueueProducerService {
      * @param msg
      */
     @Override
-    public void rabbitMQSendStr(String msg) {
+    public void rabbitMQSendStr(String msg) throws InterruptedException {
         for (int i = 0; i < 100; i++) {
-            System.out.println(i);
             rabbitTemplate.convertAndSend("my-queue", System.nanoTime() + "__" + i);
+            System.out.println(i);
+            Thread.sleep(1000);
         }
     }
 

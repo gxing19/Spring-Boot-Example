@@ -15,7 +15,7 @@ public interface QueueProducerService {
      *
      * @param msg
      */
-    void rabbitMQSendStr(String msg);
+    void rabbitMQSendStr(String msg) throws InterruptedException;
 
     /**
      * 发布对象消息

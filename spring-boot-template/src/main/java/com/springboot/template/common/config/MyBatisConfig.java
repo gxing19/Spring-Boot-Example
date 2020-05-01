@@ -10,9 +10,8 @@ import org.springframework.context.annotation.Configuration;
  * @author: gxing
  * @date: 2018-09-25 15:23
  **/
-
-@Configuration
 @tk.mybatis.spring.annotation.MapperScan(
         basePackages = "com.springboot.template.mapper", markerInterface = BaseMapper.class)
+@Configuration
 public class MyBatisConfig {
 }

@@ -29,7 +29,7 @@ public class QueueController {
      * @return
      */
     @RequestMapping("/sendStr")
-    public String rabbitMQSendStr(String msg) {
+    public String rabbitMQSendStr(String msg) throws InterruptedException {
         queueProducerService.rabbitMQSendStr(msg);
         return null;
     }

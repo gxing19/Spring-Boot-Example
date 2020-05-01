@@ -22,15 +22,14 @@ public class MsgProducer {
         Connection connection = factory.newConnection();
         // 创建通道
         Channel channel = connection.createChannel();
+
         // 声明交换器
         String exchangeName = "news-exchange";
         channel.exchangeDeclare(exchangeName, "direct", true);
-
         // 路由键
         String routingKey = "news-routingKey";
-        channel.queueBind("news-queue", exchangeName, routingKey);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             //发送消息
             byte[] msgBytes = ("News Msg ......" + i).getBytes();
             channel.basicPublish(exchangeName, routingKey, null, msgBytes);

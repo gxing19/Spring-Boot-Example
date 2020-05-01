@@ -37,8 +37,8 @@ public class TopicRabbitMQConfig {
      * @return
      */
     @Bean
-    public TopicExchange exchange() {
-        TopicExchange exchange = new TopicExchange("exchange");
+    public TopicExchange topicExchange() {
+        TopicExchange exchange = new TopicExchange("topic.exchange", false, true);
         return exchange;
     }
 
@@ -50,12 +50,12 @@ public class TopicRabbitMQConfig {
      * 订阅新闻主题可以收到所有新闻包括NBA
      *
      * @param queueNews
-     * @param exchange
+     * @param topicExchange
      * @return
      */
     @Bean
-    public Binding bindingExchangeNews(Queue queueNews, TopicExchange exchange) {
-        return BindingBuilder.bind(queueNews).to(exchange).with("topic.news.#");
+    public Binding bindingExchangeNews(Queue queueNews, TopicExchange topicExchange) {
+        return BindingBuilder.bind(queueNews).to(topicExchange).with("topic.news.#");
     }
 
     /**

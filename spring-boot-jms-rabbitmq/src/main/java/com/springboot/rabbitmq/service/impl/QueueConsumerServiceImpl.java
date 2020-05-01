@@ -1,7 +1,10 @@
 package com.springboot.rabbitmq.service.impl;
 
+import com.rabbitmq.client.Channel;
 import com.springboot.rabbitmq.entity.User;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,6 +27,7 @@ public class QueueConsumerServiceImpl {
      */
     @RabbitListener(queues = "my-queue")
     public void rabbitMQReceive1(String msg) {
+//    public void rabbitMQReceive1(String msg) {
         System.out.println("client1 receive my-queue msg:" + msg);
     }
 
