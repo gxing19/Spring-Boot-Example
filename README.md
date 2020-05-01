@@ -130,3 +130,8 @@ Spring AMQP 默认支持的实现是 Rabbitmq。该项目集成 Rabbitmq, 消息
 Spring AOP 实现数据源动态切换(读写分离)，支持注解显式指定数据源和根据方法名前缀来选择数据源
 
 [Spring Boot 2实践系列(五十)：Spring AOP 实现动态数据源切换](http://www.gxitsky.com/2019/12/11/springboot-app-50-aop-datasource-switch/)
+
+## 27. spring-boot-fastdfs
+Spring Boot 集成分布式文件系统 FastDFS
+
+[Spring Boot 2实践系列(五十四)：分布式文件服务 FastDFS 安装与集成](http://www.gxitsky.com/2020/04/20/springboot-app-54-FastDFS/)
