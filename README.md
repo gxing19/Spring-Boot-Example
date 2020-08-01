@@ -132,6 +132,15 @@ Spring AOP 实现数据源动态切换(读写分离)，支持注解显式指定�
 [Spring Boot 2实践系列(五十)：Spring AOP 实现动态数据源切换](http://www.gxitsky.com/2019/12/11/springboot-app-50-aop-datasource-switch/)
 
 ## 27. spring-boot-fastdfs
-Spring Boot 集成分布式文件系统 FastDFS
+Spring Boot 集成分布式文件系统 FastDFS。
+项目依赖 FastDFS 客户端：fastdfs-client-java，版本号：1.29-SNAPSHOT，此依赖 jar 包不好从 Maven 中央仓库或阿里 Maven仓库下载，可下载源码包编译本地安装。
+
+Gitee fastdfs-client-java：https://gitee.com/fastdfs100/fastdfs-client-java
+
+Github fastdfs-client-java: https://github.com/happyfish100/fastdfs-client-java
 
 [Spring Boot 2实践系列(五十四)：分布式文件服务 FastDFS 安装与集成](http://www.gxitsky.com/2020/04/20/springboot-app-54-FastDFS/)
+
+
+## 备注
+1. 同步到 Gitee：https://gitee.com/gxing19/Spring-Boot-Example
