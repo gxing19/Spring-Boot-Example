@@ -24,6 +24,13 @@
         <module>spring-boot-aop</module>
         <module>spring-boot-api-limit</module>
         <module>spring-boot-autoconfig</module>
+        <module>spring-boot-email</module>
+        <module>spring-boot-cache-ehcache2</module>
+        <module>spring-boot-cache-redis</module>
+        <module>spring-boot-cache-simple</module>
+        <module>spring-boot-data-jpa</module>
+        <module>spring-boot-data-rest</module>
+        <module>spring-boot-datasource</module>
     </modules>
 
     <properties>
