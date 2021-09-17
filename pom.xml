@@ -46,6 +46,16 @@
         <module>spring-boot-distributed-lock-redis</module>
         <module>spring-boot-restful-service</module>
         <module>spring-boot-restTemplate</module>
+        <module>spring-boot-rpc</module>
+        <module>spring-boot-spring-batch</module>
+        <module>spring-boot-spring-security</module>
+        <module>spring-boot-template</module>
+        <module>spring-boot-test</module>
+        <module>spring-boot-thread-test</module>
+        <module>spring-boot-web</module>
+        <module>spring-boot-websocket-queue</module>
+        <module>spring-boot-websocket-topic</module>
+        <module>spring-boot-workflow-state</module>
     </modules>
 
     <properties>
