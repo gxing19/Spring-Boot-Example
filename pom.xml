@@ -43,8 +43,9 @@
         <module>spring-boot-nosql-mongodb</module>
         <module>spring-boot-password-encrypt</module>
         <module>spring-boot-profile</module>
-        <module>spring-boot-redis-distributed-lock</module>
+        <module>spring-boot-distributed-lock-redis</module>
         <module>spring-boot-restful-service</module>
+        <module>spring-boot-restTemplate</module>
     </modules>
 
     <properties>

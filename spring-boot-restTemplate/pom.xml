@@ -3,20 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.springboot</groupId>
-    <artifactId>RestTemplate</artifactId>
-    <version>v1.0.0</version>
+    <parent>
+        <groupId>com.springboot.example</groupId>
+        <artifactId>spring-boot-example</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.springboot.example</groupId>
+    <artifactId>spring-boot-restTemplate</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>RestTemplate Demo for Spring Boot</name>
+    <name>spring-boot-restTemplate</name>
     <description>Call Remote Rest Services</description>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

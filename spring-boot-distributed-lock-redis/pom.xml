@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>com.springboot.example</groupId>
-    <artifactId>spring-boot-distributed-lock</artifactId>
+    <artifactId>spring-boot-distributed-lock-redis</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-distributed-lock</name>
+    <name>spring-boot-distributed-lock-redis</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
