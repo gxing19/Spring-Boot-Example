@@ -1,4 +1,4 @@
-package com.springboot.template.common.component.listener;
+package com.springboot.template.common.listener;
 
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.stereotype.Component;
