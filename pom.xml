@@ -31,6 +31,20 @@
         <module>spring-boot-data-jpa</module>
         <module>spring-boot-data-rest</module>
         <module>spring-boot-datasource</module>
+        <module>spring-boot-fastdfs</module>
+        <module>spring-boot-jdbc-template</module>
+        <module>spring-boot-jms-activemq</module>
+        <module>spring-boot-jms-kafka</module>
+        <module>spring-boot-jms-rabbitmq</module>
+        <module>spring-boot-jvm-memory</module>
+        <module>spring-boot-multiple-datasource</module>
+        <module>spring-boot-norepeat-commit</module>
+        <module>spring-boot-repeat-commit</module>
+        <module>spring-boot-nosql-mongodb</module>
+        <module>spring-boot-password-encrypt</module>
+        <module>spring-boot-profile</module>
+        <module>spring-boot-redis-distributed-lock</module>
+        <module>spring-boot-restful-service</module>
     </modules>
 
     <properties>
