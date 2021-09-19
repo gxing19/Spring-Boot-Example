@@ -1,17 +1,16 @@
 package com.springboot.email.service;
 
-import com.springboot.email.entity.Order;
-
-import javax.mail.MessagingException;
-
 /**
- * @name: OrderManager
- * @desc: 订单管理
+ * @name: SendEmailService
+ * @desc: 发送邮件
  * @author: gxing
  * @date: 2018-10-30 11:26
  **/
-public interface SendEmail {
+public interface SendEmailService {
 
+    /**
+     * 发送简单邮件
+     */
     void sendSimpleMail();
 
     void sendMailUseMimeMessagePreparator();

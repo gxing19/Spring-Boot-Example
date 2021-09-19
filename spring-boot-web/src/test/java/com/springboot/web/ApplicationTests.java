@@ -20,6 +20,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.Duration;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
@@ -43,7 +45,9 @@ public class ApplicationTests {
 
         @Bean
         public RestTemplateBuilder restTemplateBuilder() {
-            return new RestTemplateBuilder().setConnectTimeout(1000).setReadTimeout(1000);
+            Duration connectTimeout = Duration.ofSeconds(3000L);
+            Duration readTimeout = Duration.ofSeconds(3000L);
+            return new RestTemplateBuilder().setConnectTimeout(connectTimeout).setReadTimeout(readTimeout);
         }
     }
 

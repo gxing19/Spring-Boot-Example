@@ -1,7 +1,7 @@
 package com.springboot.email.service.impl;
 
 import com.springboot.email.entity.User;
-import com.springboot.email.service.SendEmail;
+import com.springboot.email.service.SendEmailService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +23,15 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * @name: SimpleOrderManager
+ * @name: SendEmailServiceImpl
  * @desc: 发送邮件
  * @author: gxing
  * @date: 2018-10-30 11:34
  **/
 @Service
-public class SendEmailImpl implements SendEmail {
+public class SendEmailServiceImpl implements SendEmailService {
 
-    private static final Logger logger = LogManager.getLogger(SendEmailImpl.class);
+    private static final Logger logger = LogManager.getLogger(SendEmailServiceImpl.class);
 
     @Autowired
     private JavaMailSender mailSender;
@@ -46,15 +46,15 @@ public class SendEmailImpl implements SendEmail {
      */
     @Override
     public void sendSimpleMail() {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
+        User user = new User().setName("Andy").setEmailAddress("ligong1124@gmail.com");
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(user.getEmailAddress());
         message.setSubject("账号注册激活确认");
         message.setText("请点击下面链接激活注册的账号："
-                + "\n\t" + "http://xxxx.xxxx.com?code=xxxxxx");
-        message.setCc("xxxx@qq.com");
+                + "\n\t" + "http://www.baidu.com?code=xxxxxx");
+        message.setCc("364257532@qq.com");
         try {
             mailSender.send(message);
             logger.info("邮件发送成功！");
@@ -122,7 +122,7 @@ public class SendEmailImpl implements SendEmail {
             //开启multipart模式
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            String path = SendEmailImpl.class.getClassLoader().getResource("").getPath();
+            String path = SendEmailServiceImpl.class.getClassLoader().getResource("").getPath();
             File file = new File(path + "/happy.jpg");
             FileSystemResource resource = new FileSystemResource(file);
 
@@ -145,7 +145,7 @@ public class SendEmailImpl implements SendEmail {
      */
     @Override
     public void sendMailInlineResource() {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
+        User user = new User().setName("Andy").setEmailAddress("ligong1124@gmail.com");
         MimeMessage message = mailSender.createMimeMessage();
 
         String mailContent = "<html><body>" +
@@ -156,7 +156,7 @@ public class SendEmailImpl implements SendEmail {
             //开启multipart模式
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            String path = SendEmailImpl.class.getClassLoader().getResource("").getPath();
+            String path = SendEmailServiceImpl.class.getClassLoader().getResource("").getPath();
             File file = new File(path + "/happy.jpg");
             FileSystemResource resource = new FileSystemResource(file);
 

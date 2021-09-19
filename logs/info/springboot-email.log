@@ -1,0 +1,307 @@
+2021-09-19 22:11:10,414 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication on TGLCZUZNIYYEEWT with PID 580 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 22:11:10,424 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:651] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 22:11:10,486 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:225] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 22:11:10,486 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:225] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 22:11:11,566 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:92] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 22:11:11,583 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:11:11,584 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 22:11:11,585 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-09-19 22:11:11,677 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 22:11:11,678 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:284] [restartedMain] Root WebApplicationContext: initialization completed in 1190 ms
+2021-09-19 22:11:11,944 INFO [LogId:] [o.s.s.c.ExecutorConfigurationSupport->initialize:181] [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-19 22:11:12,643 WARN [LogId:] [o.s.c.s.AbstractApplicationContext->refresh:558] [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Mail server is not available
+2021-09-19 22:11:12,644 INFO [LogId:] [o.s.s.c.ExecutorConfigurationSupport->shutdown:218] [restartedMain] Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-19 22:11:12,646 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Stopping service [Tomcat]
+2021-09-19 22:11:12,656 INFO [LogId:] [o.s.b.a.l.ConditionEvaluationReportLoggingListener->logMessage:136] [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-09-19 22:11:12,664 ERROR [LogId:] [o.s.b.SpringApplication->reportFailure:826] [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:882) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) [spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at com.springboot.email.MailApplication.main(MailApplication.java:10) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+Caused by: java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.validateConnection(MailSenderValidatorAutoConfiguration.java:55) ~[spring-boot-autoconfigure-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_161]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	... 23 more
+Caused by: javax.mail.AuthenticationFailedException: 526 Authentication failure[0]
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947) ~[jakarta.mail-1.6.5.jar:1.6.5]
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858) ~[jakarta.mail-1.6.5.jar:1.6.5]
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762) ~[jakarta.mail-1.6.5.jar:1.6.5]
+	at javax.mail.Service.connect(Service.java:342) ~[jakarta.mail-1.6.5.jar:1.6.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518) ~[spring-context-support-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.testConnection(JavaMailSenderImpl.java:398) ~[spring-context-support-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.validateConnection(MailSenderValidatorAutoConfiguration.java:52) ~[spring-boot-autoconfigure-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_161]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	... 23 more
+2021-09-19 22:25:23,200 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 14212 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 22:25:23,208 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 22:25:23,244 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 22:25:23,245 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 22:25:24,054 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 22:25:24,068 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:25:24,068 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 22:25:24,069 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 22:25:24,146 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 22:25:24,146 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 901 ms
+2021-09-19 22:25:25,890 WARN [LogId:] [o.s.c.s.AbstractApplicationContext->refresh:591] [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration': Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration]: Constructor threw exception; nested exception is java.lang.IllegalStateException: Mail server is not available
+2021-09-19 22:25:25,893 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Stopping service [Tomcat]
+2021-09-19 22:25:25,903 INFO [LogId:] [o.s.b.a.l.ConditionEvaluationReportLoggingListener->logMessage:136] [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-09-19 22:25:25,920 ERROR [LogId:] [o.s.b.SpringApplication->reportFailure:843] [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration': Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration]: Constructor threw exception; nested exception is java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:315) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:296) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1204) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.4.jar:2.5.4]
+	at com.springboot.email.MailApplication.main(MailApplication.java:10) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.5.4.jar:2.5.4]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration]: Constructor threw exception; nested exception is java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:221) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:117) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:311) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 24 more
+Caused by: java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.validateConnection(MailSenderValidatorAutoConfiguration.java:54) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.<init>(MailSenderValidatorAutoConfiguration.java:46) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_161]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_161]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:117) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:311) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 24 more
+Caused by: javax.mail.AuthenticationFailedException: 550 User has no permission
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at javax.mail.Service.connect(Service.java:342) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518) ~[spring-context-support-5.3.9.jar:5.3.9]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.testConnection(JavaMailSenderImpl.java:398) ~[spring-context-support-5.3.9.jar:5.3.9]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.validateConnection(MailSenderValidatorAutoConfiguration.java:51) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.<init>(MailSenderValidatorAutoConfiguration.java:46) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_161]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_161]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:117) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:311) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 24 more
+2021-09-19 22:28:09,978 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 14228 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 22:28:09,989 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 22:28:10,027 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 22:28:10,027 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 22:28:10,788 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 22:28:10,802 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:28:10,802 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 22:28:10,803 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 22:28:10,875 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 22:28:10,876 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 848 ms
+2021-09-19 22:28:11,610 WARN [LogId:] [o.s.c.s.AbstractApplicationContext->refresh:591] [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration': Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration]: Constructor threw exception; nested exception is java.lang.IllegalStateException: Mail server is not available
+2021-09-19 22:28:11,614 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Stopping service [Tomcat]
+2021-09-19 22:28:11,625 INFO [LogId:] [o.s.b.a.l.ConditionEvaluationReportLoggingListener->logMessage:136] [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-09-19 22:28:11,643 ERROR [LogId:] [o.s.b.SpringApplication->reportFailure:843] [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration': Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration]: Constructor threw exception; nested exception is java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:315) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:296) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1204) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.4.jar:2.5.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.4.jar:2.5.4]
+	at com.springboot.email.MailApplication.main(MailApplication.java:10) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.5.4.jar:2.5.4]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration]: Constructor threw exception; nested exception is java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:221) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:117) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:311) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 24 more
+Caused by: java.lang.IllegalStateException: Mail server is not available
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.validateConnection(MailSenderValidatorAutoConfiguration.java:54) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.<init>(MailSenderValidatorAutoConfiguration.java:46) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_161]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_161]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:117) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:311) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 24 more
+Caused by: javax.mail.AuthenticationFailedException: 550 User has no permission
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at javax.mail.Service.connect(Service.java:342) ~[jakarta.mail-1.6.7.jar:1.6.7]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518) ~[spring-context-support-5.3.9.jar:5.3.9]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.testConnection(JavaMailSenderImpl.java:398) ~[spring-context-support-5.3.9.jar:5.3.9]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.validateConnection(MailSenderValidatorAutoConfiguration.java:51) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration.<init>(MailSenderValidatorAutoConfiguration.java:46) ~[spring-boot-autoconfigure-2.5.4.jar:2.5.4]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_161]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_161]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_161]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_161]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:117) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:311) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 24 more
+2021-09-19 22:39:23,809 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 15804 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 22:39:23,832 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 22:39:23,920 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 22:39:23,920 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 22:39:24,696 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 22:39:24,710 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:39:24,711 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 22:39:24,711 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 22:39:24,787 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 22:39:24,787 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 866 ms
+2021-09-19 22:39:25,562 INFO [LogId:] [o.s.b.d.a.OptionalLiveReloadServer->startServer:58] [restartedMain] LiveReload server is running on port 35729
+2021-09-19 22:39:25,579 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:39:25,596 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->start:220] [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-19 22:39:25,605 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarted:61] [restartedMain] Started MailApplication in 2.216 seconds (JVM running for 3.517)
+2021-09-19 22:41:00,603 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-19 22:41:00,604 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:525] [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-09-19 22:41:00,605 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:547] [http-nio-8080-exec-1] Completed initialization in 1 ms
+2021-09-19 22:41:02,308 INFO [LogId:] [c.s.e.s.i.SendEmailServiceImpl->sendSimpleMail:60] [http-nio-8080-exec-1] 邮件发送成功！
+2021-09-19 22:43:14,335 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 2560 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 22:43:14,347 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 22:43:14,437 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 22:43:14,438 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 22:43:15,465 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 22:43:15,479 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:43:15,480 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 22:43:15,480 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 22:43:15,561 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 22:43:15,561 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 1122 ms
+2021-09-19 22:43:16,345 INFO [LogId:] [o.s.b.d.a.OptionalLiveReloadServer->startServer:58] [restartedMain] LiveReload server is running on port 35729
+2021-09-19 22:43:16,357 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-19 22:43:16,373 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->start:220] [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-19 22:43:16,383 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarted:61] [restartedMain] Started MailApplication in 2.599 seconds (JVM running for 3.885)
+2021-09-19 22:43:20,030 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-19 22:43:20,030 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:525] [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-09-19 22:43:20,031 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:547] [http-nio-8080-exec-1] Completed initialization in 1 ms
+2021-09-19 22:43:20,926 INFO [LogId:] [c.s.e.s.i.SendEmailServiceImpl->sendSimpleMail:60] [http-nio-8080-exec-1] 邮件发送成功！
+2021-09-19 23:19:15,167 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 16664 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 23:19:15,174 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 23:19:15,215 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 23:19:15,215 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 23:19:15,967 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 23:19:15,980 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 23:19:15,981 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 23:19:15,981 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 23:19:16,058 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 23:19:16,058 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 842 ms
+2021-09-19 23:19:17,966 INFO [LogId:] [o.s.b.d.a.OptionalLiveReloadServer->startServer:58] [restartedMain] LiveReload server is running on port 35729
+2021-09-19 23:19:17,998 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->start:220] [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-19 23:19:18,006 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarted:61] [restartedMain] Started MailApplication in 3.367 seconds (JVM running for 4.755)
+2021-09-19 23:19:22,152 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 15840 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 23:19:22,169 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 23:19:22,255 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 23:19:22,256 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 23:19:23,042 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 23:19:23,055 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 23:19:23,056 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 23:19:23,056 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 23:19:23,131 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 23:19:23,131 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 875 ms
+2021-09-19 23:19:24,003 INFO [LogId:] [o.s.b.d.a.OptionalLiveReloadServer->startServer:58] [restartedMain] LiveReload server is running on port 35729
+2021-09-19 23:19:24,014 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-19 23:19:24,028 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->start:220] [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-19 23:19:24,037 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarted:61] [restartedMain] Started MailApplication in 2.295 seconds (JVM running for 3.708)
+2021-09-19 23:19:41,202 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-19 23:19:41,202 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:525] [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-09-19 23:19:41,203 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:547] [http-nio-8080-exec-1] Completed initialization in 1 ms
+2021-09-19 23:19:42,260 INFO [LogId:] [c.s.e.s.i.SendEmailServiceImpl->sendSimpleMail:60] [http-nio-8080-exec-1] 邮件发送成功！
+2021-09-19 23:20:28,423 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarting:55] [restartedMain] Starting MailApplication using Java 1.8.0_161 on TGLCZUZNIYYEEWT with PID 10988 (D:\Git\gitee\Spring-Boot-Example\spring-boot-email\target\classes started by Xing in D:\Git\gitee\Spring-Boot-Example)
+2021-09-19 23:20:28,432 INFO [LogId:] [o.s.b.SpringApplication->logStartupProfileInfo:659] [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-19 23:20:28,520 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-19 23:20:28,520 INFO [LogId:] [o.s.b.l.DeferredLog->logTo:255] [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-19 23:20:29,284 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->initialize:108] [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-19 23:20:29,299 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-19 23:20:29,299 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting service [Tomcat]
+2021-09-19 23:20:29,299 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-19 23:20:29,374 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-19 23:20:29,375 INFO [LogId:] [o.s.b.w.s.c.ServletWebServerApplicationContext->prepareWebApplicationContext:290] [restartedMain] Root WebApplicationContext: initialization completed in 854 ms
+2021-09-19 23:20:30,380 INFO [LogId:] [o.s.b.d.a.OptionalLiveReloadServer->startServer:58] [restartedMain] LiveReload server is running on port 35729
+2021-09-19 23:20:30,391 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-19 23:20:30,407 INFO [LogId:] [o.s.b.w.e.t.TomcatWebServer->start:220] [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-19 23:20:30,417 INFO [LogId:] [o.s.b.StartupInfoLogger->logStarted:61] [restartedMain] Started MailApplication in 2.349 seconds (JVM running for 3.558)
+2021-09-19 23:20:35,165 INFO [LogId:] [o.a.j.l.DirectJDKLog->log:173] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-19 23:20:35,166 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:525] [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-09-19 23:20:35,167 INFO [LogId:] [o.s.w.s.FrameworkServlet->initServletBean:547] [http-nio-8080-exec-1] Completed initialization in 0 ms
+2021-09-19 23:20:36,165 INFO [LogId:] [c.s.e.s.i.SendEmailServiceImpl->sendSimpleMail:60] [http-nio-8080-exec-1] 邮件发送成功！
