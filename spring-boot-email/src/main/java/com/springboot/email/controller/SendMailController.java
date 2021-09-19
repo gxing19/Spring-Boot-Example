@@ -19,7 +19,7 @@ public class SendMailController {
     @Autowired
     private SendEmail sendEmail;
 
-    @RequestMapping("/send1")
+    @RequestMapping("/sendSimpleMail")
     public void sendMail() {
         sendEmail.sendSimpleMail();
     }

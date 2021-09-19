@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class RedisStarterApplication {
 
     @Autowired
-    RedisConfiguration redisConfiguration;
+    private RedisConfiguration redisConfiguration;
 
     @RequestMapping("/")
-    public String index() {
+    public String index(){
         return redisConfiguration.toString();
     }
+
 
     public static void main(String[] args) {
         SpringApplication.run(RedisStarterApplication.class, args);
