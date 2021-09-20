@@ -46,9 +46,9 @@
 
         <!--FastDFS-->
         <dependency>
-            <groupId>org.csource</groupId>
+            <groupId>cn.aghost</groupId>
             <artifactId>fastdfs-client-java</artifactId>
-            <version>1.29-SNAPSHOT</version>
+            <version>1.29.0</version>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
