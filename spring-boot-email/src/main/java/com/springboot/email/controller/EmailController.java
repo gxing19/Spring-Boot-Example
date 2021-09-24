@@ -1,52 +1,52 @@
 package com.springboot.email.controller;
 
-import com.springboot.email.service.SendEmail;
+import com.springboot.email.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @name: SendMailController
- * @desc: TODO
+ * @desc: 邮件
  * @author: gxing
  * @date: 2018-10-30 11:53
  **/
 
 @RestController
 @RequestMapping("/mail")
-public class SendMailController {
+public class EmailController {
 
     @Autowired
-    private SendEmail sendEmail;
+    private EmailService emailService;
 
-    @RequestMapping("/send1")
-    public void sendMail() {
-        sendEmail.sendSimpleMail();
+    @RequestMapping("/sendSimpleMail")
+    public void sendSimpleMail() {
+        emailService.sendSimpleMail();
     }
 
     @RequestMapping("/send2")
     public void sendMail2() {
-        sendEmail.sendMailUseMimeMessagePreparator();
+        emailService.sendMailUseMimeMessagePreparator();
     }
 
     @RequestMapping("/send3")
     public void sendMail3() {
-        sendEmail.sendMailUseMimeMessageHelper();
+        emailService.sendWithMimeMessageHelper();
     }
 
     @RequestMapping("/send4")
     public void sendMail4() {
-        sendEmail.sendMailWithAttachments();
+        emailService.sendWithAttachments();
     }
 
     @RequestMapping("/send5")
     public void sendMail5() {
-        sendEmail.sendMailInlineResource();
+        emailService.sendWithInlineResource();
     }
 
     @RequestMapping("/send6")
     public void sendMail6() {
-        sendEmail.sendMailTemplate();
+        emailService.sendTemplateMail();
     }
 
 }

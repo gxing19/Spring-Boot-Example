@@ -1,7 +1,7 @@
 package com.springboot.email.service.impl;
 
 import com.springboot.email.entity.User;
-import com.springboot.email.service.SendEmail;
+import com.springboot.email.service.EmailService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +23,18 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * @name: SimpleOrderManager
- * @desc: 发送邮件
+ * @name: EmailServiceImpl
+ * @desc: 邮件
  * @author: gxing
  * @date: 2018-10-30 11:34
  **/
 @Service
-public class SendEmailImpl implements SendEmail {
+public class EmailServiceImpl implements EmailService {
 
-    private static final Logger logger = LogManager.getLogger(SendEmailImpl.class);
+    private static final Logger logger = LogManager.getLogger(EmailServiceImpl.class);
 
     @Autowired
-    private JavaMailSender mailSender;
+    private JavaMailSender javaMailSender;
     @Autowired
     private TemplateEngine templateEngine;
 
@@ -42,7 +42,9 @@ public class SendEmailImpl implements SendEmail {
     private String from;
 
     /**
-     * 发送简单文本邮件
+     * @desc 发送简单文本邮件
+     * @author gxing
+     * @date 2021/9/24 10:28
      */
     @Override
     public void sendSimpleMail() {
@@ -56,7 +58,7 @@ public class SendEmailImpl implements SendEmail {
                 + "\n\t" + "http://xxxx.xxxx.com?code=xxxxxx");
         message.setCc("xxxx@qq.com");
         try {
-            mailSender.send(message);
+            javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MailException e) {
             logger.error("邮件发送异常:{}", e);
@@ -65,23 +67,23 @@ public class SendEmailImpl implements SendEmail {
     }
 
     /**
-     * MimeMessagePreparator发送
+     * @desc MimeMessagePreparator消息
+     * @author gxing
+     * @date 2021/9/24 10:29
      */
     @Override
-    public void sendMailUseMimeMessagePreparator() {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
-
+    public void sendWithMimeMessagePreparator() {
+        String to = "xxxx@163.com";
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
             public void prepare(MimeMessage mimeMessage) throws Exception {
-                mimeMessage.setRecipient(Message.RecipientType.TO,
-                        new InternetAddress(user.getEmailAddress()));
+                mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 mimeMessage.setFrom(from);
                 mimeMessage.setSubject("幸运观众");
                 mimeMessage.setText("你已被抽中为幸运观众,可获得8888元的奖品大礼包！");
             }
         };
         try {
-            mailSender.send(preparator);
+            javaMailSender.send(preparator);
             logger.info("邮件发送成功！");
         } catch (MailException e) {
             logger.error("邮件发送异常:{}", e);
@@ -90,20 +92,21 @@ public class SendEmailImpl implements SendEmail {
     }
 
     /**
-     * MimeMessageHelper发送
+     * @desc MimeMessage消息
+     * @author gxing
+     * @date 2021/9/24 10:32
      */
     @Override
-    public void sendMailUseMimeMessageHelper() {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
-
-        MimeMessage message = mailSender.createMimeMessage();
+    public void sendWithMimeMessageHelper() {
+        String to = "xxxx@163.com";
+        MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         try {
             helper.setFrom(new InternetAddress(from));
-            helper.setTo(user.getEmailAddress());
+            helper.setTo(to);
             helper.setSubject("双色球中奖");
             helper.setText("恭喜你中了双色球一等奖！！");
-            mailSender.send(message);
+            javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MessagingException e) {
             logger.error("邮件发送异常:{}", e);
@@ -112,41 +115,44 @@ public class SendEmailImpl implements SendEmail {
     }
 
     /**
-     * 发送带附件的邮件
+     * @desc 发送带附件的邮件
+     * @author gxing
+     * @date 2021/9/24 10:34
      */
     @Override
-    public void sendMailWithAttachments() {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
-        MimeMessage message = mailSender.createMimeMessage();
+    public void sendWithAttachments() {
+        String to = "xxxx@163.com";
+        MimeMessage message = javaMailSender.createMimeMessage();
         try {
             //开启multipart模式
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-            String path = SendEmailImpl.class.getClassLoader().getResource("").getPath();
+            String path = EmailServiceImpl.class.getClassLoader().getResource("").getPath();
             File file = new File(path + "/happy.jpg");
             FileSystemResource resource = new FileSystemResource(file);
 
             helper.setFrom(new InternetAddress(from));
-            helper.setTo(user.getEmailAddress());
+            helper.setTo(to);
             helper.setSubject("设计图");
             helper.setText("设计图见附件");
             helper.addAttachment("happy.jpg", resource);
-            mailSender.send(message);
+            javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MessagingException e) {
-            logger.error("邮件发送异常:{}", e);
+            logger.error("邮件发送异常:{}", e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * HTML邮件,内联静态资源附件
+     * @desc HTML邮件, 内联静态资源附件
      * helper.setText(content, true);第二个参数设置为true表示html邮件
+     * @author gxing
+     * @date 2021/9/24 10:36
      */
     @Override
-    public void sendMailInlineResource() {
+    public void sendWithInlineResource() {
         User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
-        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessage message = javaMailSender.createMimeMessage();
 
         String mailContent = "<html><body>" +
                 "<h1>Hello World!</h1>" +
@@ -156,7 +162,7 @@ public class SendEmailImpl implements SendEmail {
             //开启multipart模式
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            String path = SendEmailImpl.class.getClassLoader().getResource("").getPath();
+            String path = EmailServiceImpl.class.getClassLoader().getResource("").getPath();
             File file = new File(path + "/happy.jpg");
             FileSystemResource resource = new FileSystemResource(file);
 
@@ -167,7 +173,7 @@ public class SendEmailImpl implements SendEmail {
             //邮件正文显示附件
             helper.setText(mailContent, true);
             helper.addInline("happy.jpg", resource);
-            mailSender.send(message);
+            javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MessagingException e) {
             logger.error("邮件发送异常:{}", e);
@@ -176,26 +182,29 @@ public class SendEmailImpl implements SendEmail {
     }
 
     /**
-     * 发送模板(Thymeleaf)邮件
+     * @desc 发送模板(Thymeleaf)邮件
+     * @author gxing
+     * @date 2021/9/24 10:36
      */
     @Override
-    public void sendMailTemplate() {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
+    public void sendTemplateMail() {
+        String name = "gxing";
+        String to = "xxxx@163.com";
         try {
             //获取Thymeleaf模板内容(邮件内容)
             Context context = new Context();
             //设置模板需要的参数
-            context.setVariable("name", user.getName());
+            context.setVariable("name", name);
             //执行模板引擎
             String emailContent = templateEngine.process("emailTemplate", context);
-            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom(from);
-            helper.setTo(user.getEmailAddress());
+            helper.setTo(to);
             helper.setSubject("淘宝 11.11 活动");
             helper.setText(emailContent, true);
 
-            mailSender.send(message);
+            javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MessagingException e) {
             e.printStackTrace();
