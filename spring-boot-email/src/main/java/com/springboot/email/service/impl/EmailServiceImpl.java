@@ -92,7 +92,7 @@ public class EmailServiceImpl implements EmailService {
     }
 
     /**
-     * @desc MimeMessage消息
+     * @desc MimeMessageHelper消息
      * @author gxing
      * @date 2021/9/24 10:32
      */
