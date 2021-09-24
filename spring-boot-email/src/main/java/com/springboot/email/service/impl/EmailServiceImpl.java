@@ -150,28 +150,26 @@ public class EmailServiceImpl implements EmailService {
      */
     @Override
     public void sendWithInlineResource(String email) {
-        User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
         MimeMessage message = javaMailSender.createMimeMessage();
 
         String mailContent = "<html><body>" +
                 "<h1>Hello World!</h1>" +
-                "<img src='cid:happy.jpg'>" +
+                "<img src='cid:led_ad.jpg'>" +
                 "</body></html>";
         try {
             //开启multipart模式
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
             String path = EmailServiceImpl.class.getClassLoader().getResource("").getPath();
-            File file = new File(path + "/happy.jpg");
+            File file = new File(path + "/led_ad.jpg");
             FileSystemResource resource = new FileSystemResource(file);
 
             helper.setFrom(new InternetAddress(from));
-            helper.setTo(user.getEmailAddress());
-            helper.setSubject("设计图");
+            helper.setTo(email);
+            helper.setSubject("LED Display");
             helper.setText("设计图见附件");
             //邮件正文显示附件
             helper.setText(mailContent, true);
-            helper.addInline("happy.jpg", resource);
+            helper.addInline("led_ad.jpg", resource);
             javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MessagingException e) {
