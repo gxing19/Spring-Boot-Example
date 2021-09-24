@@ -13,28 +13,28 @@ public interface EmailService {
      * @author gxing
      * @date 2021/9/24 10:28
      */
-    void sendSimpleMail();
+    void sendSimpleMail(String email);
 
     /**
      * @desc MimeMessagePreparator消息
      * @author gxing
      * @date 2021/9/24 10:29
      */
-    void sendWithMimeMessagePreparator();
+    void sendWithMimeMessagePreparator(String email);
 
     /**
      * @desc MimeMessageHelper消息
      * @author gxing
      * @date 2021/9/24 10:32
      */
-    void sendWithMimeMessageHelper();
+    void sendWithMimeMessageHelper(String email);
 
     /**
      * @desc 发送带附件的邮件
      * @author gxing
      * @date 2021/9/24 10:34
      */
-    void sendWithAttachments();
+    void sendWithAttachments(String email);
 
     /**
      * @desc HTML邮件, 内联静态资源附件
@@ -42,13 +42,13 @@ public interface EmailService {
      * @author gxing
      * @date 2021/9/24 10:36
      */
-    void sendWithInlineResource();
+    void sendWithInlineResource(String email);
 
     /**
      * @desc 发送模板(Thymeleaf)邮件
      * @author gxing
      * @date 2021/9/24 10:36
      */
-    void sendTemplateMail();
+    void sendTemplateMail(String email);
 
 }

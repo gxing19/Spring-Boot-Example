@@ -25,8 +25,8 @@ public class EmailController {
      * @date 2021/9/24 10:39
      */
     @RequestMapping("/sendSimpleMail")
-    public void sendSimpleMail() {
-        emailService.sendSimpleMail();
+    public void sendSimpleMail(String email) {
+        emailService.sendSimpleMail(email);
     }
 
     /**
@@ -35,8 +35,8 @@ public class EmailController {
      * @date 2021/9/24 10:29
      */
     @RequestMapping("/sendWithMimeMessagePreparator")
-    public void sendWithMimeMessagePreparator() {
-        emailService.sendWithMimeMessagePreparator();
+    public void sendWithMimeMessagePreparator(String email) {
+        emailService.sendWithMimeMessagePreparator(email);
     }
 
     /**
@@ -45,8 +45,8 @@ public class EmailController {
      * @date 2021/9/24 10:32
      */
     @RequestMapping("/sendWithMimeMessageHelper")
-    public void sendWithMimeMessageHelper() {
-        emailService.sendWithMimeMessageHelper();
+    public void sendWithMimeMessageHelper(String email) {
+        emailService.sendWithMimeMessageHelper(email);
     }
 
     /**
@@ -55,8 +55,8 @@ public class EmailController {
      * @date 2021/9/24 10:34
      */
     @RequestMapping("/sendWithAttachments")
-    public void sendWithAttachments() {
-        emailService.sendWithAttachments();
+    public void sendWithAttachments(String email) {
+        emailService.sendWithAttachments(email);
     }
 
     /**
@@ -66,8 +66,8 @@ public class EmailController {
      * @date 2021/9/24 10:36
      */
     @RequestMapping("/sendWithInlineResource")
-    public void sendWithInlineResource() {
-        emailService.sendWithInlineResource();
+    public void sendWithInlineResource(String email) {
+        emailService.sendWithInlineResource(email);
     }
 
     /**
@@ -76,8 +76,8 @@ public class EmailController {
      * @date 2021/9/24 10:36
      */
     @RequestMapping("/sendTemplateMail")
-    public void sendTemplateMail() {
-        emailService.sendTemplateMail();
+    public void sendTemplateMail(String email) {
+        emailService.sendTemplateMail(email);
     }
 
 }

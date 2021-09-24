@@ -47,7 +47,7 @@ public class EmailServiceImpl implements EmailService {
      * @date 2021/9/24 10:28
      */
     @Override
-    public void sendSimpleMail() {
+    public void sendSimpleMail(String email) {
         User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
 
         SimpleMailMessage message = new SimpleMailMessage();
@@ -61,7 +61,7 @@ public class EmailServiceImpl implements EmailService {
             javaMailSender.send(message);
             logger.info("邮件发送成功！");
         } catch (MailException e) {
-            logger.error("邮件发送异常:{}", e);
+            logger.error("邮件发送异常:{}", e.getMessage());
             e.printStackTrace();
         }
     }
@@ -72,7 +72,7 @@ public class EmailServiceImpl implements EmailService {
      * @date 2021/9/24 10:29
      */
     @Override
-    public void sendWithMimeMessagePreparator() {
+    public void sendWithMimeMessagePreparator(String email) {
         String to = "xxxx@163.com";
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
             public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -97,13 +97,12 @@ public class EmailServiceImpl implements EmailService {
      * @date 2021/9/24 10:32
      */
     @Override
-    public void sendWithMimeMessageHelper() {
-        String to = "xxxx@163.com";
+    public void sendWithMimeMessageHelper(String email) {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         try {
             helper.setFrom(new InternetAddress(from));
-            helper.setTo(to);
+            helper.setTo(email);
             helper.setSubject("双色球中奖");
             helper.setText("恭喜你中了双色球一等奖！！");
             javaMailSender.send(message);
@@ -120,7 +119,7 @@ public class EmailServiceImpl implements EmailService {
      * @date 2021/9/24 10:34
      */
     @Override
-    public void sendWithAttachments() {
+    public void sendWithAttachments(String email) {
         String to = "xxxx@163.com";
         MimeMessage message = javaMailSender.createMimeMessage();
         try {
@@ -150,7 +149,7 @@ public class EmailServiceImpl implements EmailService {
      * @date 2021/9/24 10:36
      */
     @Override
-    public void sendWithInlineResource() {
+    public void sendWithInlineResource(String email) {
         User user = new User().setName("Andy").setEmailAddress("xxxx@163.com");
         MimeMessage message = javaMailSender.createMimeMessage();
 
@@ -187,7 +186,7 @@ public class EmailServiceImpl implements EmailService {
      * @date 2021/9/24 10:36
      */
     @Override
-    public void sendTemplateMail() {
+    public void sendTemplateMail(String email) {
         String name = "gxing";
         String to = "xxxx@163.com";
         try {
