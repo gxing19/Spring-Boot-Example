@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RedisApplicationTests {
+public class RedisCacheApplicationTests {
 
     @Autowired
     private ActorService actorService;
