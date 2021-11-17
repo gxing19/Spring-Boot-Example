@@ -1,13 +1,14 @@
-package com.springboot.fastdfs;
+package com.springboot.activemq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootFastdfsApplication {
+public class ActiveMQApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootFastdfsApplication.class, args);
+        SpringApplication.run(ActiveMQApplication.class, args);
     }
-
 }
+
+

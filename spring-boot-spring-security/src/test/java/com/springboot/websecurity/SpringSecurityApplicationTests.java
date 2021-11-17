@@ -20,10 +20,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.Duration;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-public class ApplicationTests {
+public class SpringSecurityApplicationTests {
 
     String userListStr;
 
@@ -43,7 +45,7 @@ public class ApplicationTests {
 
         @Bean
         public RestTemplateBuilder restTemplateBuilder() {
-            return new RestTemplateBuilder().setConnectTimeout(1000).setReadTimeout(1000);
+            return new RestTemplateBuilder().setConnectTimeout(Duration.ofSeconds(10000)).setReadTimeout(Duration.ofSeconds(10000));
         }
     }
 

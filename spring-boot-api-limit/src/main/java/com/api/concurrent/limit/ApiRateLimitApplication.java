@@ -1,13 +1,13 @@
-package com.springboot.repeatcommit;
+package com.api.concurrent.limit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootRepeatCommitApplication {
+public class ApiRateLimitApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootRepeatCommitApplication.class, args);
+        SpringApplication.run(ApiRateLimitApplication.class, args);
     }
 
 }

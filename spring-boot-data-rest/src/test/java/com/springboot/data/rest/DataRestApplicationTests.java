@@ -1,4 +1,4 @@
-package com.springboot.example.rest;
+package com.springboot.data.rest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RestApplicationTests {
+public class DataRestApplicationTests {
 
     @Test
     public void contextLoads() {

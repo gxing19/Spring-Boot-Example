@@ -1,14 +1,13 @@
-package com.springboot.kafka;
+package com.springboot.fastdfs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class FastDFSApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(FastDFSApplication.class, args);
     }
+
 }
-
-

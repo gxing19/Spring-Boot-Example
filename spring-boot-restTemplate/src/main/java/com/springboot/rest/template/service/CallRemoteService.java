@@ -8,11 +8,17 @@ public interface CallRemoteService {
 
     String getForEntity();
 
+    String getMethod();
+
     String postForLocation();
 
     City getForEntityByCityId(Long cityId);
 
     String postForObjectForCity(City city);
+
+    String postForLocationForCity(City city);
+
+    String postForEntityForCity(City city);
 
     void putForCity(Long cityId, String cityName);
 

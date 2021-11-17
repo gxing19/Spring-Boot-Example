@@ -1,14 +1,12 @@
-package com.springboot.rabbitmq;
+package com.springboot.data.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class DataRestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(DataRestApplication.class, args);
     }
 }
-
-

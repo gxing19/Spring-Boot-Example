@@ -61,6 +61,11 @@ public class CallRemoteServiceImpl implements CallRemoteService {
     }
 
     @Override
+    public String getMethod() {
+        return null;
+    }
+
+    @Override
     public String postForLocation() {
         return null;
     }

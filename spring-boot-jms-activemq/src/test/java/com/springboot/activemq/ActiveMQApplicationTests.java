@@ -1,4 +1,4 @@
-package com.springboot.rabbitmq;
+package com.springboot.activemq;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Assert;
@@ -20,16 +20,18 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.Duration;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-public class ApplicationTests {
+public class ActiveMQApplicationTests {
 
     String userListStr;
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-    @Autowired
+    @Autowired(required = false)
     private WebTestClient webTestClient;
 
     MockMvc mockMvc;
@@ -43,7 +45,10 @@ public class ApplicationTests {
 
         @Bean
         public RestTemplateBuilder restTemplateBuilder() {
-            return new RestTemplateBuilder().setConnectTimeout(1000).setReadTimeout(1000);
+            //SpringBoot 2.0.6 release
+//            return new RestTemplateBuilder().setConnectTimeout(1000l).setReadTimeout(1000);
+            //SpringBoot 2.2.2 release
+            return new RestTemplateBuilder().setConnectTimeout(Duration.ofMillis(1000)).setReadTimeout(Duration.ofMillis(1000));
         }
     }
 

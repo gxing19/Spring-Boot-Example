@@ -1,14 +1,12 @@
-package com.springboot.activemq;
+package com.springboot.websecurity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class SpringSecurityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringSecurityApplication.class, args);
     }
 }
-
-

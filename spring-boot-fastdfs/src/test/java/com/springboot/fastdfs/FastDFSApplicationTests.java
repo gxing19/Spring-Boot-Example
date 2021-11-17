@@ -1,10 +1,10 @@
-package com.springboot.datasource;
+package com.springboot.fastdfs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DatasourceApplicationTests {
+class FastDFSApplicationTests {
 
     @Test
     void contextLoads() {
