@@ -28,6 +28,9 @@
         <module>spring-boot-cache-ehcache2</module>
         <module>spring-boot-cache-redis</module>
         <module>spring-boot-cache-simple</module>
+        <module>spring-boot-redis-lock</module>
+        <module>spring-boot-redisson-lock</module>
+<!--        <module>spring-boot-zookeeper-lock</module>-->
         <module>spring-boot-data-jpa</module>
         <module>spring-boot-data-rest</module>
         <module>spring-boot-dynamic-datasource</module>
@@ -43,7 +46,6 @@
         <module>spring-boot-nosql-mongodb</module>
         <module>spring-boot-password-encrypt</module>
         <module>spring-boot-profile</module>
-        <module>spring-boot-distributed-lock-redis</module>
         <module>spring-boot-restful-service</module>
         <module>spring-boot-restTemplate</module>
         <module>spring-boot-rpc</module>

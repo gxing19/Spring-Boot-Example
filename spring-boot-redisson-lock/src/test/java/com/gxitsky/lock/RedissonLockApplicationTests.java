@@ -76,27 +76,7 @@ public class RedissonLockApplicationTests {
         long startTime = System.currentTimeMillis();
         ExecutorService executorService = Executors.newFixedThreadPool(50);
         for (int i = 0; i < maxNum; i++) {
-            executorService.submit(() -> {
-                Thread thread = Thread.currentThread();
-                RLock rLock = redissonClient.getLock(LOCK_KEY);
-                try {
-                    boolean lock = rLock.tryLock(300, 200, TimeUnit.MILLISECONDS);
-                    if (lock) {
-                        try {
-                            System.out.println(thread.getName() + ":获得锁,开始处理业务---------------");
-                            decrementStock(key, 1);
-                            countDownLatch.countDown();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } finally {
-                            rLock.unlock();
-                            System.out.println(thread.getName() + ":释放锁---------------");
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+            executorService.submit(new StockManger(key, LOCK_KEY, countDownLatch));
         }
         executorService.shutdown();
         countDownLatch.await();
@@ -126,6 +106,49 @@ public class RedissonLockApplicationTests {
             stock = false;
             System.out.println(name + ":库存不足---------------");
             throw new RuntimeException(name + ":库存不足");
+        }
+    }
+
+    /**
+     * @author gxing
+     * @desc 库存管理
+     * @date 2022/1/9
+     */
+    class StockManger implements Runnable {
+        private String skuId;
+        private String LOCK_KEY;
+        private CountDownLatch countDownLatch;
+
+        public StockManger(String skuId, String LOCK_KEY, CountDownLatch countDownLatch) {
+            this.skuId = skuId;
+            this.LOCK_KEY = LOCK_KEY;
+            this.countDownLatch = countDownLatch;
+        }
+
+        @Override
+        public void run() {
+            String name = Thread.currentThread().getName();
+            RLock rLock = redissonClient.getLock(LOCK_KEY);
+            try {
+                System.out.println(name + ":等待获取锁");
+                boolean lock = rLock.tryLock(200, 100, TimeUnit.MILLISECONDS);
+                if (lock) {
+                    try {
+                        System.out.println(name + ":获得锁,开始处理业务---------------");
+                        decrementStock(skuId, 1);
+                        countDownLatch.countDown();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        rLock.unlock();
+                        System.out.println(name + ":释放锁---------------");
+                    }
+                } else {
+                    System.out.println(name + ":获取锁失败---------------");
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
