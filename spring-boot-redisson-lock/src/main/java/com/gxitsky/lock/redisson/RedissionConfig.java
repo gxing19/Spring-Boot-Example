@@ -1,4 +1,4 @@
-package com.redis.redisson.redisson;
+package com.gxitsky.lock.redisson;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

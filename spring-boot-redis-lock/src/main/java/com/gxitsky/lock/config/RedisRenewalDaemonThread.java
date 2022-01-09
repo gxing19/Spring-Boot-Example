@@ -1,4 +1,4 @@
-package com.redis.redisson.config;
+package com.gxitsky.lock.config;
 
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -26,11 +26,11 @@ public class RedisRenewalDaemonThread extends Thread {
         if (renew == 0) {
             renew = 1L;
         }
-        System.out.println("rest expire: " + renew);
+//        System.out.println("rest expire: " + renew);
         while (true) {
             try {
                 long expire = redisTemplate.getExpire(lockKey);
-                System.out.println(expire);
+//                System.out.println(expire);
                 //如果剩余过期时间小于等于三分之一,则续期。
                 //注意，这里是小于等于，若只是小于，expire 可能出现负数
                 if (expire <= renew) {

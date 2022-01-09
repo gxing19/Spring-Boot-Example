@@ -1,4 +1,4 @@
-package com.redis.redisson.controller;
+package com.gxitsky.lock.controller;
 
 /**
  * @author gxing
@@ -6,4 +6,5 @@ package com.redis.redisson.controller;
  * @date 2022/1/9
  */
 public class RedissonLockController {
+
 }

@@ -1,4 +1,4 @@
-package com.redis.redisson.config;
+package com.gxitsky.lock.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -27,9 +27,9 @@ public class RedisLockUtil {
      * @param expireTime
      * @return 是否加锁成功
      */
-    public boolean tryLock(String lockKey, String lockValue, int expireTime) {
+    public boolean tryLock(String lockKey, String lockValue, int expireTime, TimeUnit timeUnit) {
         //set(key,value,expire_time,nx)，如果不存在则设置,成功返回true,表示加锁成功
-        Boolean lockResult = redisTemplate.opsForValue().setIfAbsent(lockKey, lockValue, expireTime, TimeUnit.SECONDS);
+        Boolean lockResult = redisTemplate.opsForValue().setIfAbsent(lockKey, lockValue, expireTime, timeUnit);
         boolean result = LOCK_SUCCESS.equals(lockResult);
         if (result) {
             RedisRenewalDaemonThread renewalDaemonThread = new RedisRenewalDaemonThread(redisTemplate, lockKey, expireTime);
