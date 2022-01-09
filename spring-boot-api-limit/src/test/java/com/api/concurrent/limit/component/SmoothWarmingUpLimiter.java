@@ -4,6 +4,11 @@ import com.google.common.util.concurrent.RateLimiter;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @desc 平滑限流
+ * @author gxing
+ * @date 2022/1/9
+ */
 public class SmoothWarmingUpLimiter {
 
     public static void main(String[] args) throws InterruptedException {

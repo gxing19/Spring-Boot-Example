@@ -4,6 +4,11 @@ import com.google.common.util.concurrent.RateLimiter;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * @desc Guava令牌桐限流
+ * @author gxing
+ * @date 2022/1/9
+ */
 public class GuavaTokenBucketLimiter {
 
     public static void main(String[] args) throws InterruptedException {

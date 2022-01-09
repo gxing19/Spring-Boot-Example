@@ -3,6 +3,11 @@ package com.api.concurrent.limit.component;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * @desc 令牌桐
+ * @author gxing
+ * @date 2022/1/9
+ */
 public class TokenBucketLimiter {
 
     public static void main(String[] args) throws InterruptedException {
