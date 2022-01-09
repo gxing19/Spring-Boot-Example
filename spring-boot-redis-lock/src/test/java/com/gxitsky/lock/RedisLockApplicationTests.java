@@ -74,7 +74,7 @@ public class RedisLockApplicationTests {
     public void lockTest2() throws InterruptedException {
         String key = "apple";
         String LOCK_KEY = "LOCK_KEY:apple";
-        int maxNum = 8;
+        int maxNum = 5;
         final CountDownLatch countDownLatch = new CountDownLatch(maxNum);
         long startTime = System.currentTimeMillis();
         ExecutorService executorService = Executors.newFixedThreadPool(50);
