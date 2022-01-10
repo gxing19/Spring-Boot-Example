@@ -1,12 +1,14 @@
-package com.springboot.jdbc;
+package com.springboot.encrypt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JDBCApplication {
+public class PropertiesEncryptApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JDBCApplication.class, args);
+        SpringApplication.run(PropertiesEncryptApplication.class, args);
     }
+
+
 }

@@ -1,14 +1,12 @@
-package com.springboot.encrypt;
+package com.springboot.cache;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class EhCache2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(EhCache2Application.class, args);
     }
-
-
 }

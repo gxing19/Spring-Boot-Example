@@ -1,12 +1,13 @@
-package com.springboot.cache;
+package com.springboot.thread.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CacheEhCache2Application {
+public class ConcurrentThreadTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CacheEhCache2Application.class, args);
+        SpringApplication.run(ConcurrentThreadTestApplication.class, args);
     }
+
 }

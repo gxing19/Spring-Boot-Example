@@ -25,7 +25,7 @@ import java.time.Duration;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-public class WebApplicationTests {
+public class SSLApplicationTests {
 
     String userListStr;
 
