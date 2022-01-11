@@ -4,14 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.springboot.example</groupId>
+        <groupId>com.gxitsky</groupId>
         <artifactId>spring-boot-autoconfig</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.springboot.example</groupId>
     <artifactId>spring-boot-redis-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-redis-starter</name>
 
     <properties>

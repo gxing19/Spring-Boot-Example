@@ -4,14 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.springboot.example</groupId>
+        <groupId>com.gxitsky</groupId>
         <artifactId>spring-boot-example</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.springboot.example</groupId>
     <artifactId>spring-boot-web</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>spring-boot-web</name>
