@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+**/.mvn/**
 
 ### STS ###
 .apt_generated
@@ -32,3 +33,7 @@ build/
 
 ### VS Code ###
 .vscode/
+spring-boot-captcha/src/main/resources/static/
+spring-boot-captcha/src/main/resources/templates/
+src/main/resources/static/
+src/main/resources/templates/
