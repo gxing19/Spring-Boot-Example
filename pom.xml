@@ -28,7 +28,7 @@
         <module>spring-boot-cache-ehcache2</module>
         <module>spring-boot-cache-redis</module>
         <module>spring-boot-cache-simple</module>
-<!--        <module>spring-boot-captcha</module>-->
+        <module>spring-boot-captcha</module>
         <module>spring-boot-redis-lock</module>
         <module>spring-boot-redisson-lock</module>
 <!--        <module>spring-boot-zookeeper-lock</module>-->

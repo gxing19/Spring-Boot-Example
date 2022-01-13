@@ -44,13 +44,6 @@
             <artifactId>Happy-Captcha</artifactId>
             <version>1.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.code</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-
-
 
 
         <dependency>

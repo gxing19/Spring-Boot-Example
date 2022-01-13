@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<script crossorigin="anonymous" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title>字符验证码</title>
+		<div id="easyCaptcha">
+			<div>easyCaptcha</div>
+			<img src="http://localhost:8080/easyCaptcha/get" width="130px" height="48px" /><br>
+			<form action="http://localhost:8080/easyCaptcha/verify" method="get">
+			  验证码: <input type="text" name="verCode" />
+			  <input type="submit" value="提交" />
+			</form>
+		</div>
+		<hr>
+		<div id="hutoolCaptcha">
+			<div>hutoolCaptcha</div>
+			<img src="http://localhost:8080/hutoolCaptcha/get" width="130px" height="48px" /><br>
+			<form action="http://localhost:8080/hutoolCaptcha/verify" method="get">
+			  验证码: <input type="text" name="verCode" />
+			  <input type="submit" value="提交" />
+			</form>
+		</div>
+		<hr />
+		
+		<div id="happyCaptcha">
+			<div>happyCaptcha</div>
+			<img src="http://localhost:8080/happyCaptcha/get" width="130px" height="48px" /><br>
+			<form action="http://localhost:8080/happyCaptcha/verify" method="get">
+			  验证码: <input type="text" name="verCode" />
+			  <input type="submit" value="提交" />
+			</form>
+		</div>
+
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	
+</script>
+
