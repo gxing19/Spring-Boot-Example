@@ -37,3 +37,10 @@ spring-boot-captcha/src/main/resources/static/
 spring-boot-captcha/src/main/resources/templates/
 src/main/resources/static/
 src/main/resources/templates/
+.gitignore
+mvnw
+mvnw.cmd
+pom.xml
+src/main/java/
+src/main/resources/application.properties
+src/test/
