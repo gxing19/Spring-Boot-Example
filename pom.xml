@@ -37,9 +37,9 @@
         <module>spring-boot-dynamic-datasource</module>
         <module>spring-boot-fastdfs</module>
         <module>spring-boot-jdbc-template</module>
-        <module>spring-boot-jms-activemq</module>
-        <module>spring-boot-jms-kafka</module>
-        <module>spring-boot-jms-rabbitmq</module>
+        <module>spring-boot-mq-activemq</module>
+        <module>spring-boot-mq-kafka</module>
+        <module>spring-boot-mq-rabbitmq</module>
         <module>spring-boot-jvm-memory</module>
         <module>spring-boot-multiple-datasource</module>
         <module>spring-boot-norepeat-commit</module>

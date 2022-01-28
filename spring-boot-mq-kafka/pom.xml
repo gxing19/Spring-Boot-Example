@@ -11,13 +11,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-boot-jms-activemq</artifactId>
+    <artifactId>spring-boot-mq-kafka</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-jms-activemq</name>
-    <description>activemq project for Spring Boot</description>
-
+    <name>spring-boot-jms-kafka</name>
+    <description>kafka project for Spring Boot</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,21 +54,22 @@
             <version>1.2.47</version>
         </dependency>
 
-        <!--ActiveMQ-->
-        <dependency>
+        <!--AMQP-->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-activemq</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-pool</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-stomp</artifactId>
-        </dependency>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>-->
 
-
+        <!--Kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <!--kafka streams-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+        </dependency>
 
         <!-- processor -->
         <dependency>

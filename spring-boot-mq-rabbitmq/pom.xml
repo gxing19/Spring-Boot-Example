@@ -11,12 +11,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-boot-jms-kafka</artifactId>
+    <artifactId>spring-boot-mq-rabbitmq</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-jms-kafka</name>
-    <description>kafka project for Spring Boot</description>
+    <name>spring-boot-jms-rabbitmq</name>
+    <description>rabbitmq project for Spring Boot</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,21 +55,17 @@
         </dependency>
 
         <!--AMQP-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!--Kafka-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-        </dependency>
-        <!--kafka streams-->
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-        </dependency>
+        </dependency>-->
+
 
         <!-- processor -->
         <dependency>
