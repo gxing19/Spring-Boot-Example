@@ -49,7 +49,6 @@
         <module>spring-boot-profile</module>
         <module>spring-boot-restful-service</module>
         <module>spring-boot-restTemplate</module>
-        <module>spring-boot-rpc</module>
         <module>spring-boot-spring-batch</module>
         <module>spring-boot-spring-security</module>
         <module>spring-boot-template</module>
