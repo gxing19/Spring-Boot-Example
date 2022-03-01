@@ -34,14 +34,14 @@
 <!--        <module>spring-boot-zookeeper-lock</module>-->
         <module>spring-boot-data-jpa</module>
         <module>spring-boot-data-rest</module>
-        <module>spring-boot-dynamic-datasource</module>
+        <module>spring-boot-datasource-multiple</module>
+        <module>spring-boot-datasource-dynamic</module>
         <module>spring-boot-fastdfs</module>
         <module>spring-boot-jdbc-template</module>
         <module>spring-boot-mq-activemq</module>
         <module>spring-boot-mq-kafka</module>
         <module>spring-boot-mq-rabbitmq</module>
         <module>spring-boot-jvm-memory</module>
-        <module>spring-boot-multiple-datasource</module>
         <module>spring-boot-norepeat-commit</module>
         <module>spring-boot-repeat-commit</module>
         <module>spring-boot-nosql-mongodb</module>

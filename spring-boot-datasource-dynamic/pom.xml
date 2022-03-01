@@ -9,11 +9,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-boot-dynamic-datasource</artifactId>
+    <artifactId>spring-boot-datasource-dynamic</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-dynamic-datasource</name>
+    <name>spring-boot-datasource-dynamic</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
