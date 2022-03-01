@@ -1,6 +1,6 @@
 package com.gxitsky.service2.impl;
 
-import com.gxitsky.mapper.source2.UserMapperTwo;
+import com.gxitsky.mapper.slave.SlaveUserMapper;
 import com.gxitsky.entity.User;
 import com.gxitsky.service2.UserServiceTwo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,28 +19,28 @@ import java.util.List;
 public class UserServiceTwoImpl implements UserServiceTwo {
 
     @Autowired
-    private UserMapperTwo userMapperTwo;
+    private SlaveUserMapper slaveUserMapper;
 
     @Override
     public List<User> queryAll() {
-        return userMapperTwo.selectAll();
+        return slaveUserMapper.selectAll();
     }
 
     @Override
     public User queryById(int id) {
-        return userMapperTwo.selectByPrimaryKey(id);
+        return slaveUserMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public User queryByUsername(String username) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("username", username);
-        return userMapperTwo.selectOneByExample(example);
+        return slaveUserMapper.selectOneByExample(example);
     }
 
     @Override
     public User queryByUsernameXml(String username) {
-        return userMapperTwo.queryByUsername(username);
+        return slaveUserMapper.queryByUsername(username);
     }
 
     @Override

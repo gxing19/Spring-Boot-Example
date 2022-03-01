@@ -1,9 +1,8 @@
-package com.gxitsky.mapper.source1;
+package com.gxitsky.mapper.slave;
 
 import com.gxitsky.entity.User;
 import com.gxitsky.mapper.base.BaseMapper;
 import org.springframework.stereotype.Repository;
-
 
 /**
  * @name: UserMapper
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @date: 2018-09-25 15:56
  **/
 @Repository
-public interface UserMapperOne extends BaseMapper<User> {
+public interface SlaveUserMapper extends BaseMapper<User> {
 
     /**
      * @desc: 根据用户名查询
@@ -23,3 +22,4 @@ public interface UserMapperOne extends BaseMapper<User> {
      **/
     User queryByUsername(String username);
 }
+

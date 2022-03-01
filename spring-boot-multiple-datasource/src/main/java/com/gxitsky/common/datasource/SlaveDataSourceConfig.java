@@ -24,9 +24,9 @@ import javax.sql.DataSource;
  * @date: 2019-02-15 15:53
  **/
 @Configuration
-@MapperScan(basePackages = "com.springboot.template.mapper.source2",
-        sqlSessionTemplateRef = "sqlSessionTemplateTwo", markerInterface = BaseMapper.class)
-public class DataSourceTwoConfig {
+@MapperScan(basePackages = "com.springboot.template.mapper.slave",
+        sqlSessionTemplateRef = "slaveSqlSessionTemplate", markerInterface = BaseMapper.class)
+public class SlaveDataSourceConfig {
 
     /**
      * @desc: 数据源2
@@ -35,13 +35,13 @@ public class DataSourceTwoConfig {
      * @param: []
      * @return: javax.sql.DataSource
      **/
-    @Bean(name = "dataSourceTwo")
-    @ConfigurationProperties(prefix = "spring.datasource.source2")
-    public DataSource dataSourceTwo() {
+    @Bean(name = "slaveDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.slave")
+    public DataSource slaveDataSource() {
         //一定要用DruidDataSource类，不然的话druid数据库连接池是不会起作用的
 //        DruidDataSource dataSourceTwo = new DruidDataSource();
-        DruidDataSource dataSourceTwo = DruidDataSourceBuilder.create().build();
-        return dataSourceTwo;
+        DruidDataSource slaveDataSource = DruidDataSourceBuilder.create().build();
+        return slaveDataSource;
     }
 
     /**
@@ -51,12 +51,12 @@ public class DataSourceTwoConfig {
      * @param: []
      * @return: org.apache.ibatis.session.Configuration
      **/
-    @Bean(name = "configurationTwo")
-    public org.apache.ibatis.session.Configuration configurationTwo() {
-        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+    @Bean(name = "slaveConfiguration")
+    public org.apache.ibatis.session.Configuration slaveConfiguration() {
+        org.apache.ibatis.session.Configuration slaveConfiguration = new org.apache.ibatis.session.Configuration();
         //开启驼峰映射
-        configuration.setMapUnderscoreToCamelCase(true);
-        return configuration;
+        slaveConfiguration.setMapUnderscoreToCamelCase(true);
+        return slaveConfiguration;
     }
 
     /**
@@ -66,15 +66,15 @@ public class DataSourceTwoConfig {
      * @param: [dataSource]
      * @return: org.apache.ibatis.session.SqlSessionFactory
      **/
-    @Bean(name = "sqlSessionFactoryTwo")
-    public SqlSessionFactory sqlSessionFactoryTwo(@Qualifier("dataSourceTwo") DataSource dataSource) throws Exception {
+    @Bean(name = "slaveSqlSessionFactory")
+    public SqlSessionFactory slaveSqlSessionFactory(@Qualifier("slaveDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         //指定mapper xml目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
         sqlSessionFactoryBean.setTypeAliasesPackage("com.springboot.template.entity");
-        sqlSessionFactoryBean.setConfiguration(configurationTwo());
+        sqlSessionFactoryBean.setConfiguration(slaveConfiguration());
         return sqlSessionFactoryBean.getObject();
     }
 
@@ -85,8 +85,8 @@ public class DataSourceTwoConfig {
      * @param: [sqlSessionFactory]
      * @return: SqlSessionTemplate
      **/
-    @Bean(name = "sqlSessionTemplateTwo")
-    public SqlSessionTemplate sqlSessionTemplateTwo(@Qualifier("sqlSessionFactoryTwo") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "slaveSqlSessionTemplate")
+    public SqlSessionTemplate slaveSqlSessionTemplate(@Qualifier("slaveSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
@@ -97,8 +97,8 @@ public class DataSourceTwoConfig {
      * @param: [dataSource]
      * @return: org.springframework.jdbc.datasource.DataSourceTransactionManager
      **/
-    @Bean(name = "dataSourceTransactionManagerTwo")
-    public DataSourceTransactionManager dataSourceTransactionManagerTwo(@Qualifier("dataSourceTwo") DataSource dataSource) {
+    @Bean(name = "slaveDataSourceTransactionManager")
+    public DataSourceTransactionManager slaveDataSourceTransactionManager(@Qualifier("slaveDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 

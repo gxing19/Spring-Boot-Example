@@ -1,6 +1,6 @@
 package com.gxitsky.service1.impl;
 
-import com.gxitsky.mapper.source1.UserMapperOne;
+import com.gxitsky.mapper.master.MasterUserMapper;
 import com.gxitsky.entity.User;
 import com.gxitsky.service1.UserServiceOne;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,33 +19,33 @@ import java.util.List;
 public class UserServiceOneImpl implements UserServiceOne {
 
     @Autowired
-    private UserMapperOne userMapperOne;
+    private MasterUserMapper masterUserMapper;
 
     @Override
     public List<User> queryAll() {
-        return userMapperOne.selectAll();
+        return masterUserMapper.selectAll();
     }
 
     @Override
     public User queryById(int id) {
-        return userMapperOne.selectByPrimaryKey(id);
+        return masterUserMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public User queryByUsername(String username) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("username", username);
-        return userMapperOne.selectOneByExample(example);
+        return masterUserMapper.selectOneByExample(example);
     }
 
     @Override
     public User queryByUsernameXml(String username) {
-        return userMapperOne.queryByUsername(username);
+        return masterUserMapper.queryByUsername(username);
     }
 
     @Override
     public List<User> queryByPage(User user) {
-        List<User> userList = userMapperOne.select(user);
+        List<User> userList = masterUserMapper.select(user);
         return userList;
     }
 

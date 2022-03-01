@@ -25,9 +25,9 @@ import javax.sql.DataSource;
  * @date: 2019-02-15 15:53
  **/
 @Configuration
-@MapperScan(basePackages = "com.springboot.template.mapper.source1",
-        sqlSessionTemplateRef = "sqlSessionTemplateOne", markerInterface = BaseMapper.class)
-public class DataSourceOneConfig {
+@MapperScan(basePackages = "com.springboot.template.mapper.master",
+        sqlSessionTemplateRef = "masterSqlSessionTemplate", markerInterface = BaseMapper.class)
+public class MasterDataSourceConfig {
 
     /**
      * @desc: 数据源 1
@@ -36,14 +36,14 @@ public class DataSourceOneConfig {
      * @param: []
      * @return: javax.sql.DataSource
      **/
-    @Bean(name = "dataSourceOne")
-    @ConfigurationProperties(prefix = "spring.datasource.source1")
+    @Bean(name = "masterDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.master")
     @Primary
-    public DataSource dataSourceOne() {
+    public DataSource masterDataSource() {
         //一定要用DruidDataSource类，不然的话druid数据库连接池是不会起作用的
 //        DruidDataSource dataSourceOne = new DruidDataSource();
-        DruidDataSource dataSourceOne = DruidDataSourceBuilder.create().build();
-        return dataSourceOne;
+        DruidDataSource masterDataSource = DruidDataSourceBuilder.create().build();
+        return masterDataSource;
     }
 
     /**
@@ -53,12 +53,12 @@ public class DataSourceOneConfig {
      * @param: []
      * @return: org.apache.ibatis.session.Configuration
      **/
-    @Bean(name = "configurationOne")
-    public org.apache.ibatis.session.Configuration configurationOne() {
-        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+    @Bean(name = "masterConfiguration")
+    public org.apache.ibatis.session.Configuration masterConfiguration() {
+        org.apache.ibatis.session.Configuration masterConfiguration = new org.apache.ibatis.session.Configuration();
         //开启驼峰映射
-        configuration.setMapUnderscoreToCamelCase(true);
-        return configuration;
+        masterConfiguration.setMapUnderscoreToCamelCase(true);
+        return masterConfiguration;
     }
 
     /**
@@ -68,16 +68,16 @@ public class DataSourceOneConfig {
      * @param: [dataSource]
      * @return: org.apache.ibatis.session.SqlSessionFactory
      **/
-    @Bean(name = "sqlSessionFactoryOne")
+    @Bean(name = "masterSqlSessionFactory")
     @Primary
-    public SqlSessionFactory sqlSessionFactoryOne(@Qualifier("dataSourceOne") DataSource dataSource) throws Exception {
+    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         //指定mapper xml目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
         sqlSessionFactoryBean.setTypeAliasesPackage("com.springboot.template.entity");
-        sqlSessionFactoryBean.setConfiguration(configurationOne());
+        sqlSessionFactoryBean.setConfiguration(masterConfiguration());
         return sqlSessionFactoryBean.getObject();
     }
 
@@ -88,9 +88,9 @@ public class DataSourceOneConfig {
      * @param: [sqlSessionFactory]
      * @return: SqlSessionTemplate
      **/
-    @Bean(name = "sqlSessionTemplateOne")
+    @Bean(name = "masterSqlSessionTemplate")
     @Primary
-    public SqlSessionTemplate sqlSessionTemplateOne(@Qualifier("sqlSessionFactoryOne") SqlSessionFactory sqlSessionFactory) {
+    public SqlSessionTemplate masterSqlSessionTemplate(@Qualifier("masterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
@@ -101,9 +101,9 @@ public class DataSourceOneConfig {
      * @param: [dataSource]
      * @return: org.springframework.jdbc.datasource.DataSourceTransactionManager
      **/
-    @Bean(name = "dataSourceTransactionManagerOne")
+    @Bean(name = "masterDataSourceTransactionManager")
     @Primary
-    public DataSourceTransactionManager dataSourceTransactionManagerOne(@Qualifier("dataSourceOne") DataSource dataSource) {
+    public DataSourceTransactionManager masterDataSourceTransactionManager(@Qualifier("masterDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
