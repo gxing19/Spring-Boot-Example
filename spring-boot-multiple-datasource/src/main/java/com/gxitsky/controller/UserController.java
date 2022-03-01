@@ -2,8 +2,8 @@ package com.gxitsky.controller;
 
 import com.gxitsky.common.ResultBean;
 import com.gxitsky.entity.User;
-import com.gxitsky.service1.UserServiceOne;
-import com.gxitsky.service2.UserServiceTwo;
+import com.gxitsky.service1.UserServiceMaster;
+import com.gxitsky.service2.UserServiceSlave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,10 +21,10 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserServiceOne userServiceOne;
+    private UserServiceMaster userServiceMaster;
 
     @Autowired
-    private UserServiceTwo userServiceTwo;
+    private UserServiceSlave userServiceSlave;
 
     /**
      * @desc: 查所有
@@ -36,16 +36,16 @@ public class UserController {
     @RequestMapping("/queryAll")
     public ResultBean queryAll() {
         //调用通用Mapper方法
-        List<User> userListOne = userServiceOne.queryAll();
-        List<User> userListTwo = userServiceTwo.queryAll();
+        List<User> userListOne = userServiceMaster.queryAll();
+        List<User> userListTwo = userServiceSlave.queryAll();
         return new ResultBean(userListOne).setSuccessCodeAndState();
     }
 
     @RequestMapping("/queryByPage")
     public ResultBean queryByPage(User user) {
         //调用通用Mapper方法
-        List<User> userListOne = userServiceOne.queryByPage(user);
-        List<User> userListTwo = userServiceTwo.queryByPage(user);
+        List<User> userListOne = userServiceMaster.queryByPage(user);
+        List<User> userListTwo = userServiceSlave.queryByPage(user);
         return new ResultBean(userListOne).setSuccessCodeAndState();
     }
 
@@ -58,8 +58,8 @@ public class UserController {
      **/
     @RequestMapping("/queryById")
     public ResultBean queryById(int id) {
-        User userOne = userServiceOne.queryById(id);
-        User userTwo = userServiceTwo.queryById(id);
+        User userOne = userServiceMaster.queryById(id);
+        User userTwo = userServiceSlave.queryById(id);
         return new ResultBean(userOne).setSuccessCodeAndState();
     }
 
@@ -72,8 +72,8 @@ public class UserController {
      **/
     @RequestMapping("/queryByUsername")
     public ResultBean queryByUsername(String username) {
-        User userOne = userServiceOne.queryByUsername(username);
-        User userTwo = userServiceTwo.queryByUsername(username);
+        User userOne = userServiceMaster.queryByUsername(username);
+        User userTwo = userServiceSlave.queryByUsername(username);
         return new ResultBean(userOne).setSuccessCodeAndState();
     }
 
@@ -86,8 +86,8 @@ public class UserController {
      **/
     @RequestMapping("/queryByUsernameXml")
     public ResultBean queryByUsernameXml(String username) {
-        User userOne = userServiceOne.queryByUsernameXml(username);
-        User userTwo = userServiceTwo.queryByUsernameXml(username);
+        User userOne = userServiceMaster.queryByUsernameXml(username);
+        User userTwo = userServiceSlave.queryByUsernameXml(username);
         return new ResultBean(userOne).setSuccessCodeAndState();
     }
 }

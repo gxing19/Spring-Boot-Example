@@ -1,6 +1,6 @@
 package com.gxitsky;
 
-import com.gxitsky.service1.UserServiceOne;
+import com.gxitsky.service1.UserServiceMaster;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ public class MultipleDataSourceApplicationTests {
     StringEncryptor encryptor;
 
     @Autowired
-    private UserServiceOne userServiceOne;
+    private UserServiceMaster userServiceMaster;
 
     @Test
     public void contextLoads() {

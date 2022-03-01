@@ -1,8 +1,8 @@
-package com.gxitsky.service1.impl;
+package com.gxitsky.service2.impl;
 
-import com.gxitsky.mapper.master.MasterUserMapper;
+import com.gxitsky.mapper.slave.SlaveUserMapper;
 import com.gxitsky.entity.User;
-import com.gxitsky.service1.UserServiceOne;
+import com.gxitsky.service2.UserServiceSlave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -16,37 +16,35 @@ import java.util.List;
  * @date: 2018-09-25 16:05
  **/
 @Service
-public class UserServiceOneImpl implements UserServiceOne {
+public class UserServiceSlaveImpl implements UserServiceSlave {
 
     @Autowired
-    private MasterUserMapper masterUserMapper;
+    private SlaveUserMapper slaveUserMapper;
 
     @Override
     public List<User> queryAll() {
-        return masterUserMapper.selectAll();
+        return slaveUserMapper.selectAll();
     }
 
     @Override
     public User queryById(int id) {
-        return masterUserMapper.selectByPrimaryKey(id);
+        return slaveUserMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public User queryByUsername(String username) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("username", username);
-        return masterUserMapper.selectOneByExample(example);
+        return slaveUserMapper.selectOneByExample(example);
     }
 
     @Override
     public User queryByUsernameXml(String username) {
-        return masterUserMapper.queryByUsername(username);
+        return slaveUserMapper.queryByUsername(username);
     }
 
     @Override
     public List<User> queryByPage(User user) {
-        List<User> userList = masterUserMapper.select(user);
-        return userList;
+        return null;
     }
-
 }

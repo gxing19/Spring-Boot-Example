@@ -10,7 +10,7 @@ import java.util.List;
  * @author: gxing
  * @date: 2018-09-25 16:04
  **/
-public interface UserServiceTwo {
+public interface UserServiceSlave {
 
     /**
      * @desc: 查询所有

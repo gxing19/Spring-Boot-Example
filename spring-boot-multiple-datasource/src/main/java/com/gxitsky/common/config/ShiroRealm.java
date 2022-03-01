@@ -1,7 +1,7 @@
 package com.gxitsky.common.config;
 
 import com.gxitsky.common.constant.ParamConst;
-import com.gxitsky.mapper.source1.UserMapperOne;
+import com.gxitsky.mapper.master.MasterUserMapper;
 import com.gxitsky.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +22,7 @@ public class ShiroRealm extends AuthorizingRealm {
     private static final Logger logger = LogManager.getLogger(ShiroRealm.class);
 
     @Autowired
-    private UserMapperOne userMapperOne;
+    private MasterUserMapper masterUserMapper;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
@@ -33,7 +33,7 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         logger.info("开始认证用户身份 .....");
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
-        List<User> userList = userMapperOne.select(new User(usernamePasswordToken.getUsername()));
+        List<User> userList = masterUserMapper.select(new User(usernamePasswordToken.getUsername()));
 
         if (null == userList || userList.isEmpty()) {
             logger.info("用户名不存在:{}", usernamePasswordToken.getUsername());
