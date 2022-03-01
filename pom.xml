@@ -41,6 +41,7 @@
         <module>spring-boot-mq-activemq</module>
         <module>spring-boot-mq-kafka</module>
         <module>spring-boot-mq-rabbitmq</module>
+        <module>spring-boot-mq-rocketmq</module>
         <module>spring-boot-jvm-memory</module>
         <module>spring-boot-norepeat-commit</module>
         <module>spring-boot-repeat-commit</module>
