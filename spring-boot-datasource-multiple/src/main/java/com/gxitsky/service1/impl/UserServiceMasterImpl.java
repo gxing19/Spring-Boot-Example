@@ -5,6 +5,7 @@ import com.gxitsky.entity.User;
 import com.gxitsky.service1.UserServiceMaster;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class UserServiceMasterImpl implements UserServiceMaster {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, value = "transactionManager")
     public User queryByUsername(String username) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("username", username);
